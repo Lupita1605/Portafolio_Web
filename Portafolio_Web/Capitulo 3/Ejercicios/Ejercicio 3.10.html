@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- Ejercicio 3.10: Disposición de las páginas de nuestro libro en HTML5: agregar figuras.
+Modifique su solución al ejercicio 3.9 para agregar los gráficos de la sección como 
+figuras. Las imágenes se proporcionan en la carpeta textoEImagenesEjercicio con los 
+ejemplos de este capítulo.-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 3.10</title>
+    </head>
+
+    <body>
+
+        <section>
+            <header>
+                <h2>Secci&oacute;n 3.2.1 <em>input tipos color</em></h2>
+            </header>
+
+            <article>
+                <ul>
+                    <li>El tipo input <code>color</code> (p&aacute;g. 80) permite al usuario introducir un color.</li>
+                    <li>La mayor&iacute;a de los navegadores despliegan el tipo input <code>color</code> como un campo de texto en donde el usuario puede introducir un c&oacute;digo hexadecimal.</li>
+                    <li>En el futuro, cuando el usuario haga clic sobre un tipo input <code>color</code>, es probable que los navegadores muestren un cuadro de di&aacute;logo en donde el usuario podr&aacute; elegir un color.</li>
+                    <li>El atributo <code>autofocus</code> (p&aacute;g. 80), que puede usarse s&oacute;lo en un elemento input de un formulario, coloca el cursor en el campo de texto despu&eacute;s de que se carga el navegador y despliega la p&aacute;gina. No necesitamos incluir el elemento autofocus en nuestros formularios.</li>
+                    <li>Los nuevos tipos input de HTML5 tienen validaci&oacute;n autom&aacute;tica del lado del cliente, con lo cual se elimina la necesidad de agregar c&oacute;digo de JavaScript para validar la entrada del usuario y reducir la cantidad de datos incorrectos que se env&iacute;an.</li>
+                    <li>Cuando un usuario introduce datos en un formulario y luego lo env&iacute;a, el navegador verifica de inmediato si los datos son correctos.</li>
+                    <li>Si desea anular la validaci&oacute;n, puede agregar el atributo <code>formnovalidate</code> (p&aacute;g. 82) al tipo input <code>submit</code>.</li>
+                    <li>Mediante el uso de JavaScript es posible personalizar el proceso de validaci&oacute;n.</li>
+                </ul>
+
+                <figure>
+                    <img src="../Imagenes/figura3_2.png" alt="Un diálogo para seleccionar colores." />
+                    <figcaption>Figura 3.2: Un diálogo para seleccionar colores.</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="../Imagenes/figura3_3.png" alt="Autofocus en el elemento input color en Opera." />
+                    <figcaption>Figura 3.3 Autofocus en el elemento input color cuando se usa el navegador Opera.</figcaption>
+                </figure>
+                
+                <figure>
+                    <img src="../Imagenes/figura3_4.png" alt="Validación de un elemento input color" />
+                    <figcaption>Figura 3.4 Validaci&oacute;n de un elemento input color.</figcaption>
+                </figure>
+            </article>
+        </section>
+    </body>
+</html>
