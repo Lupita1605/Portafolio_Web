@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <b>Desarrollo Frontend • Diseño Web • Despliegue en la Nube</b>
+  <b>• Diseño Web • Despliegue en la Nube</b>
 </p>
 
 ---
