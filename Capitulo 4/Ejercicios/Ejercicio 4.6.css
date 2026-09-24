@@ -1,0 +1,9 @@
+/*Escriba una regla de CSS que cambie el color de todos los elementos que contengan
+el atributo class = "verdeMover" a verde y los desplace 25 píxeles hacia abajoy 15 píxeles a la derecha.*/
+
+.verdeMover {
+   color: green;
+   position: relative;
+   top: 25px;
+   left: 15px;
+}

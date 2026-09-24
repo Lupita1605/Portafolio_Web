@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- Ejercicio 3.5: Escriba un demento (o dementos) de HTML5 pana realizar cada una de las siguientes tareas:-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 3.5</title>
+    </head>
+
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios </a></p>
+
+        <h2>Ejercicios</h2>
+        <p><strong>3.5</strong> Escriba un elemento (o elementos) de HTML5 para realizar cada una de las siguientes tareas:</p>
+
+        <p><strong>a)</strong> Se pidi&oacute; a los estudiantes que clasificaran los alimentos en la cafeter&iacute;a, en una escala del 1 al 10. Use un elemento meter con texto a su izquierda y a su derecha para indicar que la calificaci&oacute;n promedio fue 7 de 10.<br />
+        1 <meter min="1" max="10" value="7"></meter> 10 (Promedio: 7 de 10)</p>
+
+        <p><strong>b)</strong> Cree un elemento details que muestre el texto "Resultados de la encuesta" en el elemento summary para la parte (a). Cuando el usuario haga clic en la flecha enseguida del texto de summary, deber&aacute; aparecer un p&aacute;rrafo que explique sobre la encuesta.<br />
+        <details>
+            <summary>Resultados de la encuesta</summary>
+            <p>Se realiz&oacute; una encuesta entre los estudiantes para calificar la calidad de los alimentos en la cafeter&iacute;a en una escala del 1 al 10. La calificaci&oacute;n promedio obtenida fue de 7 puntos:</p>
+            1 <meter min="1" max="10" value="7"></meter> 10
+        </details>
+        </p>
+
+        <p><strong>c)</strong> Cree un elemento input text para el primer nombre. El elemento deber&aacute; recibir el enfoque de manera autom&aacute;tica al momento de desplegar el formulario en un navegador.<br />
+        <label for="nombre">Primer nombre: </label>
+        <input type="text" id="nombre" name="nombre" autofocus />
+        </p>
+
+        <p><strong>d)</strong> Modifique la parte (c) de modo que se elimine el elemento label y use texto en el atributo placeholder en el elemento input.<br />
+        <input type="text" id="nombre2" name="nombre2" placeholder="Primer nombre" />
+        </p>
+
+        <p><strong>e)</strong> Use un elemento datalist para proveer una lista autocomplete para cinco estados.<br />
+        <label for="estados">Seleccione o escriba un estado: </label>
+        <input type="text" id="estados" list="listaEstados" placeholder="Estado..." />
+        <datalist id="listaEstados">
+            <option value="Veracruz">
+            <option value="Puebla">
+            <option value="Oaxaca">
+            <option value="Jalisco">
+            <option value="Nuevo Le&oacute;n">
+        </datalist>
+        </p>
+
+        <p><strong>f)</strong> Cree un elemento input range que permita al usuario seleccionar un n&uacute;mero del 1 al 100.<br />
+        <label for="rangoNum">N&uacute;mero (1 a 100): </label>
+        1 <input type="range" id="rangoNum" min="1" max="100" value="50" /> 100
+        </p>
+
+        <p><strong>g)</strong> Especifique que no debe permitirse el atributo autocomplete en un formulario. Muestre s&oacute;lo la etiqueta de apertura del formulario.<br />
+        <code>&lt;form autocomplete="off"&gt;</code>
+        </p>
+
+        <p><strong>h)</strong> Use un elemento mark para resaltar el segundo enunciado del siguiente p&aacute;rrafo:<br />
+        Se pidi&oacute; a los estudiantes que clasificaran los alimentos en la cafeter&iacute;a en una escala del 1 al 10. <mark>El resultado promedio fue 7.</mark>
+        </p>
+    </body>
+</html>
