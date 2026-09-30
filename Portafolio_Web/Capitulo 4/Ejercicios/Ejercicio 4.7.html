@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<!--4.7 Haga una plantilla de diseño que contenga un elemento header y dos párrafos. 
+Use float para alinear los dos párrafos como columnas, uno al lado del otro. 
+Asigne un borde y/o un color de fondo al elemento header y a los dos párrafos, 
+para que pueda ver en dónde están.-->
+      
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 4.7</title>
+        <style type="text/css">
+      
+
+            header {
+            background-color: lightblue;
+            border: 1px solid blue;
+            margin-bottom: 10px;
+            text-align: center;
+            }
+
+            p.columna {
+            float: left;
+            width: 45%;
+            margin: 1%;
+            background-color: lightyellow;
+            border: 1px solid orange;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+        <header>
+            <h1>Encabezado</h1>
+        </header>
+
+        <p class="columna">
+             Este es el primer p&aacute;rrafo alineado a la izquierda usando la propiedad float.
+        </p>
+
+        <p class="columna">
+            Este es el segundo p&aacute;rrafo alineado al lado del primero como una segunda columna.
+         </p>
+    </body>
+</html>

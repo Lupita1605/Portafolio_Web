@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--5.12 (Texto multicolumna) Cambie el formato del ejemplo en la figura 5.17 a dos columnas, agregue un subtítulo y un
+nombre de autor, e incremente el color y el grosor de la regla column-rule. Agregue una imagen y haga que el texto
+flote alrededor de la imagen.-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 5.12 - Texto multicolumna</title>
+        <style type="text/css">
+            p { margin: 0.9em 0em; }
+
+            .multicolumna {
+              
+                -webkit-column-count: 2;
+                -moz-column-count: 2;
+                column-count: 2;
+
+         
+                -webkit-column-gap: 30px;
+                -moz-column-gap: 30px;
+                column-gap: 30px;
+
+
+                -webkit-column-rule: 3px solid darkred;
+                -moz-column-rule: 3px solid darkred;
+                column-rule: 3px solid darkred;
+            }
+
+            .imagen-flotante {
+                float: left;
+                width: 150px;
+                margin-right: 15px;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios </a></p>
+
+        <header>
+            <h1>Computadoras, hardware y software</h1>
+            <h2>Introducci&oacute;n a la Arquitectura de C&oacute;mputo</h2>
+            <p><strong>Autor:</strong> Deitel & Associates</p>
+        </header>
+
+        <div class="multicolumna">
+            <p>
+                <img src="../Imagenes/Portada.png" alt="Hardware" class="imagen-flotante">
+                Una computadora es un dispositivo que puede realizar c&aacute;lculos y tomar
+                decisiones l&oacute;gicas con mucha m&aacute;s rapidez que los humanos.
+                Muchas de las computadoras personales de la actualidad pueden realizar miles
+                de millones de c&aacute;lculos en un segundo&mdash;m&aacute;s de lo que un humano puede realizar
+                durante toda su vida. Las supercomputadoras ya se encuentran realizando miles
+                de billones (trillones) de instrucciones por segundo.
+            </p>
+            <p>Las computadoras procesan datos bajo el control de conjuntos de
+            instrucciones llamadas programas de computadora. Estos programas gu&iacute;an
+            a la computadora por conjuntos ordenados de acciones especificadas por
+            personas llamadas programadores de computadora. Los programas que se ejecutan en una
+            computadora se conocen como software.</p>
+            <p>Una computadora consiste de diversos dispositivos conocidos como hardware
+            (por ejemplo: el teclado, pantalla, rat&oacute;n, discos duros, memoria, DVD
+            y unidades de procesamiento). Los costos de las computadoras disminuyen en forma
+            dram&aacute;tica, debido a los r&aacute;pidos desarrollos en las tecnolog&iacute;as de
+            hardware y software.</p>
+            <p>Los chips de computadora (microprocesadores) controlan innumerables dispositivos.
+            Estos sistemas incrustados incluyen frenos antibloqueo en los autos,
+            sistemas de navegaci&oacute;n, electrodom&eacute;sticos inteligentes, sistemas de
+            seguridad en el hogar, tel&eacute;fonos celulares y Smartphones, robots y m&aacute;s.</p>
+            <footer>
+                <em>&copy; 2012 por Pearson Education, Inc. Todos los derechos reservados.</em>
+            </footer>
+        </div>
+    </body>
+</html>

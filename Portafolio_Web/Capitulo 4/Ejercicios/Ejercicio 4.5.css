@@ -1,0 +1,9 @@
+/*
+   Escriba una regla de CSS que proporcione a todos los elementos h1 y h2 un relleno de 0.5 ems,
+   un estilo de borde dashed y un margen de 0.5 ems.
+*/
+h1, h2 {
+   padding: 0.5em;
+   border-style: dashed;
+   margin: 0.5em;
+}

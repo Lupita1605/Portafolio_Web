@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<!--4.8 Agregue una hoja de estilo incrustada al documento de HTML5 de la figura 2.3.
+   La hoja de estilo debe contener una regla para mostrar los elementos h1 en color azul.
+   Además cree una regla que muestre todos los vínculos en azul sin subrayarlos.
+   Cuando el ratón pase sobre un vínculo, cambie el color de fondo de ese vínculo a amarillo.-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 4.8</title>
+        <style type="text/css">
+       
+            h1 {
+                color: blue;
+            }
+
+            a {
+                color: blue;
+                text-decoration: none;
+            }
+
+            a:hover {
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+        <h1>P&aacute;gina principal con enlaces</h1>
+
+        <p>
+            Visite este buscador: 
+            <a href="https://www.google.com">Ir a Google</a>
+        </p>
+
+        <p>
+            Enlace de demostraci&oacute;n: 
+            <a href="#">Probar efecto hover</a>
+        </p>
+    </body>
+</html>
