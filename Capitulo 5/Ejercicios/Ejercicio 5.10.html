@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--5.10 (Inclinación) Modifique el ejemplo de inclinación en la figura 5.13 para inclinar el elemento de arriba hacia abajo
+30deg, después de izquierda a derecha 30deg, alternando de manera indefinida.-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 5.10</title>
+        <style type="text/css">
+            .skew .textbox {
+                margin-left: 75px;
+                background: lightgreen;
+                height: 100px;
+                width: 200px;
+                padding: 25px 0;
+                text-align: center;
+                font-size: 250%;
+                border: 3px solid DarkGreen;
+                border-radius: 15px;
+                animation: skew 3s infinite linear;
+            }
+
+            @keyframes skew {
+                from { transform: skewY(0deg); }
+                25%  { transform: skewY(30deg); }
+                50%  { transform: skewY(0deg); }
+                75%  { transform: skewX(30deg); }
+                to   { transform: skewX(0deg); }
+            }
+        </style>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios </a></p>
+
+        <div class="box skew">
+            <div class="textbox">Inclinar texto</div>
+        </div>
+    </body>
+</html>

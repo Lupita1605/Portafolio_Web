@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--5.16 (Consultas de medios) Cree su propia página Web multicolumna y use consultas de medios para ajustar el formato 
+y usar una columna para dispositivos móviles que tengan una anchura máxima de 480px.-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 5.16 - Consultas de medios</title>
+        <style type="text/css">
+            .contenido {
+                column-count: 3;
+                column-gap: 20px;
+                column-rule: 1px solid gray;
+            }
+
+           
+            @media (max-width: 480px) {
+                .contenido {
+                    column-count: 1;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios </a></p>
+
+        <h1>P&aacute;gina Web Multicolumna Adaptable</h1>
+
+        <div class="contenido">
+            <p>
+                Este es el primer p&aacute;rrafo de texto de la p&aacute;gina web. En pantallas anchas se distribuir&aacute; 
+                autom&aacute;ticamente a lo largo de tres columnas para facilitar su lectura.
+            </p>
+            <p>
+                El diseño adaptativo nos permite ajustar el comportamiento de nuestra interfaz según el tamaño de la pantalla. 
+                Mediante las consultas de medios (media queries), podemos definir reglas CSS específicas.
+            </p>
+            <p>
+                Al cambiar el tamaño de la ventana o abrir esta p&aacute;gina en un dispositivo m&oacute;vil con un ancho de 480px o menos, 
+                el texto pasar&aacute; a mostrarse en una sola columna.
+            </p>
+        </div>
+    </body>
+</html>

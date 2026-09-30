@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--5.11 (Fusionar imágenes) Modifique el ejemplo de la figura 5.14 utilizando cinco imágenes. 
+Podría ser interesante probar con imágenes de usted o de un miembro de su familia en distintas 
+idades o en un paisaje en distintos momentos.-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 5.11 - Fusi&oacute;n de 5 im&aacute;genes</title>
+        <style type="text/css">
+            #portada {
+                position: relative;
+                margin: 0 auto;
+            }
+
+            #portada img {
+                position: absolute;
+                left: 0;
+                transition: opacity 2s ease-in-out;
+            }
+
+            #portada img:hover {
+                opacity: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios </a></p>
+
+        <div id="portada">
+            <img src="../Imagenes/Imagen5.png" alt="Imagen 5">
+            <img src="../Imagenes/Imagen4.png" alt="Imagen 4">
+            <img src="../Imagenes/Imagen3.png" alt="Imagen 3">
+            <img src="../Imagenes/Imagen2.png" alt="Imagen 2">
+            <img src="../Imagenes/Imagen1.png" alt="Imagen 1">
+        </div>
+    </body>
+</html>
