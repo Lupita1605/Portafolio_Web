@@ -8,14 +8,23 @@ y usar una columna para dispositivos móviles que tengan una anchura máxima de 
         <title>Ejercicio 5.16 - Consultas de medios</title>
         <style type="text/css">
             .contenido {
+                -webkit-column-count: 3;
+                -moz-column-count: 3;
                 column-count: 3;
+
+                -webkit-column-gap: 20px;
+                -moz-column-gap: 20px;
                 column-gap: 20px;
+
+                -webkit-column-rule: 1px solid gray;
+                -moz-column-rule: 1px solid gray;
                 column-rule: 1px solid gray;
             }
 
-           
             @media (max-width: 480px) {
                 .contenido {
+                    -webkit-column-count: 1;
+                    -moz-column-count: 1;
                     column-count: 1;
                 }
             }
