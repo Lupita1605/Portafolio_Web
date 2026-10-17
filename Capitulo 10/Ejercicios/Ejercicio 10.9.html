@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 10.9 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 10.9</title>
+      <script>
+         function probarEjercicio()
+         {
+            var t = [ [ 0, 0, 0 ], [ 0, 0, 0 ] ];
+         }
+
+         window.addEventListener( "load", probarEjercicio, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>10.9</strong> Considere un arreglo de dos por tres que almacena enteros.<br>
+      <br>
+      a) Escriba una instrucción para declarar y crear el arreglo t.<br>
+      <pre>var t = [ [ 0, 0, 0 ], [ 0, 0, 0 ] ];
+
+// O también:
+var t = new Array( new Array( 3 ), new Array( 3 ) );</pre>
+
+      b) ¿Cuántas filas tiene t?<br>
+      <strong>Respuesta: Tiene 2 filas.</strong><br>
+      <br>
+      c) ¿Cuántas columnas tiene t?<br>
+      <strong>Respuesta: Tiene 3 columnas.</strong><br>
+      <br>
+      d) ¿Cuántos elementos tiene t?<br>
+      <strong>Respuesta: Tiene 6 elementos (2 x 3).</strong><br>
+      <br>
+      e) Escriba los nombres de todos los elementos en la fila 1 de t.<br>
+      <strong>Respuesta: t[ 1 ][ 0 ], t[ 1 ][ 1 ], t[ 1 ][ 2 ]</strong> (asumiendo la fila con índice 1).<br>
+      <br>
+      f) Escriba los nombres de todos los elementos en la tercera columna de t.<br>
+      <strong>Respuesta: t[ 0 ][ 2 ], t[ 1 ][ 2 ]</strong> (asumiendo el índice 2 para la tercera columna).<br>
+      <br>
+      g) Escriba una sola instrucción para establecer el elemento de t en la fila 1 y la columna 2 en cero.<br>
+      <pre>t[ 1 ][ 2 ] = 0;</pre>
+
+      h) Escriba una serie de instrucciones para inicializar cada elemento de t en cero.<br>
+      <pre>t[ 0 ][ 0 ] = 0;
+t[ 0 ][ 1 ] = 0;
+t[ 0 ][ 2 ] = 0;
+t[ 1 ][ 0 ] = 0;
+t[ 1 ][ 1 ] = 0;
+t[ 1 ][ 2 ] = 0;</pre>
+
+      i) Escriba una instrucción for anidada para inicializar cada elemento de t en cero.<br>
+      <pre>for ( var i = 0; i &lt; t.length; ++i )
+{
+   for ( var j = 0; j &lt; t[ i ].length; ++j )
+   {
+      t[ i ][ j ] = 0;
+   }
+}</pre>
+
+      j) Escriba una serie de instrucciones para determinar e imprimir el valor más pequeño en el arreglo t.<br>
+      <pre>var menor = t[ 0 ][ 0 ];
+
+for ( var i = 0; i &lt; t.length; ++i )
+{
+   for ( var j = 0; j &lt; t[ i ].length; ++j )
+   {
+      if ( t[ i ][ j ] &lt; menor )
+      {
+         menor = t[ i ][ j ];
+      }
+   }
+}
+
+document.writeln( "El valor m&aacute;s peque&ntilde;o es: " + menor );</pre>
+
+      k) Escriba una instrucción sin repetición para mostrar los elementos de la primera fila de t.<br>
+      <pre>document.writeln( t[ 0 ][ 0 ] + " " + t[ 0 ][ 1 ] + " " + t[ 0 ][ 2 ] );</pre>
+
+      l) Escriba una serie de instrucciones para imprimir el arreglo t en un formato tabular ordenado. Liste los índices de columnas como encabezados a lo largo de la parte superior y liste los índices de fila en la parte izquierda de cada fila.<br>
+      <pre>var resultado = "&lt;table border='1'&gt;&lt;tr&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;0&lt;/th&gt;&lt;th&gt;1&lt;/th&gt;&lt;th&gt;2&lt;/th&gt;&lt;/tr&gt;";
+
+for ( var i = 0; i &lt; t.length; ++i )
+{
+   resultado += "&lt;tr&gt;&lt;th&gt;" + i + "&lt;/th&gt;";
+   for ( var j = 0; j &lt; t[ i ].length; ++j )
+   {
+      resultado += "&lt;td&gt;" + t[ i ][ j ] + "&lt;/td&gt;";
+   }
+   resultado += "&lt;/tr&gt;";
+}
+
+resultado += "&lt;/table&gt;";
+document.writeln( resultado );</pre>
+      </p>
+   </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.16 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.16</title>
+      <script>
+         function filtrarCadenas()
+         {
+            var texto = document.getElementById( "campoTexto" ).value.trim();
+
+            if ( texto === "" )
+            {
+               alert( "Por favor, introduzca una serie de cadenas." );
+               return;
+            }
+
+            // Dividir las palabras ingresadas por espacios o saltos de línea
+            var palabras = texto.split( /\s+/ );
+            var resultado = "";
+
+            for ( var i = 0; i < palabras.length; ++i )
+            {
+               var palabra = palabras[i];
+               
+               // Verificar si la palabra tiene al menos 2 caracteres y termina en "ed"
+               if ( palabra.length >= 2 )
+               {
+                  var terminacion = palabra.substring( palabra.length - 2 ).toLowerCase();
+
+                  if ( terminacion === "ed" )
+                  {
+                     resultado += palabra + "\n";
+                  }
+               }
+            }
+
+            if ( resultado === "" )
+            {
+               resultado = "No se encontraron cadenas que terminen con 'ed'.";
+            }
+
+            document.getElementById( "areaResultados" ).value = resultado;
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonFiltrar" );
+            boton.addEventListener( "click", filtrarCadenas, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.16</strong> Escriba una secuencia de comandos que lea una serie de cadenas e imprima en un elemento textarea de HTML5 s&oacute;lo aquellas cadenas que terminen con los caracteres "ed".</p>
+
+      <form action = "#">
+         <p>
+            Introduzca una serie de palabras/cadenas:<br>
+            <textarea id = "campoTexto" rows = "6" cols = "50" placeholder = "Escriba palabras separadas por espacios o l&iacute;neas..."></textarea><br><br>
+
+            <input id = "botonFiltrar" type = "button" value = "Filtrar palabras que terminen en 'ed'"><br><br>
+
+            Cadenas que terminan con 'ed':<br>
+            <textarea id = "areaResultados" rows = "10" cols = "50" readonly></textarea>
+         </p>
+      </form>
+   </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.5 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.5</title>
+      <style type = "text/css">
+         table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+         th, td { border: 1px solid #000; padding: 5px; text-align: left; }
+         th { background-color: #f0f0f0; }
+      </style>
+      <script>
+         function redondearAEntero( numero )
+         {
+            return Math.round( numero );
+         }
+
+         function redondearADecimas( numero )
+         {
+            return Math.round( numero * 10 ) / 10;
+         }
+
+         function redondearACentesimas( numero )
+         {
+            return Math.round( numero * 100 ) / 100;
+         }
+
+         function redondearAMilesimas( numero )
+         {
+            return Math.round( numero * 1000 ) / 1000;
+         }
+
+         function procesarNumero()
+         {
+            var campoEntrada = document.getElementById( "campoNumero" );
+            var numero = parseFloat( campoEntrada.value );
+
+            if ( isNaN( numero ) )
+            {
+               alert( "Por favor, introduzca un n&uacute;mero v&aacute;lido." );
+               return;
+            }
+
+            var resultado = "<table>" +
+               "<thead><tr><th>Tipo</th><th>Valor</th></tr></thead>" +
+               "<tbody>" +
+               "<tr><td>Valor original</td><td>" + numero + "</td></tr>" +
+               "<tr><td>Redondeado a entero</td><td>" + redondearAEntero( numero ) + "</td></tr>" +
+               "<tr><td>Redondeado a d&eacute;cimas</td><td>" + redondearADecimas( numero ) + "</td></tr>" +
+               "<tr><td>Redondeado a cent&eacute;simas</td><td>" + redondearACentesimas( numero ) + "</td></tr>" +
+               "<tr><td>Redondeado a mil&eacute;simas</td><td>" + redondearAMilesimas( numero ) + "</td></tr>" +
+               "</tbody></table>";
+
+            document.getElementById( "resultados" ).innerHTML = resultado;
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonProcesar" );
+            boton.addEventListener( "click", procesarNumero, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.5</strong> Modifique la soluci&oacute;n al ejercicio 11.4 para usar el m&eacute;todo round de Math en vez del m&eacute;todo floor.</p>
+
+      <form action = "#">
+         <p>
+            Introduzca un n&uacute;mero:
+            <input id = "campoNumero" type = "text">
+            <input id = "botonProcesar" type = "button" value = "Redondear">
+         </p>
+      </form>
+
+      <div id = "resultados"></div>
+   </body>
+</html>

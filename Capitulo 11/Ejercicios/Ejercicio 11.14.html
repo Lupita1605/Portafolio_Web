@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.14 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.14</title>
+      <script>
+         function contarTodasLasLetras()
+         {
+            var texto = document.getElementById( "campoTexto" ).value.toLowerCase();
+            var alfabeto = "abcdefghijklmnopqrstuvwxyz";
+            var conteo = new Array( 26 );
+
+            // Inicializar el arreglo de conteo en 0
+            for ( var k = 0; k < conteo.length; ++k )
+            {
+               conteo[k] = 0;
+            }
+
+            // Contar ocurrencias para cada letra del alfabeto
+            for ( var i = 0; i < alfabeto.length; ++i )
+            {
+               var letra = alfabeto.charAt( i );
+               var posicion = texto.indexOf( letra );
+
+               while ( posicion !== -1 )
+               {
+                  conteo[i]++;
+                  posicion = texto.indexOf( letra, posicion + 1 );
+               }
+            }
+
+            // Construir la tabla de resultados en formato texto
+            var salida = "Letra\tOcurrencias\n";
+            salida += "-----\t-----------\n";
+
+            for ( var j = 0; j < alfabeto.length; ++j )
+            {
+               salida += alfabeto.charAt( j ).toUpperCase() + " / " + alfabeto.charAt( j ) + "\t" + conteo[j] + "\n";
+            }
+
+            document.getElementById( "areaResultados" ).value = salida;
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonContar" );
+            boton.addEventListener( "click", contarTodasLasLetras, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.14</strong> Escriba una secuencia de comandos con base en el programa del ejercicio 11.13 que reciba como entrada varias l&iacute;neas de texto y utilice el m&eacute;todo String indexOf para determinar el n&uacute;mero total de ocurrencias de cada letra del alfabeto en ese texto. Las letras may&uacute;sculas y min&uacute;sculas deben contarse como una sola. Almacene los totales para cada letra en un arreglo, e imprima los valores en formato tabular en un elemento textarea de HTML5 despu&eacute;s de que se hayan determinado los totales.</p>
+
+      <form action = "#">
+         <p>
+            Introduzca varias l&iacute;neas de texto:<br>
+            <textarea id = "campoTexto" rows = "8" cols = "60"></textarea><br><br>
+
+            <input id = "botonContar" type = "button" value = "Contar todas las letras"><br><br>
+
+            Resultados:<br>
+            <textarea id = "areaResultados" rows = "15" cols = "30" readonly></textarea>
+         </p>
+      </form>
+   </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 10.16 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 10.16</title>
+      <script>
+         function cribaDeEratostenes()
+         {
+            // a) Crear un arreglo de 1000 elementos e inicializarlos en 1 (true)
+            var primos = new Array( 1000 );
+            
+            for ( var i = 0; i < primos.length; ++i )
+            {
+               primos[ i ] = 1;
+            }
+
+            // b) Establecer los primeros dos elementos en 0, ya que 0 y 1 no son primos
+            primos[ 0 ] = 0;
+            primos[ 1 ] = 0;
+
+            // Empezando con el índice 2, marcar los múltiplos de cada primo encontrado
+            for ( var i = 2; i < primos.length; ++i )
+            {
+               if ( primos[ i ] === 1 )
+               {
+                  for ( var j = i * 2; j < primos.length; j += i )
+                  {
+                     primos[ j ] = 0;
+                  }
+               }
+            }
+
+            // Imprimir los índices cuyos elementos aún sean 1 (números primos)
+            var salida = "<p><strong>N&uacute;meros primos entre 1 y 999:</strong></p><p>";
+            var contadorPrimos = 0;
+
+            for ( var k = 1; k < primos.length; ++k )
+            {
+               if ( primos[ k ] === 1 )
+               {
+                  salida += k + " ";
+                  ++contadorPrimos;
+               }
+            }
+
+            salida += "</p><p>Total de n&uacute;meros primos encontrados: <strong>" + contadorPrimos + "</strong></p>";
+
+            document.getElementById( "salida" ).innerHTML = salida;
+         }
+
+         window.addEventListener( "load", cribaDeEratostenes, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>10.16</strong> <em>(La criba de Erat&oacute;stenes)</em> Un n&uacute;mero primo es cualquier entero mayor que 1, divisible s&oacute;lo por s&iacute; mismo y por el n&uacute;mero 1. La Criba de Erat&oacute;stenes es un m&eacute;todo para encontrar n&uacute;meros primos. Opera de la siguiente manera:<br>
+      a) Cree un arreglo con todos los elementos inicializados en 1 (true). Los elementos del arreglo con &iacute;ndices primos permanecer&aacute;n como 1. Cualquier otro elemento del arreglo eventualmente cambiar&aacute; a 0.<br>
+      b) Establezca los primeros dos elementos en cero, ya que 0 y 1 no son primos. Empezando con el &iacute;ndice 2 del arreglo, cada vez que encuentre un elemento del arreglo cuyo valor sea 1, itere a trav&eacute;s del resto del arreglo y asigne cero a todo elemento cuyo &iacute;ndice sea m&uacute;ltiplo del &iacute;ndice del elemento que tiene el valor 1. Para el &iacute;ndice 2 del arreglo, todos los elementos m&aacute;s all&aacute; del elemento 2 en el arreglo que sean m&uacute;ltiplos de 2 se establecer&aacute;n en cero (los &iacute;ndices 4, 6, 8, 10, etc&eacute;tera); para el &iacute;ndice 3 del arreglo, todos los elementos m&aacute;s all&aacute; del elemento 3 en el arreglo que sean m&uacute;ltiplos de 3 se establecer&aacute;n en cero (los &iacute;ndices 6, 9, 12, 15, etc&eacute;tera); y as&iacute; en lo sucesivo.<br>
+      Cuando este proceso termine, los elementos del arreglo que a&uacute;n sean 1 indicar&aacute;n que el &iacute;ndice es un n&uacute;mero primo. Entonces podr&aacute; imprimir estos &iacute;ndices. Escriba una secuencia de comandos que utilice un arreglo de 1000 elementos para determinar e imprimir los n&uacute;meros primos entre 1 y 999. Ignore el elemento 0 del arreglo.</p>
+
+      <div id = "salida"></div>
+   </body>
+</html>

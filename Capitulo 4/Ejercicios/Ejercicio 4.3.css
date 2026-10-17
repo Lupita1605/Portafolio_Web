@@ -1,0 +1,8 @@
+/*4.3 Escriba una regla de CSS que haga todo el texto 1.5 veces más grande que b fuente base dd sistema y coloree el texto
+en rojo.*/
+
+body {
+    font-size: 1.5 em;
+    color: red;
+
+}

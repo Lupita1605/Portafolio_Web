@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.20 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.20</title>
+      <script>
+         // Implementación propia del método lastIndexOf
+         function miLastIndexOf( cadena, subcadena, inicio )
+         {
+            var longitudCadena = cadena.length;
+            var longitudSubcadena = subcadena.length;
+
+            if ( longitudSubcadena === 0 )
+            {
+               return longitudCadena;
+            }
+
+            // Definir la posición inicial para buscar de derecha a izquierda
+            var posInicio = ( inicio !== undefined ) ? inicio : ( longitudCadena - longitudSubcadena );
+
+            if ( posInicio >= longitudCadena )
+            {
+               posInicio = longitudCadena - 1;
+            }
+
+            for ( var i = posInicio; i >= 0; --i )
+            {
+               var coincide = true;
+
+               for ( var j = 0; j < longitudSubcadena; ++j )
+               {
+                  if ( cadena.charAt( i + j ) !== subcadena.charAt( j ) )
+                  {
+                     coincide = false;
+                     break;
+                  }
+               }
+
+               if ( coincide )
+               {
+                  return i; // Retorna el índice de la última coincidencia
+               }
+            }
+
+            return -1; // Retorna -1 si no se encontró
+         }
+
+         function probarLastIndexOfPropio()
+         {
+            var texto = document.getElementById( "campoTexto" ).value;
+            var busqueda = document.getElementById( "campoBusqueda" ).value;
+
+            if ( busqueda === "" )
+            {
+               alert( "Por favor, introduzca el texto o car&aacute;cter a buscar." );
+               return;
+            }
+
+            var indice = miLastIndexOf( texto, busqueda );
+
+            var resultadoHTML = "";
+            if ( indice !== -1 )
+            {
+               resultadoHTML = "<p>La subcadena '<strong>" + busqueda + 
+                  "</strong>' se encontr&oacute; por &uacute;ltima vez en el &iacute;ndice: <strong>" + 
+                  indice + "</strong></p>";
+            }
+            else
+            {
+               resultadoHTML = "<p>La subcadena '<strong>" + busqueda + 
+                  "</strong>' <strong>no</strong> se encontr&oacute; en el texto.</p>";
+            }
+
+            document.getElementById( "resultado" ).innerHTML = resultadoHTML;
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonBuscar" );
+            boton.addEventListener( "click", probarLastIndexOfPropio, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.20</strong> Escriba su propia versi&oacute;n del m&eacute;todo String lastIndexOf y &uacute;selo en una secuencia de comandos.</p>
+
+      <form action = "#">
+         <p>
+            Texto completo:<br>
+            <input id = "campoTexto" type = "text" size = "60"><br><br>
+
+            Texto o car&aacute;cter a buscar:<br>
+            <input id = "campoBusqueda" type = "text" size = "30">
+            <input id = "botonBuscar" type = "button" value = "Buscar con miLastIndexOf">
+         </p>
+      </form>
+
+      <div id = "resultado"></div>
+   </body>
+</html>

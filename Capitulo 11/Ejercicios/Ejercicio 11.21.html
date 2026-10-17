@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.21 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.21</title>
+      <script>
+         function generarCombinaciones3Letras()
+         {
+            var campoPalabra = document.getElementById( "campoPalabra" );
+            var palabra = campoPalabra.value.trim().toLowerCase();
+
+            if ( palabra.length !== 5 )
+            {
+               alert( "Por favor, introduzca una palabra de exactamente 5 letras." );
+               return;
+            }
+
+            var combinaciones = [];
+            var longitud = palabra.length;
+
+            // Tres ciclos anidados para obtener las 3 posiciones distintas
+            for ( var i = 0; i < longitud; ++i )
+            {
+               for ( var j = 0; j < longitud; ++j )
+               {
+                  if ( j === i ) continue; // No repetir la misma posición de letra
+
+                  for ( var k = 0; k < longitud; ++k )
+                  {
+                     if ( k === i || k === j ) continue; // No repetir posiciones anteriores
+
+                     var cadena3 = palabra.charAt( i ) + palabra.charAt( j ) + palabra.charAt( k );
+
+                     // Evitar duplicados en la lista de resultados
+                     if ( combinaciones.indexOf( cadena3 ) === -1 )
+                     {
+                        combinaciones.push( cadena3 );
+                     }
+                  }
+               }
+            }
+
+            var salida = "Cadenas de 3 letras derivadas de '" + palabra + "' (" + combinaciones.length + " en total):\n\n";
+            salida += combinaciones.join( "\n" );
+
+            document.getElementById( "areaResultados" ).value = salida;
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonGenerar" );
+            boton.addEventListener( "click", generarCombinaciones3Letras, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.21</strong> Escriba un programa que lea una palabra de cinco letras proveniente del usuario, y que produzca todas las posibles cadenas de tres letras que puedan derivarse de las letras de la palabra con cinco letras. Muestre los resultados en un elemento textarea de HTML5.</p>
+
+      <form action = "#">
+         <p>
+            Introduzca una palabra de 5 letras:<br>
+            <input id = "campoPalabra" type = "text" maxlength = "5" size = "10" placeholder = "trigo">
+            <input id = "botonGenerar" type = "button" value = "Generar cadenas de 3 letras"><br><br>
+
+            Resultados:<br>
+            <textarea id = "areaResultados" rows = "15" cols = "40" readonly></textarea>
+         </p>
+      </form>
+   </body>
+</html>

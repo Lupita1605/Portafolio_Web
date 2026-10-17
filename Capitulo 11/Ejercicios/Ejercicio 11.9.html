@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.9 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.9</title>
+      <script>
+         function imprimirPalabraEnLatin( palabra )
+         {
+            var primeraLetra = palabra.charAt( 0 );
+            var restoPalabra = palabra.substring( 1 );
+            return restoPalabra + primeraLetra + "ae";
+         }
+
+         function traducirEnunciado()
+         {
+            var campoEntrada = document.getElementById( "campoEnunciado" );
+            var enunciado = campoEntrada.value.trim();
+
+            if ( enunciado === "" )
+            {
+               alert( "Por favor, introduzca una frase o enunciado." );
+               return;
+            }
+
+            var palabras = enunciado.split( " " );
+            var enunciadoTraduccion = "";
+
+            for ( var i = 0; i < palabras.length; ++i )
+            {
+               if ( palabras[i].length > 0 )
+               {
+                  enunciadoTraduccion += imprimirPalabraEnLatin( palabras[i] ) + " ";
+               }
+            }
+
+            var contenedorResultados = document.getElementById( "resultados" );
+            
+            var nuevoParrafo = document.createElement( "p" );
+            nuevoParrafo.textContent = enunciadoTraduccion.trim();
+            contenedorResultados.appendChild( nuevoParrafo );
+
+            campoEntrada.value = "";
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonTraducir" );
+            boton.addEventListener( "click", traducirEnunciado, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.9</strong> (Lat&iacute;n cerdo) Escriba una secuencia de comandos que codifique frases en espa&ntilde;ol a frases en lat&iacute;n cerdo. Para traducir cada palabra en espa&ntilde;ol a una palabra en lat&iacute;n cerdo, coloque la primera letra de la palabra al final de la palabra y agregue las letras "ae". De esta forma, la palabra "salta" se convierte a "altasae", "el" en "leae" y "computadora" en "omputadoracae". La funci&oacute;n <code>imprimirPalabraEnLatin</code> deber&aacute; procesar cada palabra.</p>
+
+      <form action = "#">
+         <p>
+            Escriba una frase en espa&ntilde;ol:<br>
+            <input id = "campoEnunciado" type = "text" size = "50">
+            <input id = "botonTraducir" type = "button" value = "Traducir a Lat&iacute;n Cerdo">
+         </p>
+      </form>
+
+      <h3>Traducciones acumuladas:</h3>
+      <div id = "resultados"></div>
+   </body>
+</html>

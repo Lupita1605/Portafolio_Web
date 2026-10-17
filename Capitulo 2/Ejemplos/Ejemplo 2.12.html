@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- Fig. 2.12: tabla1.html -->
+<!--Creación de una tabla basica-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Una tabla de HTML5 simple</title>    
+    </head>
+
+    <body>
+        <p><a href="../Menu/menu_ejemplos.html">&larr; Regresar al men&uacute; de ejemplos</a></p>
+        <!--La etiqueta <table> dabre una tabla-->
+        <table border = "1">
+
+            <!--la etiqueta <caption> sintetiza el contenido de--->
+            <!--la tabla (esto ayuda a las personas con discapacidad visual)-->
+            <caption><strong>Tabla de frutas (1era columnna) y 
+                sus precios (2da columna)</strong></caption>
+
+            <!--la seccion <thead> aparece primero en la tabla-->
+            <!--da formato al area del encabezado de la tabla-->
+            <thead>
+                <tr> <!--inserta una fila en la tabla-->
+                    <th>Fruta</th> <!--incerta una celda de encabezado-->
+                    <th>Precio</th>
+                </tr> 
+            </thead>
+
+            <!--la seccion <tfoot>aparece al ultimo en la tabla-->
+            <!--da formato al pie de la tabla-->
+            <tfoot>
+                <tr>
+                    <td>Total</td>
+                    <td>$3.75</td>
+                </tr>
+            </tfoot>
+            <!--todo el contenido de la tabla esta cerrado-->
+            <!--dentro del elemento <tbody>-->
+            <tbody>
+                <tr>
+                    <td>Manzana</td>
+                    <td>$0.25</td>
+                </tr>
+
+                <tr>
+                    <td>Naranja</td>
+                    <td>$0.50</td>
+                </tr>
+
+                <tr>
+                    <td>Pl&aacute;tano</td>
+                    <td>$1.00</td>
+                </tr>
+                
+                <tr>
+                    <td>Pi&ntilde;a</td>
+                    </td>
+                    <td>$2.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

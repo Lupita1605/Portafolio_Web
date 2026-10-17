@@ -1,0 +1,32 @@
+/*4.9 Cree un botón de navegación mediante un elemento div con un vínculo en su interior.
+Asígnele un borde, fondo y color de texto, y haga que cambien cuando el usuario
+pase el ratón sobre el botón. Use una hoja de estilo externa. 
+*/
+
+.boton-nav {
+	display: inline-block;
+	border: 2px solid #2980b9;
+	background-color: #3498db;
+	border-radius: 5px;
+	padding: 10px 20px;
+	text-align: center;
+	transition: 0.3s;
+}
+
+.boton-nav a {
+	color: #ffffff;
+	text-decoration: none;
+	font-family: sans-serif;
+	font-weight: bold;
+	display: block;
+}
+
+/* Estado hover al pasar el ratón sobre el botón */
+.boton-nav:hover {
+	border-color: #1a5276;
+	background-color: #2ecc71;
+}
+
+.boton-nav:hover a {
+	color: #1a5276;
+}

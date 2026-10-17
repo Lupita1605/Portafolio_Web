@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--Ejercicio 2.16:-->
+
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 2.16</title>
+    </head>
+
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar a Ejercicios</a></p>
+        <h1>Formulario de Retroalimentaci&oacute;n del Campus</h1>
+        <p>Por favor complete el siguiente formulario para conocer su opini&oacute;n sobre la visita:</p>
+
+        <form method="post" action="http://www.deitel.com">
+
+            <p>
+                <label>Nombre:<br>
+                    <input type="text" name="nombre" size="35">
+                </label>
+            </p>
+
+            <p>
+                <label>Correo electr&oacute;nico:<br>
+                    <input type="email" name="correo" size="35">
+                </label>
+            </p>
+
+            <p>
+                <strong>&iquest;Qu&eacute; fue lo que m&aacute;s le gust&oacute; del campus?</strong><br>
+                <label><input type="checkbox" name="gusto" value="campus"> Campus</label><br>
+                <label><input type="checkbox" name="gusto" value="estudiantes"> Estudiantes</label><br>
+                <label><input type="checkbox" name="gusto" value="ubicacion"> Ubicaci&oacute;n</label><br>
+                <label><input type="checkbox" name="gusto" value="ambiente"> Ambiente</label><br>
+                <label><input type="checkbox" name="gusto" value="dormitorios"> Dormitorios</label><br>
+                <label><input type="checkbox" name="gusto" value="deportes"> Deportes</label>
+            </p>
+
+            <p>
+                <strong>&iquest;C&oacute;mo supo sobre la universidad?</strong><br>
+                <label><input type="radio" name="origen" value="amigos"> Amigos</label><br>
+                <label><input type="radio" name="origen" value="television"> Televisi&oacute;n</label><br>
+                <label><input type="radio" name="origen" value="internet"> Internet</label><br>
+                <label><input type="radio" name="origen" value="otro"> Otro</label>
+            </p>
+
+            <p>
+                <label>
+                    <strong>Comentarios adicionales:</strong><br>
+                    <textarea name="comentarios" rows="4" cols="40"></textarea>
+                </label>
+            </p>
+
+            <p>
+                <input type="submit" value="Enviar">
+                <input type="reset" value="Restablecer">
+            </p>
+
+        </form>
+    </body>
+
+    
+</html>

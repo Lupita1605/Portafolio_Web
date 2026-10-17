@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 10.5 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 10.5</title>
+      <script>
+         function probarEjercicio()
+         {
+            // a) Corrección del ciclo
+            var b = new Array( 10 );
+            var longitud = b.length;
+
+            for ( var i = 0; i < longitud; ++i )
+            {
+               b[ i ] = 1;
+            }
+
+            // b) Corrección del indexado
+            var a = [ [ 1, 2 ], [ 3, 4 ] ];
+            a[ 1 ][ 1 ] = 5;
+         }
+
+         window.addEventListener( "load", probarEjercicio, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios de autoevaluación</h2>
+      <p><strong>10.5</strong> Encuentre el o los errores en cada uno de los siguientes segmentos de programa y corríjalos:<br>
+      <br>
+      a)<br>
+      <pre>var b = new Array( 10 );
+var longitud = b.length;
+
+for ( var i = 0; i &lt;= longitud; ++i )
+{
+   b[ i ] = 1;
+}</pre>
+      <strong>Error:</strong> <em>Se hace referencia al elemento de un arreglo fuera de los límites del arreglo (b[10]). (Nota: en realidad éste es un error lógico y no sintáctico).</em><br>
+      <strong>Corrección:</strong><br>
+      <pre>for ( var i = 0; i &lt; longitud; ++i )</pre>
+      <br>
+      b)<br>
+      <pre>var a = [ [ 1, 2 ], [ 3, 4 ] ];
+a[ 1, 1 ] = 5;</pre>
+      <strong>Error:</strong> <em>El indexado de arreglos se realiza de manera incorrecta.</em><br>
+      <strong>Corrección:</strong><br>
+      <pre>a[ 1 ][ 1 ] = 5;</pre>
+      </p>
+   </body>
+</html>

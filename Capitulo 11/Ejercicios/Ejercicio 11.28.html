@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.28 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.28</title>
+      <style>
+         table.crucigrama {
+            border-collapse: collapse;
+            margin-top: 10px;
+         }
+         table.crucigrama td {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #333;
+            text-align: center;
+            vertical-align: middle;
+            font-family: monospace;
+            font-size: 16px;
+            font-weight: bold;
+            position: relative;
+         }
+         .bloqueo {
+            background-color: #000;
+         }
+         .celda-activa {
+            background-color: #fff;
+            color: #000;
+         }
+         .numero-pista {
+            position: absolute;
+            top: 1px;
+            left: 2px;
+            font-size: 9px;
+            font-weight: normal;
+            color: #333;
+         }
+         .contenedor-pistas {
+            display: flex;
+            gap: 40px;
+            margin-top: 20px;
+         }
+         .columna-pistas {
+            flex: 1;
+         }
+      </style>
+      <script>
+         var FILAS = 10;
+         var COLUMNAS = 10;
+         var matriz = [];
+         var matrizNumeros = [];
+
+         var bancoPalabras = [
+            { palabra: "CADENA", pista: "Secuencia de caracteres de texto." },
+            { palabra: "ARREGLO", pista: "Estructura de datos ordenada por subíndices." },
+            { palabra: "OBJETO", pista: "Instancia de una clase en programación." },
+            { palabra: "BOTON", pista: "Elemento interactivo de un formulario." },
+            { palabra: "MATRIZ", pista: "Arreglo con doble subíndice." },
+            { palabra: "TEXTO", pista: "Contenido escrito dentro de un elemento." },
+            { palabra: "FOR", pista: "Ciclo o bucle controlado por contador." },
+            { palabra: "GATO", pista: "Mascota común o símbolo de numeral." }
+         ];
+
+         function inicializarMatriz()
+         {
+            matriz = new Array( FILAS );
+            matrizNumeros = new Array( FILAS );
+            for ( var i = 0; i < FILAS; ++i )
+            {
+               matriz[i] = new Array( COLUMNAS );
+               matrizNumeros[i] = new Array( COLUMNAS );
+               for ( var j = 0; j < COLUMNAS; ++j )
+               {
+                  matriz[i][j] = "";
+                  matrizNumeros[i][j] = 0;
+               }
+            }
+         }
+
+         function generarCrucigrama()
+         {
+            inicializarMatriz();
+
+            var palabrasColocadas = [];
+            var pistasHorizontales = [];
+            var pistasVerticales = [];
+            var contadorPista = 1;
+
+            var lista = bancoPalabras.slice().sort( function( a, b ) {
+               return b.palabra.length - a.palabra.length;
+            } );
+
+            var primera = lista[0];
+            var fIni = Math.floor( FILAS / 2 );
+            var cIni = Math.floor( ( COLUMNAS - primera.palabra.length ) / 2 );
+
+            colocarPalabra( primera.palabra, fIni, cIni, "H" );
+            palabrasColocadas.push( {
+               palabra: primera.palabra,
+               pista: primera.pista,
+               fila: fIni,
+               col: cIni,
+               dir: "H",
+               num: contadorPista
+            } );
+            matrizNumeros[fIni][cIni] = contadorPista++;
+
+            for ( var p = 1; p < lista.length; ++p )
+            {
+               var item = lista[p];
+               var colocada = false;
+
+               for ( var i = 0; i < palabrasColocadas.length && !colocada; ++i )
+               {
+                  var base = palabrasColocadas[i];
+
+                  for ( var c1 = 0; c1 < item.palabra.length && !colocada; ++c1 )
+                  {
+                     for ( var c2 = 0; c2 < base.palabra.length && !colocada; ++c2 )
+                     {
+                        if ( item.palabra.charAt( c1 ) === base.palabra.charAt( c2 ) )
+                        {
+                           var nuevaDir = ( base.dir === "H" ) ? "V" : "H";
+                           var fTry = ( base.dir === "H" ) ? ( base.fila - c1 ) : ( base.fila + c2 );
+                           var cTry = ( base.dir === "H" ) ? ( base.col + c2 ) : ( base.col - c1 );
+
+                           if ( validarColocacion( item.palabra, fTry, cTry, nuevaDir ) )
+                           {
+                              colocarPalabra( item.palabra, fTry, cTry, nuevaDir );
+
+                              var numPistaActual = matrizNumeros[fTry][cTry];
+                              if ( numPistaActual === 0 )
+                              {
+                                 numPistaActual = contadorPista++;
+                                 matrizNumeros[fTry][cTry] = numPistaActual;
+                              }
+
+                              palabrasColocadas.push( {
+                                 palabra: item.palabra,
+                                 pista: item.pista,
+                                 fila: fTry,
+                                 col: cTry,
+                                 dir: nuevaDir,
+                                 num: numPistaActual
+                              } );
+
+                              colocada = true;
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+
+            for ( var k = 0; k < palabrasColocadas.length; ++k )
+            {
+               var pObj = palabrasColocadas[k];
+               var textoPista = "<strong>" + pObj.num + ".</strong> " + pObj.pista;
+               if ( pObj.dir === "H" )
+               {
+                  pistasHorizontales.push( textoPista );
+               }
+               else
+               {
+                  pistasVerticales.push( textoPista );
+               }
+            }
+
+            renderizarTablero();
+            renderizarPistas( pistasHorizontales, pistasVerticales );
+         }
+
+         function validarColocacion( palabra, fila, col, dir )
+         {
+            var len = palabra.length;
+
+            if ( dir === "H" )
+            {
+               if ( fila < 0 || fila >= FILAS || col < 0 || col + len > COLUMNAS ) return false;
+               for ( var j = 0; j < len; ++j )
+               {
+                  var actual = matriz[fila][col + j];
+                  if ( actual !== "" && actual !== palabra.charAt( j ) ) return false;
+               }
+            }
+            else
+            {
+               if ( col < 0 || col >= COLUMNAS || fila < 0 || fila + len > FILAS ) return false;
+               for ( var i = 0; i < len; ++i )
+               {
+                  var actual = matriz[fila + i][col];
+                  if ( actual !== "" && actual !== palabra.charAt( i ) ) return false;
+               }
+            }
+            return true;
+         }
+
+         function colocarPalabra( palabra, fila, col, dir )
+         {
+            for ( var i = 0; i < palabra.length; ++i )
+            {
+               if ( dir === "H" )
+               {
+                  matriz[fila][col + i] = palabra.charAt( i );
+               }
+               else
+               {
+                  matriz[fila + i][col] = palabra.charAt( i );
+               }
+            }
+         }
+
+         function renderizarTablero()
+         {
+            var mostrarSolucion = document.getElementById( "chkSolucion" ).checked;
+            var html = "<table class='crucigrama'>";
+
+            for ( var i = 0; i < FILAS; ++i )
+            {
+               html += "<tr>";
+               for ( var j = 0; j < COLUMNAS; ++j )
+               {
+                  var letra = matriz[i][j];
+                  var num = matrizNumeros[i][j];
+
+                  if ( letra === "" )
+                  {
+                     html += "<td class='bloqueo'></td>";
+                  }
+                  else
+                  {
+                     html += "<td class='celda-activa'>";
+                     if ( num > 0 )
+                     {
+                        html += "<span class='numero-pista'>" + num + "</span>";
+                     }
+                     html += mostrarSolucion ? letra : "&nbsp;";
+                     html += "</td>";
+                  }
+               }
+               html += "</tr>";
+            }
+            html += "</table>";
+
+            document.getElementById( "contenedorTablero" ).innerHTML = html;
+         }
+
+         function renderizarPistas( horizontales, verticales )
+         {
+            var htmlH = "<h3>Horizontales</h3><ul>";
+            for ( var i = 0; i < horizontales.length; ++i )
+            {
+               htmlH += "<li>" + horizontales[i] + "</li>";
+            }
+            htmlH += "</ul>";
+
+            var htmlV = "<h3>Verticales</h3><ul>";
+            for ( var j = 0; j < verticales.length; ++j )
+            {
+               htmlV += "<li>" + verticales[j] + "</li>";
+            }
+            htmlV += "</ul>";
+
+            document.getElementById( "pistasH" ).innerHTML = htmlH;
+            document.getElementById( "pistasV" ).innerHTML = htmlV;
+         }
+
+         function iniciar()
+         {
+            var botonGenerar = document.getElementById( "botonGenerar" );
+            botonGenerar.addEventListener( "click", generarCrucigrama, false );
+
+            var chkSolucion = document.getElementById( "chkSolucion" );
+            chkSolucion.addEventListener( "change", renderizarTablero, false );
+
+            generarCrucigrama();
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.28</strong> (Proyecto: un generador de crucigramas) Dise&ntilde;e e implemente un generador de crucigramas mediante matrices de doble sub&iacute;ndice y manipulaci&oacute;n de cadenas, capaz de organizar intersecciones de palabras e imprimir la cuadr&iacute;cula en blanco junto con las pistas de las palabras horizontales y verticales.</p>
+
+      <form action = "#">
+         <p>
+            <input id = "botonGenerar" type = "button" value = "Generar nuevo crucigrama">
+            <label style = "margin-left: 15px;">
+               <input id = "chkSolucion" type = "checkbox"> Mostrar respuestas
+            </label>
+         </p>
+      </form>
+
+      <div id = "contenedorTablero"></div>
+
+      <div class = "contenedor-pistas">
+         <div id = "pistasH" class = "columna-pistas"></div>
+         <div id = "pistasV" class = "columna-pistas"></div>
+      </div>
+   </body>
+</html>

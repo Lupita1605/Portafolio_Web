@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.10 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.10</title>
+      <script>
+         function procesarTelefono()
+         {
+            var entrada = document.getElementById( "campoTelefono" ).value.trim();
+
+            if ( entrada === "" )
+            {
+               alert( "Por favor, introduzca un n&uacute;mero telef&oacute;nico." );
+               return;
+            }
+
+            // Separar la cadena utilizando expresiones regulares para parentesis y guion
+            var tokens = entrada.split( /[()\-]/ );
+
+            // Si la cadena comienza con '(', el primer token estará vacío
+            var codigoArea = "";
+            var tresDigitos = "";
+            var cuatroDigitos = "";
+
+            // Filtrar tokens vacíos producidos por el split
+            var tokensLimpios = [];
+            for ( var i = 0; i < tokens.length; ++i )
+            {
+               if ( tokens[i] !== "" )
+               {
+                  tokensLimpios.push( tokens[i] );
+               }
+            }
+
+            if ( tokensLimpios.length >= 3 )
+            {
+               codigoArea = tokensLimpios[0];
+               tresDigitos = tokensLimpios[1];
+               cuatroDigitos = tokensLimpios[2];
+
+               document.getElementById( "campoCodigoArea" ).value = codigoArea;
+               document.getElementById( "campoNumeroSiete" ).value = tresDigitos + "-" + cuatroDigitos;
+            }
+            else
+            {
+               alert( "Formato incorrecto. Por favor use la forma (555)555-5555" );
+            }
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonProcesar" );
+            boton.addEventListener( "click", procesarTelefono, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.10</strong> Escriba una aplicaci&oacute;n que reciba como entrada un n&uacute;mero telef&oacute;nico como una cadena de la forma (555)555-5555. La aplicaci&oacute;n deber&aacute; utilizar el m&eacute;todo String split para extraer el c&oacute;digo de &aacute;rea como un token, los primeros tres d&iacute;gitos del n&uacute;mero telef&oacute;nico como otro token y los &uacute;ltimos cuatro d&iacute;gitos del n&uacute;mero telef&oacute;nico como otro token. Muestre en pantalla el c&oacute;digo de &aacute;rea en un campo de texto y el n&uacute;mero telef&oacute;nico de siete d&iacute;gitos en otro campo de texto.</p>
+
+      <form action = "#">
+         <p>
+            Introduzca el n&uacute;mero telef&oacute;nico (555)555-5555:<br>
+            <input id = "campoTelefono" type = "text" placeholder = "(555)555-5555">
+            <input id = "botonProcesar" type = "button" value = "Procesar"><br><br>
+
+            C&oacute;digo de &aacute;rea:<br>
+            <input id = "campoCodigoArea" type = "text" readonly><br><br>
+
+            N&uacute;mero telef&oacute;nico (7 d&iacute;gitos):<br>
+            <input id = "campoNumeroSiete" type = "text" readonly>
+         </p>
+      </form>
+   </body>
+</html>

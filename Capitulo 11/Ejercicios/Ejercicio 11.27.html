@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.27 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.27</title>
+      <script>
+         // Diccionario base de palabras conocidas
+         var listaDePalabras = [
+            "predeterminado", "cumpleaños", "útil", "computadora", "javascript",
+            "programa", "desarrollo", "sistema", "objeto", "cadena",
+            "arreglo", "formulario", "ejercicio", "interfaz", "html"
+         ];
+
+         // Función auxiliar para eliminar acentos y pasar a minúsculas
+         function normalizar( texto )
+         {
+            return texto.toLowerCase().normalize( "NFD" ).replace( /[\u0300-\u036f]/g, "" );
+         }
+
+         function verificarOrtografia()
+         {
+            var entrada = document.getElementById( "campoPalabra" ).value.trim();
+
+            if ( entrada === "" )
+            {
+               alert( "Por favor, introduzca una palabra para verificar." );
+               return;
+            }
+
+            var palabraOriginal = entrada.toLowerCase();
+            var palabraLimpia = normalizar( palabraOriginal );
+            var salida = "";
+
+            // 1. Verificación directa en el diccionario
+            var encontradaDirecta = false;
+            for ( var i = 0; i < listaDePalabras.length; ++i )
+            {
+               if ( normalizar( listaDePalabras[i] ) === palabraLimpia )
+               {
+                  encontradaDirecta = true;
+                  salida = "La palabra '" + entrada + "' está escrita correctamente.\n";
+                  break;
+               }
+            }
+
+            // 2. Si no se encontró, generar sugerencias
+            if ( !encontradaDirecta )
+            {
+               salida = "La palabra '" + entrada + "' NO está escrita correctamente.\n\n";
+               var sugerencias = [];
+
+               // Test A: Transposición de letras adyacentes
+               for ( var j = 0; j < palabraLimpia.length - 1; ++j )
+               {
+                  var arregloLetras = palabraLimpia.split( "" );
+                  var temp = arregloLetras[j];
+                  arregloLetras[j] = arregloLetras[j + 1];
+                  arregloLetras[j + 1] = temp;
+                  
+                  var candidatoTransp = arregloLetras.join( "" );
+                  buscarSugerencia( candidatoTransp, sugerencias );
+               }
+
+               // Test B: Reemplazo de letras dobles consecutivas por una sola
+               var candidatoSinDobles = palabraLimpia.replace( /(.)\1+/g, "$1" );
+               if ( candidatoSinDobles !== palabraLimpia )
+               {
+                  buscarSugerencia( candidatoSinDobles, sugerencias );
+               }
+
+               // Test C: Omisión accidental (probar quitando cada letra una por una)
+               for ( var k = 0; k < palabraLimpia.length; ++k )
+               {
+                  var candidatoSinLetra = palabraLimpia.substring( 0, k ) + palabraLimpia.substring( k + 1 );
+                  buscarSugerencia( candidatoSinLetra, sugerencias );
+               }
+
+               // Formatear las sugerencias encontradas
+               if ( sugerencias.length > 0 )
+               {
+                  salida += "Sugerencias encontradas:\n";
+                  for ( var m = 0; m < sugerencias.length; ++m )
+                  {
+                     salida += "¿Quiso decir '" + sugerencias[m] + "'?\n";
+                  }
+               }
+               else
+               {
+                  salida += "No se encontraron sugerencias cercanas en el diccionario.";
+               }
+            }
+
+            document.getElementById( "areaResultados" ).value = salida;
+         }
+
+         function buscarSugerencia( candidato, arregloSugerencias )
+         {
+            for ( var idx = 0; idx < listaDePalabras.length; ++idx )
+            {
+               var palabraDic = listaDePalabras[idx];
+               if ( normalizar( palabraDic ) === candidato )
+               {
+                  if ( arregloSugerencias.indexOf( palabraDic ) === -1 )
+                  {
+                     arregloSugerencias.push( palabraDic );
+                  }
+               }
+            }
+         }
+
+         function agregarPalabraAlDiccionario()
+         {
+            var nueva = document.getElementById( "campoNuevaPalabra" ).value.trim().toLowerCase();
+
+            if ( nueva === "" )
+            {
+               alert( "Escriba una palabra para agregar al diccionario." );
+               return;
+            }
+
+            if ( listaDePalabras.indexOf( nueva ) === -1 )
+            {
+               listaDePalabras.push( nueva );
+               actualizarVistaDiccionario();
+               document.getElementById( "campoNuevaPalabra" ).value = "";
+               alert( "Palabra '" + nueva + "' agregada al diccionario." );
+            }
+            else
+            {
+               alert( "La palabra ya existe en el diccionario." );
+            }
+         }
+
+         function actualizarVistaDiccionario()
+         {
+            document.getElementById( "areaDiccionario" ).value = listaDePalabras.join( ", " );
+         }
+
+         function iniciar()
+         {
+            var botonVerificar = document.getElementById( "botonVerificar" );
+            botonVerificar.addEventListener( "click", verificarOrtografia, false );
+
+            var botonAgregar = document.getElementById( "botonAgregar" );
+            botonAgregar.addEventListener( "click", agregarPalabraAlDiccionario, false );
+
+            actualizarVistaDiccionario();
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.27</strong> (Proyecto: un corrector ortogr&aacute;fico) Dise&ntilde;e e implemente una aplicaci&oacute;n de correcci&oacute;n ortogr&aacute;fica en JavaScript que busque palabras en un arreglo <tt>listaDePalabras</tt> e indique si una palabra est&aacute; bien escrita o genere sugerencias mediante pruebas de transposici&oacute;n de letras adyacentes, reducci&oacute;n de letras dobles u omisi&oacute;n de caracteres.</p>
+
+      <form action = "#">
+         <p>
+            <strong>Agregar palabras al diccionario:</strong><br>
+            <input id = "campoNuevaPalabra" type = "text" size = "30" placeholder = "Nueva palabra">
+            <input id = "botonAgregar" type = "button" value = "Agregar al diccionario"><br><br>
+
+            Palabras en el diccionario actual:<br>
+            <textarea id = "areaDiccionario" rows = "3" cols = "70" readonly></textarea>
+         </p>
+
+         <hr>
+
+         <p>
+            <strong>Comprobar palabra:</strong><br>
+            <input id = "campoPalabra" type = "text" size = "30" placeholder = "perdeterminado">
+            <input id = "botonVerificar" type = "button" value = "Verificar ortograf&iacute;a"><br><br>
+
+            Resultado y sugerencias:<br>
+            <textarea id = "areaResultados" rows = "8" cols = "60" readonly></textarea>
+         </p>
+      </form>
+   </body>
+</html>

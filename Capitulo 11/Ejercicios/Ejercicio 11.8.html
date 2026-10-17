@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.8 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.8</title>
+      <script>
+         // Palabras para el esquema de rima A (Líneas 1, 2 y 5)
+         var sujetosA = [ "un viejo de Roma", "un gato con goma", "un sabio en la loma", "un joven de Paloma" ];
+         var accionesA = [ "comi\u00F3 una manzana con aroma", "se cay\u00F3 mientras se asoma", "dibuj\u00F3 una gran paloma", "tom\u00F3 jugo con aroma" ];
+         var finalesA = [ "y caus\u00F3 un gran broma.", "mientras beb\u00EDa su broma.", "y termin\u00F3 en una coma.", "sin perder nunca la goma." ];
+
+         // Palabras para el esquema de rima B (Líneas 3 y 4)
+         var lineas3B = [ "Corri\u00F3 sin cesar,", "Salt\u00F3 sin parar,", "Busc\u00F3 en el lugar,", "So\u00F1\u00F3 con cantar," ];
+         var lineas4B = [ "hasta el fondo del mar,", "para poder descansar,", "sin poder encontrar,", "junto a la orilla del mar," ];
+
+         function elementoAleatorio( arreglo )
+         {
+            var indice = Math.floor( Math.random() * arreglo.length );
+            return arreglo[ indice ];
+         }
+
+         function generarQuintilla()
+         {
+            var linea1 = "Hab\u00EDa una vez " + elementoAleatorio( sujetosA ) + ",";
+            var linea2 = "que " + elementoAleatorio( accionesA ) + ";";
+            var linea3 = elementoAleatorio( lineas3B );
+            var linea4 = elementoAleatorio( lineas4B );
+            var linea5 = elementoAleatorio( finalesA );
+
+            var textoQuintilla = linea1 + "\n" +
+               linea2 + "\n" +
+               linea3 + "\n" +
+               linea4 + "\n" +
+               linea5;
+
+            document.getElementById( "quintillaTextarea" ).value = textoQuintilla;
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonGenerar" );
+            boton.addEventListener( "click", generarQuintilla, false );
+            generarQuintilla(); // Generar una quintilla inicial al cargar
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.8</strong> (Quintillas) Una quintilla es un verso humor&iacute;stico de cinco l&iacute;neas en el cual la primera y segunda l&iacute;nea riman con la quinta, y la tercera l&iacute;nea rima con la cuarta. Utilizando t&eacute;cnicas similares a las desarrolladas en el ejercicio 11.7, escriba una secuencia de comandos que produzca quintillas al azar. Mejorar el programa para producir buenas quintillas es un gran desaf&iacute;o, &iexcl;pero el resultado valdr&aacute; la pena!</p>
+
+      <form action = "#">
+         <p>
+            <input id = "botonGenerar" type = "button" value = "Generar otra quintilla"><br><br>
+            <textarea id = "quintillaTextarea" rows = "8" cols = "50" readonly></textarea>
+         </p>
+      </form>
+   </body>
+</html>

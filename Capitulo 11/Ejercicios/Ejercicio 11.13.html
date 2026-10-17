@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.13 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.13</title>
+      <script>
+         function contarOcurrencias()
+         {
+            var texto = document.getElementById( "campoTexto" ).value;
+            var caracter = document.getElementById( "campoCaracter" ).value;
+
+            if ( caracter.length !== 1 )
+            {
+               alert( "Por favor, introduzca exactamente un car&aacute;cter de b&uacute;squeda." );
+               return;
+            }
+
+            var contador = 0;
+            var posicion = texto.indexOf( caracter );
+
+            while ( posicion !== -1 )
+            {
+               contador++;
+               posicion = texto.indexOf( caracter, posicion + 1 );
+            }
+
+            var resultadoHTML = "<p>El car&aacute;cter '<strong>" + caracter + 
+               "</strong>' aparece <strong>" + contador + "</strong> vez/veces en el texto.</p>";
+
+            document.getElementById( "resultado" ).innerHTML = resultadoHTML;
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonBuscar" );
+            boton.addEventListener( "click", contarOcurrencias, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.13</strong> Escriba una secuencia de comandos que reciba como entrada varias l&iacute;neas de texto y un car&aacute;cter de b&uacute;squeda, y que utilice el m&eacute;todo String indexOf para determinar el n&uacute;mero de ocurrencias de ese car&aacute;cter en el texto.</p>
+
+      <form action = "#">
+         <p>
+            Introduzca varias l&iacute;neas de texto:<br>
+            <textarea id = "campoTexto" rows = "8" cols = "60"></textarea><br><br>
+
+            Car&aacute;cter de b&uacute;squeda:
+            <input id = "campoCaracter" type = "text" size = "2" maxlength = "1">
+            <input id = "botonBuscar" type = "button" value = "Buscar e indicar ocurrencias">
+         </p>
+      </form>
+
+      <div id = "resultado"></div>
+   </body>
+</html>

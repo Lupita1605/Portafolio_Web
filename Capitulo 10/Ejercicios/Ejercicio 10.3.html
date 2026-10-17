@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 10.3 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 10.3</title>
+      <script>
+         function probarEjercicio()
+         {
+            var fracciones = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+            var e3 = fracciones[ 3 ];
+            var e4 = fracciones[ 4 ];
+            fracciones[ 9 ] = 1.667;
+            fracciones[ 0 ] = 3.333;
+
+            var total = 0;
+            for ( var x in fracciones )
+            {
+               total += fracciones[ x ];
+            }
+         }
+
+         window.addEventListener( "load", probarEjercicio, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios de autoevaluación</h2>
+      <p><strong>10.3</strong> Escriba instrucciones de JavaScript (con respecto al arreglo fracciones) para realizar cada una de las siguientes tareas:<br>
+      <br>
+      a) Declarar un arreglo con 10 elementos e inicializar los elementos del arreglo en 0.<br>
+      <pre>var fracciones = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];</pre>
+
+      b) Hacer referencia al elemento 3 del arreglo.<br>
+      <pre>fracciones[ 3 ]</pre>
+
+      c) Hacer referencia al elemento 4 del arreglo.<br>
+      <pre>fracciones[ 4 ]</pre>
+
+      d) Asignar el valor 1.667 al elemento 9 del arreglo.<br>
+      <pre>fracciones[ 9 ] = 1.667;</pre>
+
+      e) Asignar el valor 3.333 al elemento de menor numeración del arreglo.<br>
+      <pre>fracciones[ 0 ] = 3.333;</pre>
+
+      f) Sumar todos los elementos del arreglo mediante una instrucción for...in. Definir la variable x como variable de control para el ciclo.<br>
+      <pre>var total = 0;
+for ( var x in fracciones )
+{
+   total += fracciones[ x ];
+}</pre>
+      </p>
+   </body>
+</html>

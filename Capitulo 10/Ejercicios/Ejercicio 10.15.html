@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 10.15 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 10.15</title>
+      <script>
+         // Inicializar el piso de 20 por 20 con ceros
+         var piso = [];
+         for ( var i = 0; i < 20; ++i )
+         {
+            piso[ i ] = [];
+            for ( var j = 0; j < 20; ++j )
+            {
+               piso[ i ][ j ] = 0;
+            }
+         }
+
+         // Estado inicial de la tortuga
+         var x = 0;
+         var y = 0;
+         var plumaAbajo = false; // "Pluma arriba" por defecto (falso es arriba, verdadero abajo)
+         
+         // Direcciones: 0 = Derecha, 1 = Abajo, 2 = Izquierda, 3 = Arriba
+         var direccion = 0; 
+
+         function procesarComandos()
+         {
+            var areaComandos = document.getElementById( "comandos" );
+            var lineas = areaComandos.value.split( "\n" );
+            
+            // Reiniciar estado antes de ejecutar la secuencia
+            x = 0;
+            y = 0;
+            plumaAbajo = false;
+            direccion = 0;
+            for ( var r = 0; r < 20; ++r )
+            {
+               for ( var c = 0; c < 20; ++c )
+               {
+                  piso[ r ][ c ] = 0;
+               }
+            }
+
+            for ( var i = 0; i < lineas.length; ++i )
+            {
+               var linea = lineas[ i ].trim();
+               if ( linea === "" ) continue;
+
+               var partes = linea.split( "," );
+               var comando = parseInt( partes[ 0 ] );
+
+               if ( comando === 1 )
+               {
+                  plumaAbajo = false; // Pluma arriba
+               }
+               else if ( comando === 2 )
+               {
+                  plumaAbajo = true; // Pluma abajo
+               }
+               else if ( comando === 3 )
+               {
+                  direccion = ( direccion + 1 ) % 4; // Girar a la derecha
+               }
+               else if ( comando === 4 )
+               {
+                  direccion = ( direccion + 3 ) % 4; // Girar a la izquierda
+               }
+               else if ( comando === 5 )
+               {
+                  var pasos = parseInt( partes[ 1 ] );
+                  if ( isNaN( pasos ) ) pasos = 10; // Valor por defecto si no se especifica
+                  
+                  avanzar( pasos );
+               }
+               else if ( comando === 6 )
+               {
+                  // Comando para imprimir (se visualiza en el div de salida)
+                  imprimirMatriz();
+               }
+               else if ( comando === 9 )
+               {
+                  break; // Fin de datos (centinela)
+               }
+            }
+         }
+
+         function avanzar( pasos )
+         {
+            for ( var i = 0; i < pasos; ++i )
+            {
+               // Si la pluma está abajo, marcar la posición actual con 1
+               if ( plumaAbajo )
+               {
+                  piso[ x ][ y ] = 1;
+               }
+
+               // Mover la tortuga según la dirección actual
+               if ( direccion === 0 ) // Derecha
+               {
+                  if ( y < 19 ) ++y;
+               }
+               else if ( direccion === 1 ) // Abajo
+               {
+                  if ( x < 19 ) ++x;
+               }
+               else if ( direccion === 2 ) // Izquierda
+               {
+                  if ( y > 0 ) --y;
+               }
+               else if ( direccion === 3 ) // Arriba
+               {
+                  if ( x > 0 ) --x;
+               }
+            }
+
+            // Marcar también la posición final si la pluma está abajo
+            if ( plumaAbajo )
+            {
+               piso[ x ][ y ] = 1;
+            }
+         }
+
+         function imprimirMatriz()
+         {
+            var salida = "";
+            for ( var r = 0; r < 20; ++r )
+            {
+               for ( var c = 0; c < 20; ++c )
+               {
+                  if ( piso[ r ][ c ] === 1 )
+                  {
+                     salida += "* "; // Imprimir asterisco si hay un 1
+                  }
+                  else
+                  {
+                     salida += ". "; // Usar un punto sutil para visualización o dejar espacio en blanco "  "
+                  }
+               }
+               salida += "<br>";
+            }
+            document.getElementById( "salida" ).innerHTML = salida;
+         }
+
+         function cargarEjemploCuadrado()
+         {
+            document.getElementById( "comandos" ).value = "2\n5,12\n3\n5,12\n3\n5,12\n3\n5,12\n1\n6\n9";
+         }
+
+         function iniciar()
+         {
+            var botonEjecutar = document.getElementById( "ejecutar" );
+            botonEjecutar.addEventListener( "click", procesarComandos, false );
+
+            var botonEjemplo = document.getElementById( "ejemplo" );
+            botonEjemplo.addEventListener( "click", cargarEjemploCuadrado, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>10.15</strong> <em>(Gr&aacute;ficos de tortuga)</em> El lenguaje Logo, que es popular entre usuarios de computadora de corta edad, hizo famoso el concepto de los <em>gr&aacute;ficos de tortuga</em>. Imagine una tortuga mec&aacute;nica que camina alrededor del cuarto bajo el control de un programa de JavaScript. La tortuga sostiene una pluma en una de dos posiciones, arriba o abajo. Cuando la pluma est&aacute; abajo, la tortuga traza figuras a medida que se desplaza; cuando la pluma est&aacute; arriba la tortuga se mueve libremente sin escribir nada. En este problema usted simular&aacute; la operaci&oacute;n de la tortuga y crear&aacute; un bloc de dibujo computarizado.<br>
+      Use un arreglo de 20 por 20 llamado piso so que est&eacute; inicializado en ceros. Lea los comandos de un arreglo que los contenga. Rastree la posici&oacute;n actual de la tortuga en todo momento y si la pluma est&aacute; arriba o abajo en un momento dado. Suponga que la tortuga siempre empieza en la posici&oacute;n (0, 0) del piso, con su pluma arriba. El conjunto de comandos de tortuga que deber&aacute; procesar su secuencia de comandos se encuentra en la figura 10.23.<br>
+      <br>
+      a) 1 - Pluma arriba<br>
+      b) 2 - Pluma abajo<br>
+      c) 3 - Girar a la derecha<br>
+      d) 4 - Girar a la izquierda<br>
+      e) 5,10 - Avanzar 10 espacios (o un n&uacute;mero distinto de 10)<br>
+      f) 6 - Imprimir el arreglo de 20 por 20<br>
+      g) 9 - Fin de datos (centinela)<br>
+      <br>
+      A medida que la tortuga se desplace con la pluma abajo, establezca los elementos apropiados del arreglo piso en 1. Al proporcionar el comando 6 (imprimir), muestre un asterisco o cualquier otro car&aacute;cter de su elecci&oacute;n cada vez que haya un 1 en el arreglo. Siempre que haya un cero, muestre un espacio en blanco. Escriba una secuencia de comandos para implementar las herramientas de gr&aacute;ficos de tortuga aqu&iacute; descritas. Escriba varios programas de gr&aacute;ficos de tortuga para dibujar figuras interesantes. Agregue otros comandos para aumentar el poder de su lenguaje de gr&aacute;ficos de tortuga.</p>
+
+      <form action = "#">
+         <p>
+            <label>Escriba la secuencia de comandos (un comando por l&iacute;nea, use coma para pasos, ej: 5,12):<br>
+               <textarea id = "comandos" rows = "12" cols = "30" placeholder = "Ingrese los comandos..."></textarea>
+            </label>
+         </p>
+         <p>
+            <input id = "ejecutar" type = "button" value = "Ejecutar secuencia">
+            <input id = "ejemplo" type = "button" value = "Cargar ejemplo de Cuadrado 12x12">
+         </p>
+      </form>
+
+      <p><strong>Resultado visual (Matriz 20x20 impreso con comando 6):</strong></p>
+      <pre id = "salida" style = "font-family: monospace; font-size: 14px; line-height: 14px; letter-spacing: 2px;"></pre>
+   </body>
+</html>

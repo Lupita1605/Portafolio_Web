@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.12 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.12</title>
+      <script>
+         function convertirTexto()
+         {
+            var entrada = document.getElementById( "campoTexto" ).value;
+
+            if ( entrada.trim() === "" )
+            {
+               alert( "Por favor, introduzca un texto." );
+               return;
+            }
+
+            var textoMayusculas = entrada.toUpperCase();
+            var textoMinusculas = entrada.toLowerCase();
+
+            var resultadoHTML = "<p><strong>Texto en may&uacute;sculas:</strong><br>" + textoMayusculas + "</p>" +
+               "<p><strong>Texto en min&uacute;sculas:</strong><br>" + textoMinusculas + "</p>";
+
+            document.getElementById( "resultado" ).innerHTML = resultadoHTML;
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonConvertir" );
+            boton.addEventListener( "click", convertirTexto, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.12</strong> Escriba una secuencia de comandos que reciba texto de un formulario de HTML5 y lo imprima tanto en may&uacute;sculas como en min&uacute;sculas.</p>
+
+      <form action = "#">
+         <p>
+            Introduzca un texto:<br>
+            <input id = "campoTexto" type = "text" size = "60">
+            <input id = "botonConvertir" type = "button" value = "Convertir">
+         </p>
+      </form>
+
+      <div id = "resultado"></div>
+   </body>
+</html>

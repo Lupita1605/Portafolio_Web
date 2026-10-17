@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.3 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.3</title>
+      <style type = "text/css">
+         table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+         th, td { border: 1px solid #000; padding: 5px; text-align: left; }
+         th { background-color: #f0f0f0; }
+      </style>
+      <script>
+         function evaluarMath()
+         {
+            var contenido = "<table><thead><tr><th>M&eacute;todo</th><th>Ejemplo de evaluaci&oacute;n</th><th>Resultado</th></tr></thead><tbody>";
+
+            contenido += "<tr><td>Math.abs(x)</td><td>Math.abs( -7.5 )</td><td>" + Math.abs( -7.5 ) + "</td></tr>";
+            contenido += "<tr><td>Math.ceil(x)</td><td>Math.ceil( 9.2 )</td><td>" + Math.ceil( 9.2 ) + "</td></tr>";
+            contenido += "<tr><td>Math.cos(x)</td><td>Math.cos( 0 )</td><td>" + Math.cos( 0 ) + "</td></tr>";
+            contenido += "<tr><td>Math.exp(x)</td><td>Math.exp( 1 )</td><td>" + Math.exp( 1 ) + "</td></tr>";
+            contenido += "<tr><td>Math.floor(x)</td><td>Math.floor( 9.8 )</td><td>" + Math.floor( 9.8 ) + "</td></tr>";
+            contenido += "<tr><td>Math.log(x)</td><td>Math.log( Math.E )</td><td>" + Math.log( Math.E ) + "</td></tr>";
+            contenido += "<tr><td>Math.max(x, y)</td><td>Math.max( 2.3, 12.7 )</td><td>" + Math.max( 2.3, 12.7 ) + "</td></tr>";
+            contenido += "<tr><td>Math.min(x, y)</td><td>Math.min( 2.3, 12.7 )</td><td>" + Math.min( 2.3, 12.7 ) + "</td></tr>";
+            contenido += "<tr><td>Math.pow(x, y)</td><td>Math.pow( 2, 7 )</td><td>" + Math.pow( 2, 7 ) + "</td></tr>";
+            contenido += "<tr><td>Math.round(x)</td><td>Math.round( 9.75 )</td><td>" + Math.round( 9.75 ) + "</td></tr>";
+            contenido += "<tr><td>Math.sin(x)</td><td>Math.sin( 0 )</td><td>" + Math.sin( 0 ) + "</td></tr>";
+            contenido += "<tr><td>Math.sqrt(x)</td><td>Math.sqrt( 900 )</td><td>" + Math.sqrt( 900 ) + "</td></tr>";
+            contenido += "<tr><td>Math.tan(x)</td><td>Math.tan( 0 )</td><td>" + Math.tan( 0 ) + "</td></tr>";
+
+            contenido += "</tbody></table>";
+
+            document.getElementById( "tablaResultados" ).innerHTML = contenido;
+         }
+
+         window.addEventListener( "load", evaluarMath, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.3</strong> Escriba una secuencia de comandos que eval&uacute;e todas las funciones que pueda de la biblioteca Math de la figura 11.1. Para ejercitar cada una de estas funciones, haga que su programa muestre tablas de valores de retorno para varios valores de argumentos.</p>
+
+      <div id = "tablaResultados"></div>
+   </body>
+</html>

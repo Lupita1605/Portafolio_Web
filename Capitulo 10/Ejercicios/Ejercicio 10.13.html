@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 10.13 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 10.13</title>
+      <script>
+         function probarEjercicio()
+         {
+            var ventas = [
+               [ 0, 0, 0, 0, 0 ],
+               [ 0, 0, 0, 0, 0 ],
+               [ 0, 0, 0, 0, 0 ]
+            ];
+
+            for ( var fila in ventas )
+            {
+               for ( var col in ventas[ fila ] )
+               {
+                  ventas[ fila ][ col ] = 0;
+               }
+            }
+         }
+
+         window.addEventListener( "load", probarEjercicio, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>10.13</strong> Etiquete los elementos del arreglo bidimensional de tres por cinco llamado ventas para indicar el orden en el que se deben establecer en cero mediante el siguiente segmento de programa:<br>
+      <pre>for ( var fila in ventas )
+{
+   for ( var col in ventas[ fila ] )
+   {
+      ventas[ fila ][ col ] = 0;
+   }
+}</pre>
+      <br>
+      <strong>Respuesta:</strong><br>
+      Los elementos se procesan por filas, de izquierda a derecha (por columnas) en el siguiente orden num&eacute;rico secuencial:<br>
+      <br>
+      <strong>Fila 0:</strong><br>
+      1. ventas[ 0 ][ 0 ]<br>
+      2. ventas[ 0 ][ 1 ]<br>
+      3. ventas[ 0 ][ 2 ]<br>
+      4. ventas[ 0 ][ 3 ]<br>
+      5. ventas[ 0 ][ 4 ]<br>
+      <br>
+      <strong>Fila 1:</strong><br>
+      6. ventas[ 1 ][ 0 ]<br>
+      7. ventas[ 1 ][ 1 ]<br>
+      8. ventas[ 1 ][ 2 ]<br>
+      9. ventas[ 1 ][ 3 ]<br>
+      10. ventas[ 1 ][ 4 ]<br>
+      <br>
+      <strong>Fila 2:</strong><br>
+      11. ventas[ 2 ][ 0 ]<br>
+      12. ventas[ 2 ][ 1 ]<br>
+      13. ventas[ 2 ][ 2 ]<br>
+      14. ventas[ 2 ][ 3 ]<br>
+      15. ventas[ 2 ][ 4 ]</p>
+   </body>
+</html>

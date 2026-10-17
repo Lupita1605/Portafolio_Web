@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.17 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.17</title>
+      <script>
+         function obtenerCaracter()
+         {
+            var campoCodigo = document.getElementById( "campoCodigo" );
+            var codigo = parseInt( campoCodigo.value );
+
+            if ( isNaN( codigo ) )
+            {
+               alert( "Por favor, introduzca un c&oacute;digo entero v&aacute;lido." );
+               return;
+            }
+
+            var caracter = String.fromCharCode( codigo );
+
+            var resultadoHTML = "<p>El car&aacute;cter correspondiente al c&oacute;digo <strong>" + 
+               codigo + "</strong> es: <strong>'" + caracter + "'</strong></p>";
+
+            document.getElementById( "resultado" ).innerHTML = resultadoHTML;
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonConvertir" );
+            boton.addEventListener( "click", obtenerCaracter, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.17</strong> Escriba una secuencia de comandos que reciba como entrada un c&oacute;digo entero para un car&aacute;cter y que muestre el car&aacute;cter correspondiente.</p>
+
+      <form action = "#">
+         <p>
+            Introduzca un c&oacute;digo de car&aacute;cter (ej. 65 para 'A'):<br>
+            <input id = "campoCodigo" type = "number" min = "0">
+            <input id = "botonConvertir" type = "button" value = "Mostrar car&aacute;cter">
+         </p>
+      </form>
+
+      <div id = "resultado"></div>
+   </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.2 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.2</title>
+      <script>
+         function mostrarAhora()
+         {
+            var ahora = new Date();
+            alert( "Fecha y hora actual: " + ahora.toString() );
+         }
+
+         function mostrarAyer()
+         {
+            var ayer = new Date();
+            // Restar 24 horas (24 horas * 60 min * 60 seg * 1000 ms)
+            ayer.setTime( ayer.getTime() - (24 * 60 * 60 * 1000) );
+            alert( "Fecha y hora hace 24 horas: " + ayer.toString() );
+         }
+
+         function mostrarHaceDiezAnios()
+         {
+            var diezAnios = new Date();
+            diezAnios.setFullYear( diezAnios.getFullYear() - 10 );
+            alert( "Fecha y hora hace 10 a&ntilde;os: " + diezAnios.toString() );
+         }
+
+         function mostrarUnaSemana()
+         {
+            var unaSemana = new Date();
+            // Sumar 7 días (7 días * 24 horas * 60 min * 60 seg * 1000 ms)
+            unaSemana.setTime( unaSemana.getTime() + (7 * 24 * 60 * 60 * 1000) );
+            alert( "Fecha y hora en una semana: " + unaSemana.toString() );
+         }
+
+         function iniciar()
+         {
+            document.getElementById( "btnAhora" ).addEventListener( "click", mostrarAhora, false );
+            document.getElementById( "btnAyer" ).addEventListener( "click", mostrarAyer, false );
+            document.getElementById( "btnDiezAnios" ).addEventListener( "click", mostrarHaceDiezAnios, false );
+            document.getElementById( "btnUnaSemana" ).addEventListener( "click", mostrarUnaSemana, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.2</strong> Cree una p&aacute;gina Web que contenga cuatro botones. Al hacer clic en cada bot&oacute;n, deber&aacute; aparecer un di&aacute;logo de alerta con una hora o fecha diferentes en relaci&oacute;n con la hora actual. Cree un bot&oacute;n Ahora que alerte sobre la hora y fecha actuales, y un bot&oacute;n Ayer que alerte sobre la fecha y hora hace 24 horas. Los otros dos botones deber&aacute;n alertar sobre la fecha y hora hace diez a&ntilde;os y una semana a partir de hoy.</p>
+
+      <form action = "#">
+         <p>
+            <input id = "btnAhora" type = "button" value = "Ahora">
+            <input id = "btnAyer" type = "button" value = "Ayer">
+            <input id = "btnDiezAnios" type = "button" value = "Hace 10 a&ntilde;os">
+            <input id = "btnUnaSemana" type = "button" value = "En una semana">
+         </p>
+      </form>
+   </body>
+</html>

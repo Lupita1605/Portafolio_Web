@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.18 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.18</title>
+      <script>
+         function generarCodigos()
+         {
+            var salida = "C\u00F3digo\tCar\u00E1cter\n";
+            salida += "------\t--------\n";
+
+            for ( var i = 0; i <= 255; ++i )
+            {
+               // Formatear el número a 3 dígitos (ej. 000, 005, 065, 255)
+               var codigoFormateado = i.toString();
+               while ( codigoFormateado.length < 3 )
+               {
+                  codigoFormateado = "0" + codigoFormateado;
+               }
+
+               var caracter = String.fromCharCode( i );
+
+               // Filtrar caracteres de control no imprimibles para evitar saltos o ruidos visuales
+               if ( i < 32 || ( i >= 127 && i < 160 ) )
+               {
+                  caracter = "(No imprimible)";
+               }
+
+               salida += codigoFormateado + "\t" + caracter + "\n";
+            }
+
+            document.getElementById( "areaResultados" ).value = salida;
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonGenerar" );
+            boton.addEventListener( "click", generarCodigos, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.18</strong> Modifique su soluci&oacute;n al ejercicio 11.17 de manera que genere todos los posibles c&oacute;digos de tres d&iacute;gitos en el rango de 000 a 255, y que intente imprimir los caracteres correspondientes. Muestre los resultados en un elemento textarea de HTML5.</p>
+
+      <form action = "#">
+         <p>
+            <input id = "botonGenerar" type = "button" value = "Generar caracteres (000-255)"><br><br>
+
+            Tabla de caracteres:<br>
+            <textarea id = "areaResultados" rows = "15" cols = "35" readonly></textarea>
+         </p>
+      </form>
+   </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 10.14 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 10.14</title>
+      <script>
+         function simularTiros()
+         {
+            // Arreglo bidimensional para registrar las frecuencias de cada combinación [dado1][dado2]
+            var combinaciones = [
+               [0, 0, 0, 0, 0, 0, 0],
+               [0, 0, 0, 0, 0, 0, 0],
+               [0, 0, 0, 0, 0, 0, 0],
+               [0, 0, 0, 0, 0, 0, 0],
+               [0, 0, 0, 0, 0, 0, 0],
+               [0, 0, 0, 0, 0, 0, 0],
+               [0, 0, 0, 0, 0, 0, 0]
+            ];
+
+            // Arreglo para acumular la frecuencia de cada suma (de 2 a 12)
+            var totalSumas = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+
+            var totalTiros = 36000;
+
+            // Simular 36,000 lanzamientos de dos dados
+            for ( var i = 0; i < totalTiros; ++i )
+            {
+               var dado1 = Math.floor( 1 + Math.random() * 6 );
+               var dado2 = Math.floor( 1 + Math.random() * 6 );
+
+               ++combinaciones[ dado1 ][ dado2 ];
+               ++totalSumas[ dado1 + dado2 ];
+            }
+
+            // Construir la tabla HTML5 con los resultados de las sumas
+            var salida = "<table border='1'><tr><th>Suma</th><th>Frecuencia Total</th><th>Porcentaje Aprox.</th><th>Porcentaje Te&oacute;rico</th></tr>";
+
+            for ( var suma = 2; suma <= 12; ++suma )
+            {
+               var porcentaje = ( ( totalSumas[ suma ] / totalTiros ) * 100 ).toFixed( 2 );
+               
+               // Cálculo del porcentaje teórico esperado según las 36 combinaciones
+               var combinacionesEspeciales = 6 - Math.abs( 7 - suma );
+               var porcentajeTeorico = ( ( combinacionesEspeciales / 36 ) * 100 ).toFixed( 2 );
+
+               salida += "<tr><td>" + suma + "</td><td>" + totalSumas[ suma ] + "</td><td>" + porcentaje + "%</td><td>" + porcentajeTeorico + "%</td></tr>";
+            }
+
+            salida += "</table>";
+            salida += "<br><p><strong>An&aacute;lisis:</strong> Los totales son completamente razonables. Como se observa, la suma 7 aparece aproximadamente en 1/6 parte del total de lanzamientos (&approx; 16.67%), ya que cuenta con 6 de las 36 combinaciones posibles. Las sumas 2 y 12 son las menos frecuentes (&approx; 2.78%), pues s&oacute;lo tienen una combinaci&oacute;n posible cada una (1+1 y 6+6 respectivamente).</p>";
+
+            document.getElementById( "salida" ).innerHTML = salida;
+         }
+
+         window.addEventListener( "load", simularTiros, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>10.14</strong> Escriba una secuencia de comandos para simular el tiro de dos dados. La secuencia debe usar Math.random para tirar el primer dado y usar esa función de nuevo para tirar el segundo dado. Después deberá calcularse la suma de los dos valores [nota: como cada dado puede mostrar un valor entero de 1 a 6, la suma de los valores variará de 2 a 12, en donde 7 será la suma más frecuente y tanto 2 como 12 serán las sumas menos frecuentes. La figura 10.22 muestra las 36 combinaciones posibles de los dos dados. Su programa deberá tirar los dados 36,000 veces. Use un arreglo bidimensional para calcular el número de veces que aparezca cada posible suma. Muestre los resultados en una tabla de HTML5. Determine además si los totales son razonables (por ejemplo, hay seis formas de tirar un 7 por lo que cerca de 1/6 parte de todos los tiros deberán ser 7].</p>
+
+      <div id = "salida"></div>
+   </body>
+</html>

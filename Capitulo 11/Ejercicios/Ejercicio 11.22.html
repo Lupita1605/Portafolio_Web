@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.22 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.22</title>
+      <script>
+         function mostrarFormatosFecha()
+         {
+            var valorFecha = document.getElementById( "campoFecha" ).value;
+
+            if ( !valorFecha )
+            {
+               alert( "Por favor, seleccione o introduzca una fecha v\u00E1lida." );
+               return;
+            }
+
+            // Crear objeto Date dividiendo el valor AAAA-MM-DD para evitar desfases de zona horaria
+            var partes = valorFecha.split( "-" );
+            var fechaObjeto = new Date( partes[0], partes[1] - 1, partes[2] );
+
+            var resultadosHTML = "<h3>Formatos de la fecha:</h3>" +
+               "<ul>" +
+                  "<li><strong>toString():</strong> " + fechaObjeto.toString() + "</li>" +
+                  "<li><strong>toDateString():</strong> " + fechaObjeto.toDateString() + "</li>" +
+                  "<li><strong>toLocaleDateString():</strong> " + fechaObjeto.toLocaleDateString() + "</li>" +
+                  "<li><strong>toUTCString():</strong> " + fechaObjeto.toUTCString() + "</li>" +
+                  "<li><strong>toISOString():</strong> " + fechaObjeto.toISOString() + "</li>" +
+                  "<li><strong>Formato corto (DD/MM/AAAA):</strong> " + 
+                     fechaObjeto.getDate() + "/" + ( fechaObjeto.getMonth() + 1 ) + "/" + fechaObjeto.getFullYear() + "</li>" +
+               "</ul>";
+
+            document.getElementById( "resultado" ).innerHTML = resultadosHTML;
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonProcesar" );
+            boton.addEventListener( "click", mostrarFormatosFecha, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.22</strong> (Impresi&oacute;n de fechas en varios formatos) Las fechas se imprimen en varios formatos comunes. Escriba una secuencia de comandos que lea una fecha de un formulario de HTML5 y cree un objeto Date para guardar esa fecha. Despu&eacute;s use los diversos m&eacute;todos del objeto Date que convierten las fechas en cadenas para mostrar esa fecha en varios formatos.</p>
+
+      <form action = "#">
+         <p>
+            Seleccione una fecha:<br>
+            <input id = "campoFecha" type = "date">
+            <input id = "botonProcesar" type = "button" value = "Mostrar formatos">
+         </p>
+      </form>
+
+      <div id = "resultado"></div>
+   </body>
+</html>

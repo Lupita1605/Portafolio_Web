@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.26 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.26</title>
+      <script>
+         // Diccionario de unidades agrupadas por tipo con factores de conversión a una unidad base
+         var unidades = {
+            // Longitud (base: metro)
+            "metro": { tipo: "longitud", factor: 1 },
+            "metros": { tipo: "longitud", factor: 1 },
+            "centimetro": { tipo: "longitud", factor: 0.01 },
+            "centimetros": { tipo: "longitud", factor: 0.01 },
+            "kilometro": { tipo: "longitud", factor: 1000 },
+            "kilometros": { tipo: "longitud", factor: 1000 },
+            "pulgada": { tipo: "longitud", factor: 0.0254 },
+            "pulgadas": { tipo: "longitud", factor: 0.0254 },
+            "pie": { tipo: "longitud", factor: 0.3048 },
+            "pies": { tipo: "longitud", factor: 0.3048 },
+            "milla": { tipo: "longitud", factor: 1609.34 },
+            "millas": { tipo: "longitud", factor: 1609.34 },
+
+            // Masa (base: gramo)
+            "gramo": { tipo: "masa", factor: 1 },
+            "gramos": { tipo: "masa", factor: 1 },
+            "kilogramo": { tipo: "masa", factor: 1000 },
+            "kilogramos": { tipo: "masa", factor: 1000 },
+            "libra": { tipo: "masa", factor: 453.592 },
+            "libras": { tipo: "masa", factor: 453.592 },
+            "onza": { tipo: "masa", factor: 28.3495 },
+            "onzas": { tipo: "masa", factor: 28.3495 },
+
+            // Volumen (base: litro)
+            "litro": { tipo: "volumen", factor: 1 },
+            "litros": { tipo: "volumen", factor: 1 },
+            "mililitro": { tipo: "volumen", factor: 0.001 },
+            "mililitros": { tipo: "volumen", factor: 0.001 },
+            "cuarto": { tipo: "volumen", factor: 0.946353 },
+            "cuartos": { tipo: "volumen", factor: 0.946353 },
+            "galon": { tipo: "volumen", factor: 3.78541 },
+            "galones": { tipo: "volumen", factor: 3.78541 }
+         };
+
+         function procesarPregunta()
+         {
+            var entrada = document.getElementById( "campoPregunta" ).value.toLowerCase().trim();
+
+            if ( entrada === "" )
+            {
+               alert( "Por favor, introduzca una pregunta de conversi\u00F3n." );
+               return;
+            }
+
+            // Limpiar signos de interrogación
+            var textoLimpio = entrada.replace( /[¿?]/g, "" );
+            var tokens = textoLimpio.split( /\s+/ );
+
+            var cantidad = null;
+            var unidadOrigen = null;
+            var unidadDestino = null;
+
+            // Buscar número y unidades dentro de la pregunta
+            for ( var i = 0; i < tokens.length; ++i )
+            {
+               var token = tokens[i];
+               var num = parseFloat( token );
+
+               if ( !isNaN( num ) )
+               {
+                  cantidad = num;
+                  // Si hay una palabra después del número, suele ser la unidad de origen
+                  if ( i + 1 < tokens.length && unidades[ tokens[i + 1] ] )
+                  {
+                     unidadOrigen = tokens[i + 1];
+                  }
+               }
+               else if ( unidades[token] )
+               {
+                  if ( !unidadDestino )
+                  {
+                     unidadDestino = token;
+                  }
+               }
+            }
+
+            // Validar extracción de datos
+            if ( cantidad === null || !unidadOrigen || !unidadDestino )
+            {
+               document.getElementById( "resultado" ).innerHTML = 
+                  "<p style='color: red;'>No se pudo interpretar la pregunta. Aseg\u00FArese de incluir una cantidad y unidades v\u00E1lidas (ej. '&iquest;Cu\u00E1ntas pulgadas hay en 2 metros?').</p>";
+               return;
+            }
+
+            var objOrigen = unidades[unidadOrigen];
+            var objDestino = unidades[unidadDestino];
+
+            // Validar que las unidades sean del mismo tipo
+            if ( objOrigen.tipo !== objDestino.tipo )
+            {
+               document.getElementById( "resultado" ).innerHTML = 
+                  "<p style='color: red;'><strong>Conversi\u00F3n inv\u00E1lida:</strong> No se puede convertir de " + 
+                  unidadOrigen + " (" + objOrigen.tipo + ") a " + unidadDestino + " (" + objDestino.tipo + ").</p>";
+               return;
+            }
+
+            // Calcular conversión usando la unidad base
+            var valorEnBase = cantidad * objOrigen.factor;
+            var resultadoFinal = valorEnBase / objDestino.factor;
+
+            var mensaje = "<p><strong>Resultado:</strong> Hay <strong>" + 
+               resultadoFinal.toFixed( 4 ) + " " + unidadDestino + "</strong> en " + 
+               cantidad + " " + unidadOrigen + ".</p>";
+
+            document.getElementById( "resultado" ).innerHTML = mensaje;
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonConvertir" );
+            boton.addEventListener( "click", procesarPregunta, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.26</strong> (Programa de conversi&oacute;n m&eacute;trica) Escriba una secuencia de comandos que ayude al usuario a realizar conversiones m&eacute;tricas respondiendo a preguntas simples tales como: "&iquest;Cu&aacute;ntas pulgadas hay en 2 metros?" o "&iquest;Cu&aacute;ntos litros hay en 10 cuartos?". El programa debe reconocer conversiones inv&aacute;lidas entre distintas magnitudes.</p>
+
+      <form action = "#">
+         <p>
+            Introduzca su pregunta de conversi&oacute;n:<br>
+            <input id = "campoPregunta" type = "text" size = "70" placeholder = "&iquest;Cu&aacute;ntas pulgadas hay en 2 metros?">
+            <input id = "botonConvertir" type = "button" value = "Calcular conversi&oacute;n">
+         </p>
+      </form>
+
+      <div id = "resultado"></div>
+   </body>
+</html>

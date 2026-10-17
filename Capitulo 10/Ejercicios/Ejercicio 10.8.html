@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 10.8 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 10.8</title>
+      <script>
+         function probarEjercicio()
+         {
+            // Código de prueba interno (sin mostrar salida ejecutable innecesaria)
+            var f = [ 1, 2, 3, 4, 5, 6, 7 ];
+            var g = [ 8, 8, 8, 8, 8 ];
+            var c = new Array( 100 );
+            var a = new Array( 11 );
+            var b = new Array( 34 );
+            var w = new Array( 99 );
+         }
+
+         window.addEventListener( "load", probarEjercicio, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>10.8</strong> Escriba instrucciones de JavaScript para realizar cada una de las siguientes tareas:<br>
+      <br>
+      a) Mostrar el valor del séptimo elemento del arreglo f.<br>
+      <pre>document.writeln( f[ 6 ] );</pre>
+
+      b) Inicializar cada uno de los cinco elementos del arreglo unidimensional g en 8.<br>
+      <pre>var g = [ 8, 8, 8, 8, 8 ];
+
+// O mediante un ciclo:
+for ( var i = 0; i &lt; g.length; ++i )
+{
+   g[ i ] = 8;
+}</pre>
+
+      c) Calcular el total de los elementos del arreglo c, que contiene 100 elementos numéricos.<br>
+      <pre>var total = 0;
+for ( var i = 0; i &lt; c.length; ++i )
+{
+   total += c[ i ];
+}</pre>
+
+      d) Copiar el arreglo a de 11 elementos en la primera porción del arreglo b, que contiene 34 elementos.<br>
+      <pre>for ( var i = 0; i &lt; a.length; ++i )
+{
+   b[ i ] = a[ i ];
+}</pre>
+
+      e) Determinar e imprimir el valor más pequeño y el más grande contenido en el arreglo w de 99 elementos de punto flotante.<br>
+      <pre>var menor = w[ 0 ];
+var mayor = w[ 0 ];
+
+for ( var i = 1; i &lt; w.length; ++i )
+{
+   if ( w[ i ] &lt; menor )
+      menor = w[ i ];
+
+   if ( w[ i ] &gt; mayor )
+      mayor = w[ i ];
+}
+
+document.writeln( "Menor: " + menor + ", Mayor: " + mayor );</pre>
+      </p>
+   </body>
+</html>

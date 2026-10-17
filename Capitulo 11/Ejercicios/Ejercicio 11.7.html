@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.7 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.7</title>
+      <script>
+         var articulo = [ "el", "un", "alg\u00FAn", "ning\u00FAn" ];
+         var sustantivo = [ "ni\u00F1o", "ni\u00F1a", "perro", "ciudad", "auto" ];
+         var verbo = [ "manej\u00F3", "salt\u00F3", "corri\u00F3", "camin\u00F3", "omiti\u00F3" ];
+         var preposicion = [ "a", "desde", "encima de", "debajo de", "sobre" ];
+
+         function generarEnunciado()
+         {
+            var iArt1 = Math.floor( Math.random() * articulo.length );
+            var iSust1 = Math.floor( Math.random() * sustantivo.length );
+            var iVerb = Math.floor( Math.random() * verbo.length );
+            var iPrep = Math.floor( Math.random() * preposicion.length );
+            var iArt2 = Math.floor( Math.random() * articulo.length );
+            var iSust2 = Math.floor( Math.random() * sustantivo.length );
+
+            var palabraArt1 = articulo[ iArt1 ];
+            
+            var primeraLetra = palabraArt1.charAt( 0 ).toUpperCase();
+            var restoPalabra = palabraArt1.slice( 1 );
+            var primerArticuloCapitalizado = primeraLetra + restoPalabra;
+
+            var enunciado = primerArticuloCapitalizado + " " +
+               sustantivo[ iSust1 ] + " " +
+               verbo[ iVerb ] + " " +
+               preposicion[ iPrep ] + " " +
+               articulo[ iArt2 ] + " " +
+               sustantivo[ iSust2 ] + ".";
+
+            return enunciado;
+         }
+
+         function crearHistoria()
+         {
+            var historia = "Hab\u00EDa una vez...\n\n";
+
+            for ( var i = 0; i < 20; ++i )
+            {
+               historia += generarEnunciado() + "\n";
+            }
+
+            historia += "\nFIN";
+
+            document.getElementById( "historiaTextarea" ).value = historia;
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonGenerar" );
+            boton.addEventListener( "click", crearHistoria, false );
+            crearHistoria();
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.7</strong> Escriba una secuencia de comandos que utilice la generaci&oacute;n de n&uacute;meros aleatorios para crear enunciados. Use cuatro arreglos de cadenas llamados articulo, sustantivo, verbo y preposición, para crear un enunciado seleccionando una palabra al azar de cada arreglo en el siguiente orden: articulo, sustantivo, verbo, preposición, articulo y sustantivo. Al momento de elegir cada palabra hay que concatenarla a las palabras anteriores en el enunciado. Las palabras deben separarse mediante espacios. Cuando se imprima el enunciado final, deber&aacute; empezar con una letra may&uacute;scula y terminar con un punto.</p>
+
+      <p>Los arreglos deben llenarse de la siguiente manera: el arreglo articulo debe contener los art&iacute;culos "el", "un", "alg&uacute;n" y "ning&uacute;n"; el arreglo sustantivo debe contener los sustantivos "ni&ntilde;o", "ni&ntilde;a", "perro", "ciudad" y "auto"; el arreglo verbo deber&aacute; contener los verbos "manej&oacute;", "salt&oacute;", "corri&oacute;", "camin&oacute;" y "omiti&oacute;"; el arreglo preposición deber&aacute; contener las preposiciones "a", "desde", "encima de", "debajo de" y "sobre".</p>
+
+      <p>El programa deber&aacute; generar 20 enunciados para formar una historia corta y mostrar el resultado en un elemento textarea de HTML5. La historia debe empezar con la l&iacute;nea "Hab&iacute;a una vez..." y terminar con la l&iacute;nea "FIN".</p>
+
+      <form action = "#">
+         <p>
+            <input id = "botonGenerar" type = "button" value = "Generar otra historia"><br><br>
+            <textarea id = "historiaTextarea" rows = "25" cols = "80" readonly></textarea>
+         </p>
+      </form>
+   </body>
+</html>

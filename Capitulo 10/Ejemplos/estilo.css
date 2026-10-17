@@ -1,0 +1,15 @@
+/* Estilo estándar utilizado en los ejemplos del Capítulo 10 del libro */
+ol {
+   list-style-type: none;
+   margin: 0px;
+   padding: 0px;
+}
+
+ol li {
+   display: inline;
+   margin-right: 15px;
+}
+
+div {
+   margin-bottom: 1em;
+}

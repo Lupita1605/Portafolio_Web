@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<!-- Fig. Ejercicio 11.23 -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 11.23</title>
+      <script>
+         function analizarTexto()
+         {
+            var textoOriginal = document.getElementById( "campoTexto" ).value;
+
+            if ( textoOriginal.trim() === "" )
+            {
+               alert( "Por favor, introduzca un texto para analizar." );
+               return;
+            }
+
+            // --- INCISO A: Ocurrencias de cada letra del alfabeto ---
+            var textoMinusculas = textoOriginal.toLowerCase();
+            var alfabeto = "abcdefghijklmnopqrstuvwxyz";
+            var conteoLetras = new Array( 26 );
+
+            for ( var k = 0; k < conteoLetras.length; ++k )
+            {
+               conteoLetras[k] = 0;
+            }
+
+            for ( var i = 0; i < alfabeto.length; ++i )
+            {
+               var letra = alfabeto.charAt( i );
+               var posicion = textoMinusculas.indexOf( letra );
+
+               while ( posicion !== -1 )
+               {
+                  conteoLetras[i]++;
+                  posicion = textoMinusculas.indexOf( letra, posicion + 1 );
+               }
+            }
+
+            var salidaA = "Letra\tOcurrencias\n-----\t-----------\n";
+            for ( var j = 0; j < alfabeto.length; ++j )
+            {
+               salidaA += alfabeto.charAt( j ).toUpperCase() + " / " + alfabeto.charAt( j ) + "\t" + conteoLetras[j] + "\n";
+            }
+            document.getElementById( "areaLetras" ).value = salidaA;
+
+
+            // --- Preparación de palabras limpias para incisos B y C ---
+            var textoLimpio = textoOriginal.replace( /[¿?¡!.,;:()"']/g, "" );
+            var palabras = textoLimpio.split( /\s+/ );
+
+
+            // --- INCISO B: Ocurrencias por longitud de palabra ---
+            var conteoLongitudes = [];
+
+            for ( var m = 0; m < palabras.length; ++m )
+            {
+               var pal = palabras[m];
+               if ( pal.length > 0 )
+               {
+                  var len = pal.length;
+                  conteoLongitudes[len] = ( conteoLongitudes[len] || 0 ) + 1;
+               }
+            }
+
+            var salidaB = "Longitud\tOcurrencias\n--------\t-----------\n";
+            for ( var n = 1; n < conteoLongitudes.length; ++n )
+            {
+               var ocurrenciasLen = conteoLongitudes[n] || 0;
+               salidaB += n + "\t\t" + ocurrenciasLen + "\n";
+            }
+            document.getElementById( "areaLongitudes" ).value = salidaB;
+
+
+            // --- INCISO C: Palabras distintas ordenadas alfabéticamente ---
+            var listaPalabras = [];
+            var conteoPalabras = [];
+
+            for ( var p = 0; p < palabras.length; ++p )
+            {
+               var pMin = palabras[p].toLowerCase();
+               if ( pMin.length > 0 )
+               {
+                  var idx = listaPalabras.indexOf( pMin );
+                  if ( idx === -1 )
+                  {
+                     listaPalabras.push( pMin );
+                     conteoPalabras.push( 1 );
+                  }
+                  else
+                  {
+                     conteoPalabras[idx]++;
+                  }
+               }
+            }
+
+            // Ordenamiento alfabético manual
+            for ( var x = 0; x < listaPalabras.length - 1; ++x )
+            {
+               for ( var y = x + 1; y < listaPalabras.length; ++y )
+               {
+                  if ( listaPalabras[x] > listaPalabras[y] )
+                  {
+                     var tempPalabra = listaPalabras[x];
+                     listaPalabras[x] = listaPalabras[y];
+                     listaPalabras[y] = tempPalabra;
+
+                     var tempConteo = conteoPalabras[x];
+                     conteoPalabras[x] = conteoPalabras[y];
+                     conteoPalabras[y] = tempConteo;
+                  }
+               }
+            }
+
+            var salidaC = "Palabra\t\tOcurrencias\n-------\t\t-----------\n";
+            for ( var z = 0; z < listaPalabras.length; ++z )
+            {
+               salidaC += listaPalabras[z] + "\t\t" + conteoPalabras[z] + "\n";
+            }
+            document.getElementById( "areaPalabras" ).value = salidaC;
+         }
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonAnalizar" );
+            boton.addEventListener( "click", analizarTexto, false );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+
+      <h2>Ejercicios</h2>
+      <p><strong>11.23</strong> (An&aacute;lisis de textos) Escriba una aplicaci&oacute;n que lea varias l&iacute;neas de texto y realice el an&aacute;lisis completo: a) conteo de ocurrencias de cada letra del alfabeto, b) conteo de palabras por su longitud y c) lista de palabras distintas con sus ocurrencias ordenadas alfab&eacute;ticamente.</p>
+
+      <form action = "#">
+         <p>
+            Introduzca el texto a analizar:<br>
+            <textarea id = "campoTexto" rows = "6" cols = "70"></textarea><br><br>
+
+            <input id = "botonAnalizar" type = "button" value = "Realizar an&aacute;lisis completo"><br><br>
+
+            <table border = "0">
+               <tr>
+                  <td>
+                     a) Ocurrencias por letra:<br>
+                     <textarea id = "areaLetras" rows = "12" cols = "25" readonly></textarea>
+                  </td>
+                  <td>
+                     b) Por longitud:<br>
+                     <textarea id = "areaLongitudes" rows = "12" cols = "25" readonly></textarea>
+                  </td>
+                  <td>
+                     c) Palabras distintas:<br>
+                     <textarea id = "areaPalabras" rows = "12" cols = "30" readonly></textarea>
+                  </td>
+               </tr>
+            </table>
+         </p>
+      </form>
+   </body>
+</html>
