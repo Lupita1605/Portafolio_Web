@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--Ejercicio 8.4-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 8.4</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p>
+            <strong>8.4</strong> Encuentre el error en cada uno de los siguientes<br>
+            segmentos de c&oacute;digo. [<em>Nota:</em> puede haber m&aacute;s de un error].
+        </p>
+
+        
+        <p>
+            <strong>a)</strong><br>
+            For ( x = 100, x >= 1, ++x )<br>
+            &nbsp;document.writeln( x );
+        </p>
+        <p>
+            Error: La palabra for debe ir en min&uacute;sculas.<br>
+            Adem&aacute;s, se usaron comas en vez de puntos y comas (;) dentro del for,<br>
+            y se us&oacute; incremento (++x) en lugar de decremento (--x).
+        </p>
+
+        <hr>
+
+        
+        <p>
+            <strong>b)</strong> El siguiente c&oacute;digo debe imprimirse sin importar<br>
+            si el valor entero es par o impar:<br>
+            <br>
+            switch ( valor % 2 )<br>
+            {<br>
+            &nbsp;case 0:<br>
+            &nbsp;document.writeln( "Entero par" );<br>
+            &nbsp;case 1:<br>
+            &nbsp;document.writeln( "Entero impar" );<br>
+            }
+        </p>
+        <p>
+            Error: Falta la instrucci&oacute;n break en el case 0.<br>
+            Sin el break, cuando sea par tambi&eacute;n se ejecutar&aacute; el case 1.
+        </p>
+
+        <hr>
+
+        
+        <p>
+            <strong>c)</strong> El siguiente c&oacute;digo debe imprimir los enteros<br>
+            impares del 19 al 1:<br>
+            <br>
+            for ( x = 19; x >= 1; x += 2 )<br>
+            &nbsp;document.writeln( x );
+        </p>
+        <p>
+            Error: El contador est&aacute; mal modificado, suma en lugar de restar.<br>
+            Debe usarse x -= 2 para ir hacia atr&aacute;s del 19 al 1.
+        </p>
+
+        <hr>
+
+        
+        <p>
+            <strong>d)</strong> El siguiente c&oacute;digo debe imprimir los enteros<br>
+            pares del 2 al 100:<br>
+            <br>
+            contador = 2;<br>
+            do {<br>
+            &nbsp;document.writeln( contador );<br>
+            &nbsp;contador += 2;<br>
+            } while ( contador < 100 );
+        </p>
+        <p>
+            Error: Le falta el operador relacional &lt;=.<br>
+            Con &lt; 100 solo imprime hasta el 98, debe ser contador &lt;= 100.
+        </p>
+    </body>
+</html>

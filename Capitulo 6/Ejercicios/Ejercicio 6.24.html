@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--Ejercicio 6.24-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 6.24</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+        <p><strong>6.24</strong> Escriba una secuencia de comandos que calcule los cuadrados y cubos de los n&uacute;meros del 0 al 5 y produzca texto de HTML5 que muestre los valores resultantes en un formato de tabla de HTML5, como se muestra a continuaci&oacute;n. [<em>Nota</em>: esta secuencia de comandos no requiere entrada del usuario].</p>
+
+        <script>
+            document.writeln("<table border='1'>");
+            document.writeln("<tr><th>n&uacute;mero</th><th>cuadrado</th><th>cubo</th></tr>");
+
+            document.writeln("<tr><td>0</td><td>" + (0 * 0) + "</td><td>" + (0 * 0 * 0) + "</td></tr>");
+            document.writeln("<tr><td>1</td><td>" + (1 * 1) + "</td><td>" + (1 * 1 * 1) + "</td></tr>");
+            document.writeln("<tr><td>2</td><td>" + (2 * 2) + "</td><td>" + (2 * 2 * 2) + "</td></tr>");
+            document.writeln("<tr><td>3</td><td>" + (3 * 3) + "</td><td>" + (3 * 3 * 3) + "</td></tr>");
+            document.writeln("<tr><td>4</td><td>" + (4 * 4) + "</td><td>" + (4 * 4 * 4) + "</td></tr>");
+            document.writeln("<tr><td>5</td><td>" + (5 * 5) + "</td><td>" + (5 * 5 * 5) + "</td></tr>");
+
+            document.writeln("</table>");
+        </script>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 6.14 -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 6.14</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p><strong>6.14</strong> Indique el orden de evaluaci&oacute;n de los operadores en cada una de las siguientes instrucciones de JavaScript, y muestre el valor de x despu&eacute;s de ejecutar cada instrucci&oacute;n:</p>
+
+        <p><strong>a)</strong> <code>x = 7 + 3 * 6 / 2 - 1;</code></p>
+        <p><strong>Orden de evaluaci&oacute;n:</strong></p>
+        <ol>
+            <li>Multiplicaci&oacute;n (<code>3 * 6</code> = 18)</li>
+            <li>Divisi&oacute;n (<code>18 / 2</code> = 9)</li>
+            <li>Suma (<code>7 + 9</code> = 16)</li>
+            <li>Resta (<code>16 - 1</code> = 15)</li>
+            <li>Asignaci&oacute;n (<code>x = 15</code>)</li>
+        </ol>
+        <p><strong>Valor final de x:</strong> 15</p>
+
+        <hr>
+
+        <p><strong>b)</strong> <code>x = 2 % 2 + 2 * 2 - 2 / 2;</code></p>
+        <p><strong>Orden de evaluaci&oacute;n:</strong></p>
+        <ol>
+            <li>M&oacute;dulo o residuo (<code>2 % 2</code> = 0)</li>
+            <li>Multiplicaci&oacute;n (<code>2 * 2</code> = 4)</li>
+            <li>Divisi&oacute;n (<code>2 / 2</code> = 1)</li>
+            <li>Suma (<code>0 + 4</code> = 4)</li>
+            <li>Resta (<code>4 - 1</code> = 3)</li>
+            <li>Asignaci&oacute;n (<code>x = 3</code>)</li>
+        </ol>
+        <p><strong>Valor final de x:</strong> 3</p>
+
+        <hr>
+
+        <p><strong>c)</strong> <code>x = (3 * 9 * (3 + (9 * 3 / (3))));</code></p>
+        <p><strong>Orden de evaluaci&oacute;n:</strong></p>
+        <ol>
+            <li>Par&eacute;ntesis m&aacute;s interno: multiplicaci&oacute;n (<code>9 * 3</code> = 27)</li>
+            <li>Par&eacute;ntesis interno: divisi&oacute;n (<code>27 / 3</code> = 9)</li>
+            <li>Par&eacute;ntesis medio: suma (<code>3 + 9</code> = 12)</li>
+            <li>Primera multiplicaci&oacute;n externa (<code>3 * 9</code> = 27)</li>
+            <li>Segunda multiplicaci&oacute;n externa (<code>27 * 12</code> = 324)</li>
+            <li>Asignaci&oacute;n (<code>x = 324</code>)</li>
+        </ol>
+        <p><strong>Valor final de x:</strong> 324</p>
+    </body>
+</html>

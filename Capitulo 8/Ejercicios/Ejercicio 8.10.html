@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!--Ejercicio 8.10-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 8.10</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p>
+            <strong>8.10</strong> (Canci&oacute;n &ldquo;Los Doce D&iacute;as 
+            de Navidad&rdquo;) Escriba una secuencia de comandos que utilice 
+            estructuras de repetici&oacute;n y una instrucci&oacute;n 
+            <code>switch</code> para imprimir la canci&oacute;n &ldquo;Los 
+            Doce D&iacute;as de Navidad&rdquo;. Encontrar&aacute; las palabras 
+            en el sitio <code>http://en.wikipedia.org/wiki/The_Twelve_Days_of_Christmas_(song)</code>.
+        </p>
+
+        <script>
+            for (var dia = 1; dia <= 12; dia++) {
+                var diaTexto = "";
+
+                switch(dia) {
+                    case 1: diaTexto = "first"; break;
+                    case 2: diaTexto = "second"; break;
+                    case 3: diaTexto = "third"; break;
+                    case 4: diaTexto = "fourth"; break;
+                    case 5: diaTexto = "fifth"; break;
+                    case 6: diaTexto = "sixth"; break;
+                    case 7: diaTexto = "seventh"; break;
+                    case 8: diaTexto = "eighth"; break;
+                    case 9: diaTexto = "ninth"; break;
+                    case 10: diaTexto = "tenth"; break;
+                    case 11: diaTexto = "eleventh"; break;
+                    case 12: diaTexto = "twelfth"; break;
+                }
+
+                document.writeln("<p>On the " + diaTexto + " day of Christmas my true love sent to me:<br>");
+
+                switch (dia) {
+                    case 12: document.writeln("12 Drummers Drumming,<br>");
+                    case 11: document.writeln("11 Pipers Piping,<br>");
+                    case 10: document.writeln("10 Lords a-Leaping,<br>");
+                    case 9:  document.writeln("9 Ladies Dancing,<br>");
+                    case 8:  document.writeln("8 Maids a-Milking,<br>");
+                    case 7:  document.writeln("7 Swans a-Swimming,<br>");
+                    case 6:  document.writeln("6 Geese a-Laying,<br>");
+                    case 5:  document.writeln("5 Golden Rings,<br>");
+                    case 4:  document.writeln("4 Calling Birds,<br>");
+                    case 3:  document.writeln("3 French Hens,<br>");
+                    case 2:  document.writeln("2 Turtle Doves, and<br>");
+                    case 1:  document.writeln("A Partridge in a Pear Tree.</p><br>");
+                }
+            }
+        </script>
+    </body>
+</html>

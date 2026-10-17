@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.23 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.23</title>
+      <script>
+         var num1;
+         var num2;
+
+         function iniciar()
+         {
+            var boton = document.getElementById("botonVerificar");
+            boton.addEventListener("click", verificarRespuesta, false);
+            generarPregunta();
+         }
+
+         function generarPregunta()
+         {
+            num1 = Math.floor(Math.random() * 10);
+            num2 = Math.floor(Math.random() * 10);
+
+            document.getElementById("pregunta").innerHTML = "&iquest;Cu&aacute;nto es " + num1 + " por " + num2 + "?";
+            document.getElementById("campoRespuesta").value = "";
+         }
+
+         function respuestaCorrecta()
+         {
+            var opcion = Math.floor(1 + Math.random() * 4);
+
+            switch (opcion)
+            {
+               case 1:
+                  return "¡Muy bien!";
+               case 2:
+                  return "¡Excelente!";
+               case 3:
+                  return "¡Buen trabajo!";
+               case 4:
+                  return "¡Siga así!";
+            }
+         }
+
+         function respuestaIncorrecta()
+         {
+            var opcion = Math.floor(1 + Math.random() * 4);
+
+            switch (opcion)
+            {
+               case 1:
+                  return "No. Intente de nuevo.";
+               case 2:
+                  return "Equivocado. Trate una vez más.";
+               case 3:
+                  return "No se dé por vencido.";
+               case 4:
+                  return "No. Siga intentando.";
+            }
+         }
+
+         function verificarRespuesta()
+         {
+            var respuesta = parseInt(document.getElementById("campoRespuesta").value);
+            var resultado = document.getElementById("resultado");
+
+            if (respuesta === num1 * num2)
+            {
+               resultado.innerHTML = respuestaCorrecta();
+               generarPregunta();
+            }
+            else
+            {
+               resultado.innerHTML = respuestaIncorrecta();
+            }
+         }
+
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios</h2>
+
+      <p><strong>9.23</strong> Instrucci&oacute;n asistida por computadora: Variaciones en el di&aacute;logo.</p>
+
+      <form action="#">
+         <p id="pregunta"></p>
+         <p>
+            <label>Respuesta:
+               <input id="campoRespuesta" type="text">
+            </label>
+         </p>
+         <p>
+            <input id="botonVerificar" type="button" value="Verificar">
+         </p>
+      </form>
+
+      <p id="resultado"></p>
+   </body>
+</html>

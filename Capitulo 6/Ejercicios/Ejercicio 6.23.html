@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--Ejercicio 6.23-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 6.23</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+        <p><strong>6.23</strong> Escriba una secuencia de comandos que reciba tres n&uacute;meros, determine y produzca marcado que muestre la cantidad de n&uacute;meros negativos, positivos y ceros introducidos.</p>
+
+        <script>
+            var primerNumero;
+            var segundoNumero;
+            var tercerNumero;
+            var numero1;
+            var numero2;
+            var numero3;
+            var positivos = 0;
+            var negativos = 0;
+            var ceros = 0;
+
+            primerNumero = window.prompt("Escriba el primer número:");
+            segundoNumero = window.prompt("Escriba el segundo número:");
+            tercerNumero = window.prompt("Escriba el tercer número:");
+
+            numero1 = parseFloat(primerNumero);
+            numero2 = parseFloat(segundoNumero);
+            numero3 = parseFloat(tercerNumero);
+
+            if (numero1 > 0) positivos = positivos + 1;
+            if (numero1 < 0) negativos = negativos + 1;
+            if (numero1 == 0) ceros = ceros + 1;
+
+            if (numero2 > 0) positivos = positivos + 1;
+            if (numero2 < 0) negativos = negativos + 1;
+            if (numero2 == 0) ceros = ceros + 1;
+
+            if (numero3 > 0) positivos = positivos + 1;
+            if (numero3 < 0) negativos = negativos + 1;
+            if (numero3 == 0) ceros = ceros + 1;
+
+            document.writeln("<h1>Resultados:</h1>");
+            document.writeln("<h1>Cantidad de números positivos: " + positivos + "</h1>");
+            document.writeln("<h1>Cantidad de números negativos: " + negativos + "</h1>");
+            document.writeln("<h1>Cantidad de ceros: " + ceros + "</h1>");
+        </script>
+    </body>
+</html>

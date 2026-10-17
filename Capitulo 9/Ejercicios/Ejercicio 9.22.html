@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.22 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.22</title>
+      <script>
+         var num1;
+         var num2;
+
+         function iniciar()
+         {
+            var boton = document.getElementById("botonVerificar");
+            boton.addEventListener("click", verificarRespuesta, false);
+            generarPregunta();
+         }
+
+         function generarPregunta()
+         {
+            num1 = Math.floor(Math.random() * 10);
+            num2 = Math.floor(Math.random() * 10);
+
+            document.getElementById("pregunta").innerHTML = "&iquest;Cu&aacute;nto es " + num1 + " por " + num2 + "?";
+            document.getElementById("campoRespuesta").value = "";
+         }
+
+         function verificarRespuesta()
+         {
+            var respuesta = parseInt(document.getElementById("campoRespuesta").value);
+            var resultado = document.getElementById("resultado");
+
+            if (respuesta === num1 * num2)
+            {
+               resultado.innerHTML = "Muy bien!";
+               generarPregunta();
+            }
+            else
+            {
+               resultado.innerHTML = "No. Intente de nuevo.";
+            }
+         }
+
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios</h2>
+
+      <p><strong>9.22</strong> Instrucci&oacute;n asistida por computadora: Aprendiendo a multiplicar.</p>
+
+      <form action="#">
+         <p id="pregunta"></p>
+         <p>
+            <label>Respuesta:
+               <input id="campoRespuesta" type="text">
+            </label>
+         </p>
+         <p>
+            <input id="botonVerificar" type="button" value="Verificar">
+         </p>
+      </form>
+
+      <p id="resultado"></p>
+   </body>
+</html>

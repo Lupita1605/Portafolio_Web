@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--Ejercicio 7.11-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 7.11</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p><strong>7.11</strong> Los conductores se preocupan acerca del kilometraje de sus autom&oacute;viles. Un conductor ha llevado el control
+        de varios reabastecimientos de gasolina, registrando los kil&oacute;metros conducidos y los litros usados en cada viaje. Desarrolle una secuencia
+        de comandos que reciba como entrada los kil&oacute;metros conducidos y los litros usados por cada viaje. La secuencia de comandos debe calcular
+        y producir texto de HTML5 que muestre el n&uacute;mero de kil&oacute;metros por litro obtenidos en cada viaje, y debe imprimir el total de kil&oacute;metros
+        por litro obtenidos en todos los reabastecimientos hasta este punto. Use di&aacute;logos prompt para obtener los datos del usuario.</p>
+
+        <script>
+            var kilometros;
+            var litros;
+            var km;
+            var l;
+            var totalKm = 0;
+            var totalLitros = 0;
+
+            kilometros = window.prompt("Escriba los kilómetros conducidos (-1 para terminar):");
+            km = parseFloat(kilometros);
+
+            while (km != -1)
+            {
+                litros = window.prompt("Escriba los litros usados:");
+                l = parseFloat(litros);
+
+                totalKm += km;
+                totalLitros += l;
+
+                document.writeln("<p>Kil&oacute;metros por litro obtenidos en este viaje: " + (km / l) + "</p>");
+                document.writeln("<p>Total de kil&oacute;metros por litro obtenidos hasta este punto: " + (totalKm / totalLitros) + "</p><br>");
+
+                kilometros = window.prompt("Escriba los kilómetros conducidos (-1 para terminar):");
+                km = parseFloat(kilometros);
+            }
+        </script>
+    </body>
+</html>

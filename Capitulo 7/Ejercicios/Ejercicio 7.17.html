@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--Ejercicio 7.17-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 7.17</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p><strong>7.17</strong> Utilizando una metodolog&iacute;a similar a la del ejercicio 7.15, encuentre los <em>dos</em> valores
+        m&aacute;s grandes de los 10 que se introdujeron. [<em>Nota</em>: puede introducir cada n&uacute;mero s&oacute;lo una vez].</p>
+
+        <script>
+            var contador = 1;
+            var numeroTexto;
+            var numero;
+            var mayor1 = 0;
+            var mayor2 = 0;
+
+            while (contador <= 10)
+            {
+                numeroTexto = window.prompt("Ingrese el número " + contador + " de 10:");
+                numero = parseInt(numeroTexto);
+
+                if (numero > mayor1)
+                {
+                    mayor2 = mayor1;
+                    mayor1 = numero;
+                }
+                else if (numero > mayor2)
+                {
+                    mayor2 = numero;
+                }
+
+                contador++;
+            }
+
+            document.writeln("<p>El primer n&uacute;mero m&aacute;s grande es: <strong>" + mayor1 + "</strong></p>");
+            document.writeln("<p>El segundo n&uacute;mero m&aacute;s grande es: <strong>" + mayor2 + "</strong></p>");
+        </script>
+    </body>
+</html>

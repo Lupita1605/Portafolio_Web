@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<!--Ejercicio 8.11-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 8.11</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p>
+            <strong>8.11</strong> Un vendedor minorista en l&iacute;nea vende 
+            cinco productos distintos, cuyos precios de venta son los siguientes: 
+            producto 1, $2.98; producto 2, $4.50; producto 3, $9.98; 
+            producto 4, $4.49 y producto 5, $6.87. Escriba una secuencia de 
+            comandos que lea una serie de pares de n&uacute;meros, como se 
+            muestra a continuaci&oacute;n:<br>
+            a) N&uacute;mero del producto;<br>
+            b) Cantidad vendida durante un d&iacute;a.<br>
+            Su programa debe utilizar una instrucci&oacute;n <code>switch</code> 
+            para determinar el precio de venta de cada producto; adem&aacute;s 
+            debe calcular y producir HTML5 para mostrar el valor total de venta 
+            de todos los productos vendidos la semana pasada. Use el cuadro de 
+            di&aacute;logo del indicador de comandos para obtener el n&uacute;mero 
+            de producto y la cantidad requerida por el usuario. Use un ciclo 
+            controlado por centinela para determinar cu&aacute;ndo debe el 
+            programa dejar de iterar para mostrar los resultados finales.
+        </p>
+
+        <script>
+            var totalVentas = 0;
+            var producto = parseInt(window.prompt("Ingrese el número de producto (1-5) o -1 para terminar:"));
+
+            while (producto !== -1) {
+                var cantidad = parseInt(window.prompt("Ingrese la cantidad vendida del producto " + producto + ":"));
+
+                switch (producto) {
+                    case 1:
+                        totalVentas += cantidad * 2.98;
+                        break;
+                    case 2:
+                        totalVentas += cantidad * 4.50;
+                        break;
+                    case 3:
+                        totalVentas += cantidad * 9.98;
+                        break;
+                    case 4:
+                        totalVentas += cantidad * 4.49;
+                        break;
+                    case 5:
+                        totalVentas += cantidad * 6.87;
+                        break;
+                    default:
+                        window.alert("Número de producto inválido (debe ser del 1 al 5).");
+                        break;
+                }
+
+                producto = parseInt(window.prompt("Ingrese el número de producto (1-5) o -1 para terminar:"));
+            }
+
+            document.writeln("<p>El valor total de venta de todos los productos vendidos la semana pasada es: $" + totalVentas.toFixed(2) + "</p>");
+        </script>
+    </body>
+</html>

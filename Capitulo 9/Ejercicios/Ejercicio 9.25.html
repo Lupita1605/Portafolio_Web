@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.25 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.25</title>
+      <script>
+         var numeroSecreto;
+
+         function iniciar()
+         {
+            var boton = document.getElementById("botonAdivinar");
+            boton.addEventListener("click", verificarIntento, false);
+            nuevoJuego();
+         }
+
+         function nuevoJuego()
+         {
+            numeroSecreto = Math.floor(1 + Math.random() * 1000);
+            document.getElementById("campoIntento").value = "";
+         }
+
+         function verificarIntento()
+         {
+            var campo = document.getElementById("campoIntento");
+            var intento = parseInt(campo.value);
+            var resultado = document.getElementById("resultado");
+
+            if (isNaN(intento))
+            {
+               resultado.innerHTML = "Por favor, ingrese un n&uacute;mero v&aacute;lido.";
+               return;
+            }
+
+            if (intento === numeroSecreto)
+            {
+               resultado.innerHTML = "¡Felicidades! ¡Adivin&oacute; el n&uacute;mero!";
+               nuevoJuego();
+            }
+            else if (intento > numeroSecreto)
+            {
+               resultado.innerHTML = "Demasiado alto. Intente de nuevo.";
+               campo.value = "";
+            }
+            else
+            {
+               resultado.innerHTML = "Demasiado bajo. Intente de nuevo.";
+               campo.value = "";
+            }
+         }
+
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios</h2>
+
+      <p><strong>9.25</strong> Juego de adivinar el n&uacute;mero.</p>
+
+      <form action="#">
+         <p>
+            <label>Adivine un n&uacute;mero entre 1 y 1000:
+               <input id="campoIntento" type="text">
+            </label>
+            <input id="botonAdivinar" type="button" value="Adivinar">
+         </p>
+      </form>
+
+      <p id="resultado"></p>
+   </body>
+</html>

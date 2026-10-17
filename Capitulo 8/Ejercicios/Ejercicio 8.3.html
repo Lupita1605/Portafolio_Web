@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--Ejercicio 8.3-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 8.3</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios de autoevaluaci&oacute;n</h2>
+
+        <p>
+            <strong>8.3</strong> Encuentre el error en cada uno de los siguientes<br>
+            segmentos de c&oacute;digo, y explique c&oacute;mo corregirlo:
+        </p>
+
+      
+        <p>
+            <strong>a)</strong><br>
+            x = 1;<br>
+            while ( x &lt;= 10 );<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;++x;<br>
+            }
+        </p>
+        <p>
+            <strong>Error:</strong> El punto y coma despu&eacute;s del encabezado <strong>while</strong><br>
+            provoca un ciclo infinito; adem&aacute;s falta una llave izquierda.<br>
+            <strong>Correcci&oacute;n:</strong> Reemplazar el punto y coma por una llave<br>
+            izquierda ({), o eliminar tanto el punto y coma (;) como la llave derecha (}).
+        </p>
+
+        <hr>
+
+        <!-- Inciso b -->
+        <p>
+            <strong>b)</strong><br>
+            switch ( n )<br>
+            {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;case 1:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.writeln( "El n&uacute;mero es 1" );<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;case 2:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.writeln( "El n&uacute;mero es 2" );<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;default:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.writeln( "El n&uacute;mero no es 1 ni 2" );<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+            }
+        </p>
+        <p>
+            <strong>Error:</strong> Falta una instrucci&oacute;n <strong>break</strong> en las<br>
+            instrucciones del primer <strong>case</strong>.<br>
+            <strong>Correcci&oacute;n:</strong> Agregue una instrucci&oacute;n <strong>break</strong> al final<br>
+            de las instrucciones para el primer <strong>case</strong>. Cabe mencionar que esta<br>
+            omisi&oacute;n no es necesariamente un error, si desea que la instrucci&oacute;n del<br>
+            <strong>case 2:</strong> se ejecute siempre que lo haga la instrucci&oacute;n del <strong>case 1:</strong>.
+        </p>
+
+        <hr>
+
+        
+        <p>
+            <strong>c)</strong> El siguiente c&oacute;digo debe imprimir los valores 1 a 10:<br>
+            n = 1;<br>
+            while ( n &lt; 10 )<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;document.writeln( n++ );
+        </p>
+        <p>
+            <strong>Error:</strong> Se est&aacute; utilizando un operador relacional inadecuado<br>
+            en la condici&oacute;n de continuaci&oacute;n de la instrucci&oacute;n de repetici&oacute;n <strong>while</strong>.<br>
+            <strong>Correcci&oacute;n:</strong> Use &lt;= en vez de &lt;, o cambie el 10 a 11.
+        </p>
+    </body>
+</html>

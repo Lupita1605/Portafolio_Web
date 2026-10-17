@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.9 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.9: Distancia entre dos puntos</title>
+      <script>
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonCalcular" );
+            boton.addEventListener( "click", calcularYMostrar, false );
+         }
+
+         function calcularYMostrar()
+         {
+            var x1 = parseFloat( document.getElementById( "x1" ).value );
+            var y1 = parseFloat( document.getElementById( "y1" ).value );
+            var x2 = parseFloat( document.getElementById( "x2" ).value );
+            var y2 = parseFloat( document.getElementById( "y2" ).value );
+
+            var resultado = document.getElementById( "resultado" );
+
+            if ( isNaN( x1 ) || isNaN( y1 ) || isNaN( x2 ) || isNaN( y2 ) )
+            {
+               resultado.innerHTML = "Por favor, ingrese valores num&eacute;ricos v&aacute;lidos para todas las coordenadas.";
+               return;
+            }
+
+            var d = distancia( x1, y1, x2, y2 );
+            resultado.innerHTML = "La distancia entre los puntos (" + x1 + ", " + y1 + ") y (" + x2 + ", " + y2 + ") es: " + d.toFixed( 4 );
+         }
+
+         function distancia( x1, y1, x2, y2 )
+         {
+            return Math.sqrt( Math.pow( x2 - x1, 2 ) + Math.pow( y2 - y1, 2 ) );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios</h2>
+
+      <p><strong>9.9</strong> Distancia entre dos puntos</p>
+
+      <form action="#">
+         <p>
+            <strong>Punto 1:</strong><br>
+            <label>x1: <input id="x1" type="text"></label>
+            <label>y1: <input id="y1" type="text"></label>
+         </p>
+         <p>
+            <strong>Punto 2:</strong><br>
+            <label>x2: <input id="x2" type="text"></label>
+            <label>y2: <input id="y2" type="text"></label>
+         </p>
+         <p>
+            <input id="botonCalcular" type="button" value="Calcular distancia">
+         </p>
+      </form>
+
+      <p id="resultado"></p>
+   </body>
+</html>

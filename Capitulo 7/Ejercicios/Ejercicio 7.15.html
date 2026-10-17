@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--Ejercicio 7.15-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 7.15</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p><strong>7.15</strong> El proceso de encontrar el valor <em>m&aacute;s grande</em> (es decir, el m&aacute;ximo de un grupo de valores)
+        se utiliza con frecuencia en aplicaciones de computadora. Por ejemplo, una secuencia de datos para determinar el ganador
+        de un concurso de ventas recibe como entrada el n&uacute;mero de unidades vendidas por cada vendedor. El que haya vendido m&aacute;s
+        unidades es el que gana el concurso. Escriba un algoritmo en pseudoc&oacute;digo y despu&eacute;s una secuencia de comandos que
+        reciba como entrada una serie de 10 n&uacute;meros de un solo d&iacute;gito como caracteres, determine el mayor de los n&uacute;meros
+        y produzca un mensaje que muestre el n&uacute;mero m&aacute;s grande. Su secuencia de comandos debe utilizar las siguientes tres variables:<br>
+        a) <strong>contador</strong>: un contador para contar hasta 10 (es decir, para llevar el registro de cu&aacute;ntos n&uacute;meros se han introducido, y para determinar que se hayan procesado los 10 n&uacute;meros).<br>
+        b) <strong>numero</strong>: el entero m&aacute;s reciente introducido por el usuario.<br>
+        c) <strong>mayor</strong>: el n&uacute;mero m&aacute;s grande encontrado hasta ahora.</p>
+
+        <h3>Pseudoc&oacute;digo:</h3>
+        <p>
+            Inicializar contador a 1<br>
+            Inicializar mayor a 0<br><br>
+            Mientras contador sea menor o igual a 10:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Pedir al usuario el siguiente número<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Convertir el texto introducido a entero y asignarlo a numero<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Si numero es mayor que mayor:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Asignar numero a mayor<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Sumar 1 a contador<br><br>
+            Imprimir el valor de mayor
+        </p>
+
+        <hr>
+
+        <script>
+            var contador = 1;
+            var numeroTexto;
+            var numero;
+            var mayor = 0;
+
+            while (contador <= 10)
+            {
+                numeroTexto = window.prompt("Ingrese el número " + contador + " de 10 (de un solo dígito):");
+                numero = parseInt(numeroTexto);
+
+                if (numero > mayor)
+                {
+                    mayor = numero;
+                }
+
+                contador++;
+            }
+
+            document.writeln("<p>El n&uacute;mero m&aacute;s grande introducido es: <strong>" + mayor + "</strong></p>");
+        </script>
+    </body>
+</html>

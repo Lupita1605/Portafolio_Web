@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.26 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.26</title>
+      <script>
+         var numeroSecreto;
+         var intentos = 0;
+
+         function iniciar()
+         {
+            var boton = document.getElementById("botonAdivinar");
+            boton.addEventListener("click", verificarIntento, false);
+            nuevoJuego();
+         }
+
+         function nuevoJuego()
+         {
+            numeroSecreto = Math.floor(1 + Math.random() * 1000);
+            intentos = 0;
+            document.getElementById("campoIntento").value = "";
+         }
+
+         function verificarIntento()
+         {
+            var campo = document.getElementById("campoIntento");
+            var intento = parseInt(campo.value);
+            var resultado = document.getElementById("resultado");
+            var mensajeIntentos = document.getElementById("mensajeIntentos");
+
+            if (isNaN(intento))
+            {
+               resultado.innerHTML = "Por favor, ingrese un n&uacute;mero v&aacute;lido.";
+               return;
+            }
+
+            intentos++;
+
+            if (intento === numeroSecreto)
+            {
+               resultado.innerHTML = "¡Felicidades! ¡Adivin&oacute; el n&uacute;mero!";
+
+               if (intentos < 10)
+               {
+                  mensajeIntentos.innerHTML = "¡Conoce el secreto o tuvo suerte! (Intentos: " + intentos + ")";
+               }
+               else if (intentos === 10)
+               {
+                  mensajeIntentos.innerHTML = "¡Aha! ¡Adivin&oacute; el secreto! (Intentos: 10)";
+               }
+               else
+               {
+                  mensajeIntentos.innerHTML = "¡Deber&iacute;a poder hacerlo mejor! (Intentos: " + intentos + ")";
+               }
+
+               nuevoJuego();
+            }
+            else if (intento > numeroSecreto)
+            {
+               resultado.innerHTML = "Demasiado alto. Intente de nuevo.";
+               mensajeIntentos.innerHTML = "Intentos realizados: " + intentos;
+               campo.value = "";
+            }
+            else
+            {
+               resultado.innerHTML = "Demasiado bajo. Intente de nuevo.";
+               mensajeIntentos.innerHTML = "Intentos realizados: " + intentos;
+               campo.value = "";
+            }
+         }
+
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios</h2>
+
+      <p><strong>9.26</strong> Juego de adivinar el n&uacute;mero con contador de intentos.</p>
+
+      <form action="#">
+         <p>
+            <label>Adivine un n&uacute;mero entre 1 y 1000:
+               <input id="campoIntento" type="text">
+            </label>
+            <input id="botonAdivinar" type="button" value="Adivinar">
+         </p>
+      </form>
+
+      <p id="resultado"></p>
+      <p id="mensajeIntentos"></p>
+   </body>
+</html>

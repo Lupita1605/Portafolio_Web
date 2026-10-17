@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--Ejercicio 7.14-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 7.14</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p><strong>7.14</strong> Desarrolle una secuencia de comandos que determine el sueldo bruto para cada uno de tres empleados[cite: 4].
+                   La empresa paga la &ldquo;cuota normal&rdquo; en las primeras 40 horas de trabajo de cada empleado, y paga &ldquo;cuota y media&rdquo;
+                   en todas las horas trabajadas que excedan de 40[cite: 4]. Usted recibe una lista de los empleados de la empresa, el n&uacute;mero de horas que trabaj&oacute; 
+                   cada uno la semana pasada y la tarifa por horas de cada empleado[cite: 4]. Su programa debe recibir como entrada esta informaci&oacute;n para cada empleado,
+                   determinar el sueldo bruto de cada uno y producir texto de HTML5 que muestre ese sueldo bruto[cite: 4]. Utilice di&aacute;logos prompt para introducir los datos.</p>
+
+        <script>
+            var horasTexto;
+            var tarifaTexto;
+            var horas;
+            var tarifa;
+            var sueldoBruto;
+            var horasExtras;
+            var contador = 1;
+
+            while (contador <= 3)
+            {
+                horasTexto = window.prompt("Empleado " + contador + ": Ingrese el número de horas trabajadas:");
+                horas = parseFloat(horasTexto);
+
+                tarifaTexto = window.prompt("Empleado " + contador + ": Ingrese la tarifa por hora:");
+                tarifa = parseFloat(tarifaTexto);
+
+                if (horas <= 40)
+                {
+                    sueldoBruto = horas * tarifa;
+                }
+                else
+                {
+                    horasExtras = horas - 40;
+                    sueldoBruto = (40 * tarifa) + (horasExtras * tarifa * 1.5);
+                }
+
+                document.writeln("<p>Empleado " + contador + " - Sueldo bruto: $" + sueldoBruto + "</p>");
+
+                contador++;
+            }
+        </script>
+    </body>
+</html>

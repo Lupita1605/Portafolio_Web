@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.8 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.8: Cargos de estacionamiento</title>
+      <script>
+         var totalAcumulado = 0.0;
+
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonCalcular" );
+            boton.addEventListener( "click", procesarCliente, false );
+         }
+
+         function procesarCliente()
+         {
+            var campoHoras = document.getElementById( "campoHoras" );
+            var horas = parseFloat( campoHoras.value );
+
+            if ( isNaN( horas ) || horas <= 0 || horas > 24 )
+            {
+               alert( "Por favor, ingrese un número de horas válido entre 0.1 y 24." );
+               return;
+            }
+
+            var cargoCliente = calcularCargos( horas );
+            totalAcumulado += cargoCliente;
+
+            var resultadoCliente = document.getElementById( "resultadoCliente" );
+            var resultadoTotal = document.getElementById( "resultadoTotal" );
+
+            resultadoCliente.innerHTML = "Cargo para este cliente: $" + cargoCliente.toFixed( 2 );
+            resultadoTotal.innerHTML = "Total de ingresos acumulados ayer: $" + totalAcumulado.toFixed( 2 );
+
+            campoHoras.value = "";
+         }
+
+         function calcularCargos( horas )
+         {
+            var cuota = 2.00;
+
+            if ( horas > 3 )
+            {
+               cuota += Math.ceil( horas - 3 ) * 0.50;
+            }
+
+            if ( cuota > 10.00 )
+            {
+               cuota = 10.00;
+            }
+
+            return cuota;
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios</h2>
+
+      <p><strong>9.8</strong> Cargos de estacionamiento</p>
+
+      <form action="#">
+         <p>
+            <label>Horas estacionado:
+               <input id="campoHoras" type="text">
+            </label>
+            <input id="botonCalcular" type="button" value="Calcular cargo">
+         </p>
+      </form>
+
+      <p id="resultadoCliente"></p>
+      <p id="resultadoTotal"></p>
+   </body>
+</html>

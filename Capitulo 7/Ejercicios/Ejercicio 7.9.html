@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--Ejercicio 7.9-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 7.9</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p><strong>7.9</strong> Identifique y corrija los errores en cada uno de los siguientes segmentos de c&oacute;digo. [Nota: puede haber m&aacute;s de un error en cada fragmento; a menos que haya declaraciones presentes, suponga que todas las variables est&aacute;n declaradas e inicializadas correctamente].</p>
+
+        <p><strong>a)</strong></p>
+        <p>if ( edad &gt;= 65 );<br>
+        document.writeln( "Edad es mayor o igual que 65" );<br>
+        else<br>
+        document.writeln( "Edad es menor que 65" );</p>
+
+        <p><strong>Error:</strong> <u>El punto y coma despu&eacute;s de la condici&oacute;n del if separa la instrucci&oacute;n del else.</u><br>
+        <strong>Correcci&oacute;n:</strong> <u>Quitar el punto y coma despu&eacute;s de ( edad &gt;= 65 ).</u></p>
+
+        <p><strong>b)</strong></p>
+        <p>var x = 1, total;<br>
+        while ( x &lt;= 10 )<br>
+        {<br>
+        total += x;<br>
+        ++x;<br>
+        }</p>
+
+        <p><strong>Error:</strong> <u>La variable total no est&aacute; inicializada en 0.</u><br>
+        <strong>Correcci&oacute;n:</strong> <u>Inicializar total en 0 (var x = 1, total = 0;).</u></p>
+
+        <p><strong>c)</strong></p>
+        <p>var x = 1;<br>
+        var total = 0;<br>
+        while ( x &lt;= 100 )<br>
+        total += x;<br>
+        ++x;</p>
+
+        <p><strong>Error:</strong> <u>Faltan las llaves del ciclo while, lo que provoca un ciclo infinito.</u><br>
+        <strong>Correcci&oacute;n:</strong> <u>Encerrar total += x; y ++x; entre llaves { }.</u></p>
+
+        <p><strong>d)</strong></p>
+        <p>var y = 5;<br>
+        while ( y &gt; 0 )<br>
+        {<br>
+        document.writeln( y );<br>
+        ++y;</p>
+
+        <p><strong>Error:</strong> <u>Falta la llave de cierre } y el incremento ++y provoca un ciclo infinito.</u><br>
+        <strong>Correcci&oacute;n:</strong> <u>Cambiar ++y por --y; y agregar la llave de cierre } al final.</u></p>
+    </body>
+</html>

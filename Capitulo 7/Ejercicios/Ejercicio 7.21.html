@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--Ejercicio 7.21-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 7.21</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p><strong>7.21</strong> Escriba una secuencia de comandos que produzca texto de HTML5 que siga mostrando
+        en la ventana de comandos los m&uacute;ltiplos del entero 2 (a saber, 2, 4, 8, 16, 32, 64, etc&eacute;tera).
+        Su ciclo <em>no debe terminar</em> (es decir, debe crear un <em>ciclo infinito</em>). &iquest;Qu&eacute; ocurre
+        cuando ejecuta este programa?</p>
+
+        <script>
+            document.writeln("<p><strong>&iquest;Qu&eacute; ocurre cuando se ejecuta este programa?</strong></p>");
+            document.writeln("<p>1. <strong>Desbordamiento num&eacute;rico:</strong> Los m&uacute;ltiplos crecen exponencialmente multiplic&aacute;ndose por 2. Cuando el valor supera el l&iacute;mite m&aacute;ximo de almacenamiento num&eacute;rico en JavaScript, pasa a mostrarse como <em>Infinity</em>.</p>");
+            document.writeln("<p>2. <strong>Bloqueo del navegador:</strong> Debido a que la condici&oacute;n del ciclo se mantiene siempre en verdadero, el programa entra en un bucle infinito que consume los recursos del procesador hasta que el navegador congela la pesta&ntilde;a o solicita forzar su cierre.</p>");
+
+            var numero = 2;
+
+            while (true)
+            {
+                document.writeln("<p>" + numero + "</p>");
+                numero = numero * 2;
+            }
+        </script>
+    </body>
+</html>

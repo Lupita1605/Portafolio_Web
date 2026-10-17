@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--Ejercicio 7.16-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 7.16</title>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px 10px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p><strong>7.16</strong> Escriba una secuencia de comandos que utilice ciclos para imprimir la siguiente tabla
+        de valores. Muestre los resultados en una tabla de HTML5. Use CSS para centrar los datos en cada columna.</p>
+
+        <script>
+            var n = 1;
+
+            document.writeln("<table>");
+            document.writeln("<tr><th>N</th><th>10*N</th><th>100*N</th><th>1000*N</th></tr>");
+
+            while (n <= 5)
+            {
+                document.writeln("<tr>");
+                document.writeln("<td>" + n + "</td>");
+                document.writeln("<td>" + (10 * n) + "</td>");
+                document.writeln("<td>" + (100 * n) + "</td>");
+                document.writeln("<td>" + (1000 * n) + "</td>");
+                document.writeln("</tr>");
+
+                n++;
+            }
+
+            document.writeln("</table>");
+        </script>
+    </body>
+</html>

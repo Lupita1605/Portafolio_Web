@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.21 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.21</title>
+      <script>
+         var caras = 0;
+         var cruces = 0;
+
+         function iniciar()
+         {
+            var boton = document.getElementById("botonLanzar");
+            boton.addEventListener("click", lanzarMoneda, false);
+         }
+
+         function arrojar()
+         {
+            return Math.random() < 0.5;
+         }
+
+         function lanzarMoneda()
+         {
+            var resultado = document.getElementById("resultado");
+            var conteo = document.getElementById("conteo");
+
+            if (arrojar())
+            {
+               caras++;
+               resultado.innerHTML = "Resultado: <strong>Cara</strong>";
+            }
+            else
+            {
+               cruces++;
+               resultado.innerHTML = "Resultado: <strong>Cruz</strong>";
+            }
+
+            conteo.innerHTML = "Caras: " + caras + " | Cruces: " + cruces;
+         }
+
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios</h2>
+
+      <p><strong>9.21</strong> Simulaci&oacute;n del lanzamiento de monedas.</p>
+
+      <form action="#">
+         <p>
+            <input id="botonLanzar" type="button" value="Lanzar">
+         </p>
+      </form>
+
+      <p id="resultado"></p>
+      <p id="conteo">Caras: 0 | Cruces: 0</p>
+   </body>
+</html>

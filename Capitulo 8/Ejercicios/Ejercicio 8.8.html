@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--Ejercicio 8.8-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 8.8</title>
+        <style type="text/css">
+            table               {width: 300px;
+                                border-collapse: collapse;
+                                background-color: lightblue;
+                                margin-bottom: 20px;}
+            table, td, th       {border: 1px solid black;
+                                padding: 4px; text-align: left;}
+            th                  {text-align: left;
+                                color: white;
+                                background-color: darkblue;}
+            tr.filaimpar        {background-color: white;}
+        </style>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p>
+            <strong>8.8</strong> Modifique el programa de inter&eacute;s compuesto de la figura 8.6, repitiendo sus pasos para las tasas de inter&eacute;s del 5, 6, 7, 8, 9 y 10 por ciento. Use una instrucci&oacute;n <code>for</code> para variar la tasa de inter&eacute;s. Use una tabla separada para cada tasa.
+        </p>
+
+        <script>
+            var monto; // monto actual de dinero
+            var principal = 1000.00; // monto principal
+            var tasa; 
+
+            for (var tasaInt = 5; tasaInt <= 10; tasaInt++) {
+                tasa = tasaInt / 100; 
+
+                document.writeln("<table>"); 
+                document.writeln("<caption>C&aacute;lculo del inter&eacute;s compuesto al " + tasaInt + "%</caption>");
+                document.writeln("<thead><tr><th>A&ntilde;o</th>"); // encabezado año
+                document.writeln("<th>Monto en dep&oacute;sito</th></tr></thead><tbody>"); // encabezado monto
+
+                for (var anio = 1; anio <= 10; ++anio) {
+                    monto = principal * Math.pow(1.0 + tasa, anio);
+
+                    if (anio % 2 !== 0) {
+                        document.writeln("<tr class='filaimpar'><td>" + anio +
+                        "</td><td>" + monto.toFixed(2) + "</td></tr>");
+                    } else {
+                        document.writeln("<tr><td>" + anio +
+                        "</td><td>" + monto.toFixed(2) + "</td></tr>");
+                    }
+                } 
+
+                document.writeln("</tbody></table>");
+            } 
+        </script>
+    </body>
+</html>

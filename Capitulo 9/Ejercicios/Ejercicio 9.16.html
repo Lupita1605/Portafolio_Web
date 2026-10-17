@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.16 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.16</title>
+      <script>
+         function iniciar()
+         {
+            var entrada = prompt("Escriba un número entero entre 1 y 99999:");
+            var numero = parseInt(entrada);
+
+            if (!isNaN(numero) && numero >= 1 && numero <= 99999)
+            {
+               mostrarDigitos(numero);
+            }
+            else
+            {
+               document.getElementById("resultados").innerHTML = "Número inválido. Debe estar entre 1 y 99999.";
+            }
+         }
+
+         function cocienteEntero(a, b)
+         {
+            return Math.floor(a / b);
+         }
+
+         function residuoEntero(a, b)
+         {
+            return a % b;
+         }
+
+         function mostrarDigitos(numero)
+         {
+            var resultado = "";
+            var divisor = 1;
+            var numTemp = numero;
+
+            while (cocienteEntero(numTemp, 10) > 0)
+            {
+               divisor *= 10;
+               numTemp = cocienteEntero(numTemp, 10);
+            }
+
+            while (divisor >= 1)
+            {
+               var digito = cocienteEntero(numero, divisor);
+               resultado += digito + "  ";
+               numero = residuoEntero(numero, divisor);
+               divisor = cocienteEntero(divisor, 10);
+            }
+
+            document.getElementById("resultados").innerHTML = "<pre>" + resultado + "</pre>";
+         }
+
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios</h2>
+
+      <p><strong>9.16</strong> Separa los d&iacute;gitos de un n&uacute;mero entre 1 y 99999 mediante espacios.</p>
+
+      <div id="resultados"></div>
+   </body>
+</html>

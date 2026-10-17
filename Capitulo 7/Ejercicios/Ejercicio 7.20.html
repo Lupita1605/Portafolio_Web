@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--Ejercicio 7.20-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 7.20</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p><strong>7.20</strong> Un pal&iacute;ndromo es un n&uacute;mero o una frase de texto que se lee igual al derecho
+        y al rev&eacute;s. Por ejemplo, cada uno de los siguientes enteros de cinco d&iacute;gitos es un pal&iacute;ndromo:
+        12321, 55555, 45554 y 11611. Escriba una secuencia de comandos que lea un entero de cinco d&iacute;gitos
+        y determine si es un pal&iacute;ndromo. Si el n&uacute;mero no es de cinco d&iacute;gitos, muestre un di&aacute;logo
+        alert que indique el problema al usuario y le permita introducir un nuevo valor despu&eacute;s de cerrar
+        el di&aacute;logo alert. [<em>Sugerencia</em>: es posible hacer este ejercicio con las t&eacute;cnicas que aprendi&oacute;
+        en este cap&iacute;tulo. Tendr&aacute; que usar operaciones de divisi&oacute;n y de residuo para "seleccionar"
+        cada d&iacute;gito].</p>
+
+        <script>
+            var numeroTexto;
+            var numero;
+            var d1, d2, d4, d5;
+            var valido = false;
+
+            while (!valido)
+            {
+                numeroTexto = window.prompt("Ingrese un número entero de 5 dígitos:");
+                numero = parseInt(numeroTexto);
+
+                if (numero >= 10000 && numero <= 99999)
+                {
+                    valido = true;
+                }
+                else
+                {
+                    window.alert("Error: El número debe ser exactamente de 5 dígitos.");
+                }
+            }
+
+            d1 = parseInt(numero / 10000);
+            d2 = parseInt((numero % 10000) / 1000);
+            d4 = parseInt((numero % 100) / 10);
+            d5 = numero % 10;
+
+            if (d1 == d5 && d2 == d4)
+            {
+                document.writeln("<p>El n&uacute;mero <strong>" + numero + "</strong> S&Iacute; es un pal&iacute;ndromo.</p>");
+            }
+            else
+            {
+                document.writeln("<p>El n&uacute;mero <strong>" + numero + "</strong> NO es un pal&iacute;ndromo.</p>");
+            }
+        </script>
+    </body>
+</html>

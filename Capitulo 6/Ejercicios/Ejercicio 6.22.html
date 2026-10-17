@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--Ejercicio 6.22-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 6.22</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+        <p><strong>6.22</strong> Escriba una secuencia de comandos que lea dos enteros, determine y produzca texto de HTML5 que muestre si el primero es m&uacute;ltiplo del segundo. [<em>Sugerencia</em>: use el operador residuo].</p>
+
+        <script>
+            var primerNumero;
+            var segundoNumero;
+            var numero1;
+            var numero2;
+
+            primerNumero = window.prompt("Escriba el primer número entero:");
+            segundoNumero = window.prompt("Escriba el segundo número entero:");
+
+            numero1 = parseInt(primerNumero);
+            numero2 = parseInt(segundoNumero);
+
+            if (numero1 % numero2 == 0) {
+                document.writeln("<h1>El n&uacute;mero " + numero1 + " ES m&uacute;ltiplo de " + numero2 + ".</h1>");
+            }
+
+            if (numero1 % numero2 != 0) {
+                document.writeln("<h1>El n&uacute;mero " + numero1 + " NO es m&uacute;ltiplo de " + numero2 + ".</h1>");
+            }
+        </script>
+    </body>
+</html>

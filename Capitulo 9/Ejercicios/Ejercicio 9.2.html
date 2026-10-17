@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.2 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.2</title>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios de autoevaluaci&oacute;n</h2>
+
+      <p><strong>9.2</strong> Para el programa de la figura 9.13, indique el alcance (ya sea alcance global o de funci&oacute;n) de cada uno de los siguientes elementos:</p>
+
+      <p>
+         <code>
+            &lt;!DOCTYPE html&gt;<br><br>
+            &lt;!-- Ejercicio 9.2: cubo.html --&gt;<br>
+            &lt;html&gt;<br>
+            &nbsp;&nbsp;&lt;head&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset = "utf-8"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Alcance&lt;/title&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var x;<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function salida()<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for ( x = 1; x &lt;= 10; x++ )<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.writeln( "&lt;p&gt;" + cubo( x ) + "&lt;/p&gt;" );<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} // fin de la funci&oacute;n salida<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function cubo( y )<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return y * y * y;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} // fin de la funci&oacute;n cubo<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.addEventListener( "load", salida, false );<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;<br>
+            &nbsp;&nbsp;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;<br>
+            &lt;/html&gt;
+         </code>
+      </p>
+
+      <p>a) La variable x: <strong>alcance global</strong>.</p>
+      <p>b) La variable y: <strong>alcance de funci&oacute;n</strong>.</p>
+      <p>c) La funci&oacute;n cubo: <strong>alcance global</strong>.</p>
+      <p>d) La funci&oacute;n salida: <strong>alcance global</strong>.</p>
+   </body>
+</html>

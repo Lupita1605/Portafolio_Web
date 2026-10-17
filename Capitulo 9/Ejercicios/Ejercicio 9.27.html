@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.27 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.27</title>
+      <script>
+         var num1, num2, respuestaCorrecta, correctas = 0, total = 0;
+
+         function iniciar()
+         {
+            document.getElementById("botonVerificar").addEventListener("click", verificar, false);
+            document.getElementById("botonIniciar").addEventListener("click", function(){ correctas = 0; total = 0; generarPregunta(); }, false);
+            generarPregunta();
+         }
+
+         function generarPregunta()
+         {
+            var nivel = parseInt(document.getElementById("nivelGrado").value);
+            var tipo = parseInt(document.getElementById("tipoOperacion").value);
+            var max = Math.pow(10, nivel) - 1, min = nivel === 1 ? 0 : Math.pow(10, nivel - 1);
+
+            num1 = Math.floor(min + Math.random() * (max - min + 1));
+            num2 = Math.floor(min + Math.random() * (max - min + 1));
+
+            var op = tipo === 5 ? Math.floor(1 + Math.random() * 4) : tipo;
+            var simbolos = ["+", "-", "*", "/"];
+
+            if (op === 2 && num1 < num2) { var t = num1; num1 = num2; num2 = t; }
+            if (op === 4) { if (num2 === 0) num2 = 1; respuestaCorrecta = num1; num1 = num1 * num2; }
+            else if (op === 1) respuestaCorrecta = num1 + num2;
+            else if (op === 2) respuestaCorrecta = num1 - num2;
+            else if (op === 3) respuestaCorrecta = num1 * num2;
+
+            document.getElementById("pregunta").innerHTML = "&iquest;Cu&aacute;nto es " + num1 + " " + simbolos[op - 1] + " " + num2 + "?";
+            document.getElementById("campoRespuesta").value = "";
+         }
+
+         function verificar()
+         {
+            var resp = parseFloat(document.getElementById("campoRespuesta").value);
+            var msjCorrecto = ["¡Muy bien!", "¡Excelente!", "¡Buen trabajo!", "¡Siga así!"];
+            var msjIncorrecto = ["No. Intente de nuevo.", "Equivocado.", "No se dé por vencido.", "Siga intentando."];
+            var res = document.getElementById("resultado");
+
+            total++;
+            if (resp === respuestaCorrecta)
+            {
+               correctas++;
+               res.innerHTML = msjCorrecto[Math.floor(Math.random() * 4)];
+            }
+            else
+            {
+               res.innerHTML = msjIncorrecto[Math.floor(Math.random() * 4)];
+            }
+
+            if (total === 10)
+            {
+               var pct = (correctas / 10) * 100;
+               res.innerHTML = "Aciertos: " + pct + "%. " + (pct < 75 ? "Pida ayuda a su instructor." : "¡Listo para el siguiente nivel!");
+               correctas = 0; total = 0;
+            }
+            generarPregunta();
+         }
+
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios</h2>
+
+      <p><strong>9.27</strong> CAI: Niveles y operaciones.</p>
+
+      <form action="#">
+         <p>
+            <label>Nivel:
+               <select id="nivelGrado">
+                  <option value="1">1 d&iacute;gito</option>
+                  <option value="2">2 d&iacute;gitos</option>
+                  <option value="3">3 d&iacute;gitos</option>
+               </select>
+            </label>
+            <label>Operaci&oacute;n:
+               <select id="tipoOperacion">
+                  <option value="1">Suma</option>
+                  <option value="2">Resta</option>
+                  <option value="3">Multiplicaci&oacute;n</option>
+                  <option value="4">Divisi&oacute;n</option>
+                  <option value="5">Mezclar todo</option>
+               </select>
+            </label>
+            <input id="botonIniciar" type="button" value="Aplicar">
+         </p>
+
+         <p id="pregunta"></p>
+
+         <p>
+            <label>Respuesta: <input id="campoRespuesta" type="text"></label>
+            <input id="botonVerificar" type="button" value="Verificar">
+         </p>
+      </form>
+
+      <p id="resultado"></p>
+   </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--Ejercicio 8.2-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 8.2</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios de autoevaluaci&oacute;n</h2>
+
+        <p><strong>8.2</strong> Escriba una instrucci&oacute;n o un conjunto de instrucciones en JavaScript<br>
+        para realizar cada una de las siguientes tareas:</p>
+
+        <!-- Inciso a -->
+        <p>
+            <strong>a)</strong> Sumar los enteros impares entre 1 y 99. Utilice una instrucci&oacute;n <strong>for</strong>.<br>
+            Suponga que se han declarado las variables <strong>suma</strong> y <strong>cuenta</strong>.
+        </p>
+        <script>
+            var suma;
+            var cuenta;
+
+            suma = 0;
+            for ( cuenta = 1; cuenta <= 99; cuenta += 2 )
+            {
+                suma += cuenta;
+            }
+
+            document.writeln( "<p>La suma de los enteros impares es: <strong>" + suma + "</strong></p>" );
+        </script>
+
+        <hr>
+
+        <!-- Inciso b -->
+        <p>
+            <strong>b)</strong> Calcular el valor de 2.5 elevado a la potencia de 3.<br>
+            Use el m&eacute;todo <strong>pow</strong>.
+        </p>
+        <script>
+            var resultado;
+
+            resultado = Math.pow( 2.5, 3 );
+
+            document.writeln( "<p>El valor de 2.5<sup>3</sup> es: <strong>" + resultado + "</strong></p>" );
+        </script>
+
+        <hr>
+
+        <!-- Inciso c -->
+        <p>
+            <strong>c)</strong> Imprimir los enteros del 1 al 20 mediante el uso de un ciclo <strong>while</strong><br>
+            y la variable contador <strong>x</strong>. Suponga que la variable <strong>x</strong> se ha declarado,<br>
+            pero no se ha inicializado. Imprima solamente cinco enteros por l&iacute;nea.<br>
+            [<em>Sugerencia:</em> use el c&aacute;lculo <strong>x % 5</strong>. Cuando el valor de esta expresi&oacute;n sea 0,<br>
+            inicie un nuevo p&aacute;rrafo en el documento de HTML5].
+        </p>
+        <script>
+            var x;
+
+            x = 1;
+            document.writeln( "<p>" );
+            while ( x <= 20 ) {
+                document.write( x + " " );
+                if ( x % 5 == 0 )
+                    document.write( "</p><p>" );
+                ++x;
+            }
+        </script>
+
+        <hr>
+
+        <!-- Inciso d -->
+        <p>
+            <strong>d)</strong> Repita el ejercicio 8.2 (c), pero ahora use una instrucci&oacute;n <strong>for</strong>.
+        </p>
+        <script>
+            var x;
+
+            document.writeln( "<p>" );
+            for ( x = 1; x <= 20; x++ ) {
+                document.write( x + " " );
+                if ( x % 5 == 0 )
+                    document.write( "</p><p>" );
+            }
+            document.writeln( "</p>" );
+        </script>
+    </body>
+</html>

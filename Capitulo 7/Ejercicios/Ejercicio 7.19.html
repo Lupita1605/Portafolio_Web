@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--Ejercicio 7.19-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 7.19</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p><strong>7.19</strong> (<em>Problema del else suelto</em>) Determine la salida de cada uno
+        de los siguientes segmentos de c&oacute;digo, cuando x es 9 y y es 11, y cuando x es 11
+        y y es 9. Observe que el int&eacute;rprete ignora la sangr&iacute;a en una secuencia de comandos.
+        Adem&aacute;s, el int&eacute;rprete de JavaScript siempre asocia un else con el if anterior,
+        a menos que se le indique de otra forma mediante la colocaci&oacute;n de llaves ({}).</p>
+
+        <script>
+            document.writeln("<h3>Inciso a)</h3>");
+            document.writeln("<p>if ( x &lt; 10 )<br>");
+            document.writeln("&nbsp;&nbsp;&nbsp;if ( y &gt; 10 )<br>");
+            document.writeln("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.writeln( \"&lt;p&gt;*****&lt;/p&gt;\" );<br>");
+            document.writeln("&nbsp;&nbsp;&nbsp;else<br>");
+            document.writeln("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.writeln( \"&lt;p&gt;#####&lt;/p&gt;\" );<br>");
+            document.writeln("document.writeln( \"&lt;p&gt;$$$$$&lt;/p&gt;\" );</p>");
+
+            document.writeln("<p><strong>Resultado cuando x = 9, y = 11:</strong></p>");
+            document.writeln("<p>*****</p>");
+            document.writeln("<p>$$$$$</p>");
+
+            document.writeln("<p><strong>Resultado cuando x = 11, y = 9:</strong></p>");
+            document.writeln("<p>$$$$$</p>");
+
+            document.writeln("<hr>");
+
+            document.writeln("<h3>Inciso b)</h3>");
+            document.writeln("<p>if ( x &lt; 10 )<br>");
+            document.writeln("{<br>");
+            document.writeln("&nbsp;&nbsp;&nbsp;if ( y &gt; 10 )<br>");
+            document.writeln("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.writeln( \"&lt;p&gt;*****&lt;/p&gt;\" );<br>");
+            document.writeln("}<br>");
+            document.writeln("else<br>");
+            document.writeln("{<br>");
+            document.writeln("&nbsp;&nbsp;&nbsp;document.writeln( \"&lt;p&gt;#####&lt;/p&gt;\" );<br>");
+            document.writeln("&nbsp;&nbsp;&nbsp;document.writeln( \"&lt;p&gt;$$$$$&lt;/p&gt;\" );<br>");
+            document.writeln("}</p>");
+
+            document.writeln("<p><strong>Resultado cuando x = 9, y = 11:</strong></p>");
+            document.writeln("<p>*****</p>");
+
+            document.writeln("<p><strong>Resultado cuando x = 11, y = 9:</strong></p>");
+            document.writeln("<p>#####</p>");
+            document.writeln("<p>$$$$$</p>");
+        </script>
+    </body>
+</html>

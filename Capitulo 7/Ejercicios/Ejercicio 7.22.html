@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--Ejercicio 7.22-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 7.22</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p><strong>7.22</strong> Una compa&ntilde;&iacute;a desea transmitir datos por tel&eacute;fono, pero le preocupa que sus tel&eacute;fonos
+        puedan estar intervenidos. Todos sus datos se transmiten como enteros de cuatro d&iacute;gitos. La compa&ntilde;&iacute;a le ha pedido
+        a usted que escriba una secuencia de comandos que <em>cifre</em> sus datos, de modo que puedan transmitirse en forma m&aacute;s segura.
+        Su secuencia de comandos debe leer un entero de cuatro d&iacute;gitos introducido por el usuario en un di&aacute;logo prompt y cifrarlo de la
+        siguiente manera: reemplace cada d&iacute;gito con (<em>la suma de ese d&iacute;gito m&aacute;s 7</em>) m&oacute;dulo 10. Despu&eacute;s intercambie
+        el primer d&iacute;gito con el tercero, e intercambie el segundo d&iacute;gito con el cuarto. Luego produzca texto de HTML5 que muestre
+        el entero cifrado.</p>
+
+        <script>
+            var numeroTexto;
+            var numero;
+            var d1, d2, d3, d4;
+            var c1, c2, c3, c4;
+
+            numeroTexto = window.prompt("Ingrese un número entero de 4 dígitos:");
+            numero = parseInt(numeroTexto);
+
+            d1 = parseInt(numero / 1000);
+            d2 = parseInt((numero % 1000) / 100);
+            d3 = parseInt((numero % 100) / 10);
+            d4 = numero % 10;
+
+            c1 = (d1 + 7) % 10;
+            c2 = (d2 + 7) % 10;
+            c3 = (d3 + 7) % 10;
+            c4 = (d4 + 7) % 10;
+
+            document.writeln("<p>El n&uacute;mero original es: <strong>" + numero + "</strong></p>");
+            document.writeln("<p>El n&uacute;mero cifrado es: <strong>" + c3 + c4 + c1 + c2 + "</strong></p>");
+        </script>
+    </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.28 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.28</title>
+      <script>
+         var saldo = 1000, punto = 0, apuesta = 0;
+
+         function iniciar()
+         {
+            document.getElementById("btnA").onclick = fijar;
+            document.getElementById("btnL").onclick = jugar;
+            document.getElementById("s").innerHTML = saldo;
+         }
+
+         function fijar()
+         {
+            var v = parseFloat(document.getElementById("a").value);
+            if (isNaN(v) || v <= 0 || v > saldo) return alert("Apuesta inválida");
+            apuesta = v;
+            document.getElementById("m").innerHTML = "Apuesta: $" + apuesta;
+            document.getElementById("btnL").disabled = false;
+         }
+
+         function lanzar()
+         {
+            var d1 = Math.floor(1 + Math.random() * 6), d2 = Math.floor(1 + Math.random() * 6);
+            document.getElementById("d").innerHTML = "Dados: " + d1 + " + " + d2 + " = " + (d1 + d2);
+            return d1 + d2;
+         }
+
+         function hablar()
+         {
+            var f = ["¿Irás a la quiebra?", "¡Arriésgate!", "¡Estás teniendo éxito!"];
+            document.getElementById("c").innerHTML = f[Math.floor(Math.random() * 3)];
+         }
+
+         function jugar()
+         {
+            var s = lanzar();
+            if (punto === 0)
+            {
+               if (s === 7 || s === 11) fin(true);
+               else if (s === 2 || s === 3 || s === 12) fin(false);
+               else { punto = s; document.getElementById("m").innerHTML = "Punto: " + punto; hablar(); }
+            }
+            else
+            {
+               if (s === punto) fin(true);
+               else if (s === 7) fin(false);
+               else hablar();
+            }
+         }
+
+         function fin(gano)
+         {
+            saldo += gano ? apuesta : -apuesta;
+            document.getElementById("s").innerHTML = saldo;
+            document.getElementById("m").innerHTML = gano ? "¡Ganaste $" + apuesta + "!" : "Perdiste $" + apuesta;
+            
+            if (saldo <= 0)
+            {
+               document.getElementById("m").innerHTML += " ¡En bancarrota!";
+               document.getElementById("btnL").disabled = document.getElementById("btnA").disabled = true;
+            }
+            else
+            {
+               punto = apuesta = 0;
+               document.getElementById("a").value = "";
+               document.getElementById("btnL").disabled = true;
+               hablar();
+            }
+         }
+
+         window.onload = iniciar;
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios</h2>
+
+      <p><strong>9.28</strong> Craps con apuestas.</p>
+      <p>Saldo: $ <span id="s"></span></p>
+
+      <form action="#">
+         <p>
+            <label>Apuesta: <input id="a" type="text"></label>
+            <input id="btnA" type="button" value="Apostar">
+         </p>
+         <p>
+            <input id="btnL" type="button" value="Lanzar dados" disabled>
+         </p>
+      </form>
+
+      <p id="d"></p>
+      <p id="m"></p>
+      <p id="c" style="font-style: italic; color: blue;"></p>
+   </body>
+</html>

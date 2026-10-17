@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.7 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.7: &Aacute;rea de un c&iacute;rculo</title>
+      <script>
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonCalcular" );
+            boton.addEventListener( "click", mostrarArea, false );
+         } 
+
+         function mostrarArea()
+         {
+            var campoEntrada = document.getElementById( "campoRadio" );
+            var radio = parseFloat( campoEntrada.value );
+            var resultado = document.getElementById( "resultado" );
+            resultado.innerHTML = "El &aacute;rea del c&iacute;rculo es: " + areaCirculo( radio );
+         }
+
+         function areaCirculo( radio )
+         {
+            return Math.PI * Math.pow( radio, 2 );
+         } 
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios</h2>
+
+      <p><strong>9.7</strong> Escriba una secuencia de comandos que use un formulario (form) para obtener el radio de un c&iacute;rculo del usuario y despu&eacute;s llame a la funci&oacute;n <code>areaCirculo</code> para calcular el &aacute;rea del c&iacute;rculo y mostrar el resultado en un p&aacute;rrafo en la p&aacute;gina.</p>
+
+      <form action="#">
+         <p>
+            <label>Radio:
+               <input id="campoRadio" type="text">
+            </label>
+            <input id="botonCalcular" type="button" value="Calcular &aacute;rea">
+         </p>
+      </form>
+      <p id="resultado"></p>
+   </body>
+</html>

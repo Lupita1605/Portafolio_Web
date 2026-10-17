@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<!--Ejercicio 8.13-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 8.13</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p>
+            <strong>8.13</strong> Dada la siguiente instrucci&oacute;n <code>switch</code>:
+        </p>
+
+        <p>
+            <code>
+                switch ( k )<br>
+                {<br>
+                &nbsp;&nbsp;case 1:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+                &nbsp;&nbsp;case 2:<br>
+                &nbsp;&nbsp;case 3:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;++k;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+                &nbsp;&nbsp;case 4:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;--k;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+                &nbsp;&nbsp;default:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;k *= 3;<br>
+                } //fin de switch<br><br>
+                x = k;
+            </code>
+        </p>
+
+        <p>&iquest;Qu&eacute; valores se asignan a <code>x</code> cuando <code>k</code> tiene valores de 1, 2, 3, 4 y 10?</p>
+
+        <script>
+            function evaluar(kInicial) {
+                var k = kInicial;
+                var x;
+
+                switch ( k )
+                {
+                    case 1:
+                        break;
+                    case 2:
+                    case 3:
+                        ++k;
+                        break;
+                    case 4:
+                        --k;
+                        break;
+                    default:
+                        k *= 3;
+                }
+
+                x = k;
+                return x;
+            }
+
+            // k = 1
+            document.writeln("<p><strong>Si k = 1:</strong><br>");
+            document.writeln("<strong>Valor asignado a x:</strong> " + evaluar(1) + "<br>");
+            document.writeln("<strong>Explicaci&oacute;n:</strong> Entra en <code>case 1</code> y ejecuta <code>break</code> de inmediato. El valor de <code>k</code> no cambia y se asigna <code>x = 1</code>.</p>");
+
+            // k = 2
+            document.writeln("<p><strong>Si k = 2:</strong><br>");
+            document.writeln("<strong>Valor asignado a x:</strong> " + evaluar(2) + "<br>");
+            document.writeln("<strong>Explicaci&oacute;n:</strong> Entra en <code>case 2</code>, pasa a <code>case 3</code> por falta de <code>break</code>, ejecuta <code>++k</code> y sale. Se asigna <code>x = 3</code>.</p>");
+
+            // k = 3
+            document.writeln("<p><strong>Si k = 3:</strong><br>");
+            document.writeln("<strong>Valor asignado a x:</strong> " + evaluar(3) + "<br>");
+            document.writeln("<strong>Explicaci&oacute;n:</strong> Entra en <code>case 3</code>, ejecuta <code>++k</code> y sale con <code>break</code>. Se asigna <code>x = 4</code>.</p>");
+
+            // k = 4
+            document.writeln("<p><strong>Si k = 4:</strong><br>");
+            document.writeln("<strong>Valor asignado a x:</strong> " + evaluar(4) + "<br>");
+            document.writeln("<strong>Explicaci&oacute;n:</strong> Entra en <code>case 4</code>, ejecuta <code>--k</code> y sale con <code>break</code>. Se asigna <code>x = 3</code>.</p>");
+
+            // k = 10
+            document.writeln("<p><strong>Si k = 10:</strong><br>");
+            document.writeln("<strong>Valor asignado a x:</strong> " + evaluar(10) + "<br>");
+            document.writeln("<strong>Explicaci&oacute;n:</strong> No coincide con ning&uacute;n <code>case</code>, entra a <code>default</code> y ejecuta <code>k *= 3</code>. Se asigna <code>x = 30</code>.</p>");
+        </script>
+    </body>
+</html>

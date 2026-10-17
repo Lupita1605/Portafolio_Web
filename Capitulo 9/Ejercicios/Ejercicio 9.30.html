@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.30 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.30</title>
+      <script>
+         function iniciar()
+         {
+            document.getElementById("btnCalcular").onclick = calcular;
+         }
+
+         function misterio(a, b)
+         {
+            if (b === 1)
+            {
+               return a;
+            }
+            else
+            {
+               return a + misterio(a, b - 1);
+            }
+         }
+
+         function calcular()
+         {
+            var a = parseInt(document.getElementById("numA").value);
+            var b = parseInt(document.getElementById("numB").value);
+            var res = document.getElementById("resultado");
+
+            if (isNaN(a) || isNaN(b) || b < 1)
+            {
+               res.innerHTML = "Por favor, ingrese un valor de 'b' entero positivo (&ge; 1).";
+               return;
+            }
+
+            res.innerHTML = "El resultado de misterio(" + a + ", " + b + ") es: " + misterio(a, b);
+         }
+
+         window.onload = iniciar;
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios</h2>
+
+      <p><strong>9.30</strong> Funci&oacute;n de multiplicaci&oacute;n recursiva.</p>
+
+      <form action="#">
+         <p>
+            <label>Valor de a: <input id="numA" type="text"></label>
+         </p>
+         <p>
+            <label>Valor de b (&ge; 1): <input id="numB" type="text"></label>
+         </p>
+         <p>
+            <input id="btnCalcular" type="button" value="Calcular">
+         </p>
+      </form>
+
+      <p id="resultado"></p>
+   </body>
+</html>

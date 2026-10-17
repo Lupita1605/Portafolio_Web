@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--Ejercicio 7.23-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 7.23</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p><strong>7.23</strong> Escriba una secuencia de comandos que reciba como entrada un entero cifrado de cuatro d&iacute;gitos
+        (del ejercicio 7.22) y lo <em>descifre</em> para formar el n&uacute;mero original.</p>
+
+        <script>
+            var numeroTexto;
+            var numeroCifrado;
+            var c1, c2, c3, c4;
+            var d1, d2, d3, d4;
+            var o1, o2, o3, o4;
+
+            numeroTexto = window.prompt("Ingrese el número cifrado de 4 dígitos:");
+            numeroCifrado = parseInt(numeroTexto);
+
+            c1 = parseInt(numeroCifrado / 1000);
+            c2 = parseInt((numeroCifrado % 1000) / 100);
+            c3 = parseInt((numeroCifrado % 100) / 10);
+            c4 = numeroCifrado % 10;
+
+            d1 = c3;
+            d2 = c4;
+            d3 = c1;
+            d4 = c2;
+
+            o1 = (d1 + 3) % 10;
+            o2 = (d2 + 3) % 10;
+            o3 = (d3 + 3) % 10;
+            o4 = (d4 + 3) % 10;
+
+            document.writeln("<p>El n&uacute;mero cifrado ingresado es: <strong>" + numeroTexto + "</strong></p>");
+            document.writeln("<p>El n&uacute;mero descifrado original es: <strong>" + o1 + o2 + o3 + o4 + "</strong></p>");
+        </script>
+    </body>
+</html>

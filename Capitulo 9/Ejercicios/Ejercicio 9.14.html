@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.14 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.14</title>
+      <script>
+         function iniciar()
+         {
+            var boton = document.getElementById("botonCalcular");
+            boton.addEventListener("click", calcular, false);
+         }
+
+         function calcular()
+         {
+            var num1 = parseInt(document.getElementById("campoNum1").value);
+            var num2 = parseInt(document.getElementById("campoNum2").value);
+            var resultado = document.getElementById("resultado");
+
+            if (multiplo(num1, num2))
+            {
+               resultado.innerHTML = num2 + " es m&uacute;ltiplo de " + num1;
+            }
+            else
+            {
+               resultado.innerHTML = num2 + " NO es m&uacute;ltiplo de " + num1;
+            }
+         }
+
+         function multiplo(a, b)
+         {
+            return b % a === 0;
+         }
+
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios</h2>
+
+      <p><strong>9.14</strong> M&uacute;ltiplo de un n&uacute;mero</p>
+
+      <form action="#">
+         <p>
+            <label>Primer n&uacute;mero:
+               <input id="campoNum1" type="text">
+            </label>
+         </p>
+         <p>
+            <label>Segundo n&uacute;mero:
+               <input id="campoNum2" type="text">
+            </label>
+         </p>
+         <p>
+            <input id="botonCalcular" type="button" value="Verificar m&uacute;ltiplo">
+         </p>
+      </form>
+
+      <p id="resultado"></p>
+   </body>
+</html>

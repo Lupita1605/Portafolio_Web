@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.5 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.5</title>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios de autoevaluaci&oacute;n</h2>
+
+      <p><strong>9.5</strong> Localice el error en cada uno de los siguientes segmentos de programa y explique c&oacute;mo corregirlo:</p>
+
+      <p><strong>a)</strong></p>
+      <p>
+         <code>
+            method g()<br>
+            {<br>
+            &nbsp;&nbsp;document.writeln( "Dentro del m&amp;eacute;todo g" );<br>
+            }
+         </code>
+      </p>
+      <p><strong>Error:</strong> <code>method</code> no es la palabra clave para definir una funci&oacute;n.<br>
+      <strong>Correcci&oacute;n:</strong> Cambiar <code>method</code> por <code>function</code>.</p>
+
+      <br>
+
+      <p><strong>b)</strong></p>
+      <p>
+         <code>
+            // Esta funci&oacute;n debe devolver la suma de sus argumentos<br>
+            function suma(x, y)<br>
+            {<br>
+            &nbsp;&nbsp;var resultado;<br>
+            &nbsp;&nbsp;resultado = x + y;<br>
+            }
+         </code>
+      </p>
+      <p><strong>Error:</strong> La funci&oacute;n calcula la suma pero no devuelve el valor.<br>
+      <strong>Correcci&oacute;n:</strong> Agregar la instrucci&oacute;n <code>return resultado;</code> al final de la funci&oacute;n (o simplemente <code>return x + y;</code>).</p>
+
+      <br>
+
+      <p><strong>c)</strong></p>
+      <p>
+         <code>
+            function f( a );<br>
+            {<br>
+            &nbsp;&nbsp;document.writeln( a );<br>
+            }
+         </code>
+      </p>
+      <p><strong>Error:</strong> Hay un punto y coma (<code>;</code>) despu&eacute;s del par&eacute;ntesis de los par&aacute;metros.<br>
+      <strong>Correcci&oacute;n:</strong> Eliminar el punto y coma (<code>;</code>) despu&eacute;s de <code>function f( a )</code>.</p>
+   </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--Ejercicio 8.6-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 8.6</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicio del Cap&iacute;tulo 8</h2>
+
+        <p>
+            <strong>8.6</strong> Escriba una secuencia de comandos que encuentre el menor de varios enteros no negativos. Suponga que el primer valor le&iacute;do especifica el n&uacute;mero de valores que el usuario introducir&aacute;.
+        </p>
+
+        <script>
+            var cantidadTexto;
+            var cantidad;
+            var primerNumeroTexto;
+            var menor;
+
+            cantidadTexto = window.prompt("Escriba el número de valores que introducirá:");
+            cantidad = parseInt(cantidadTexto);
+
+            primerNumeroTexto = window.prompt("Escriba un número entero:");
+            menor = parseInt(primerNumeroTexto);
+
+            for (var i = 2; i <= cantidad; i++) {
+                var numeroTexto = window.prompt("Escriba el siguiente número entero:");
+                var numero = parseInt(numeroTexto);
+
+                if (numero < menor) {
+                    menor = numero;
+                }
+            }
+
+            document.writeln("<p>El número menor es: " + menor + "</p>");
+        </script>
+    </body>
+</html>

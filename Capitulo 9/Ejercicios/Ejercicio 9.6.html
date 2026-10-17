@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.6: volumen.html -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Calcular vol&uacute;menes de esferas</title>
+      <script>
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonCalcular" );
+            boton.addEventListener( "click", mostrarVolumen, false );
+         } 
+
+         function mostrarVolumen()
+         {
+            var campoEntrada = document.getElementById( "campoRadio" );
+            var radio = parseFloat( campoEntrada.value );
+            var resultado = document.getElementById( "resultado" );
+            resultado.innerHTML = "El volumen de la esfera es: " + volumenEsfera( radio );
+         } 
+
+         function volumenEsfera( radio )
+         {
+            return ( 4.0 / 3.0 ) * Math.PI * Math.pow( radio, 3 );
+         } 
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios de autoevaluaci&oacute;n</h2>
+
+      <p><strong>9.6</strong> Escriba un programa de JavaScript completo para pedir al usuario el radio de una esfera y luego llame a la funci&oacute;n <code>volumenEsfera</code> para calcular y mostrar el volumen de la esfera.</p>
+
+      <form action="#">
+         <p>
+            <label>Radio:
+               <input id="campoRadio" type="text">
+            </label>
+            <input id="botonCalcular" type="button" value="Calcular">
+         </p>
+      </form>
+      <p id="resultado"></p>
+   </body>
+</html>

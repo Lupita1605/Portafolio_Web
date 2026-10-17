@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.15 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.15</title>
+      <script>
+         function iniciar()
+         {
+            var entrada;
+            var numero;
+            var salida = "";
+
+            entrada = prompt("Escriba un número entero (o cancele / deje vacío para terminar):");
+
+            while (entrada !== null && entrada !== "")
+            {
+               numero = parseInt(entrada);
+
+               if (esPar(numero))
+               {
+                  salida += "<p>El número " + numero + " es PAR.</p>";
+               }
+               else
+               {
+                  salida += "<p>El número " + numero + " es IMPAR.</p>";
+               }
+
+               entrada = prompt("Escriba otro número entero (o cancele / deje vacío para terminar):");
+            }
+
+            document.getElementById("resultados").innerHTML = salida;
+         }
+
+         function esPar(numero)
+         {
+            return numero % 2 === 0;
+         }
+
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios</h2>
+
+      <p><strong>9.15</strong> Determinar si un número es par o impar (ciclo controlado por centinela con prompt).</p>
+
+      <div id="resultados"></div>
+   </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--Ejercicio 6.20-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 6.20</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+        <p><strong>6.20</strong> Escriba una secuencia de comandos que lea cinco enteros, determine y produzca marcado que muestre los enteros
+        menor y mayor en del grupo. Use sólo las técnicas de secuencias de comandos que aprendió en este capítulo.
+        </p>
+
+        <script>
+            var primerNumero;
+            var segundoNumero;
+            var tercerNumero;
+            var cuartoNumero;
+            var quintoNumero;
+            var numero1;
+            var numero2;
+            var numero3;    
+            var numero4;
+            var numero5;
+            var mayor;
+            var menor;
+
+            primerNumero = window.prompt("Escriba el primer número: ");
+            segundoNumero = window.prompt("Escriba el segundo número: ");
+            tercerNumero = window.prompt("Escriba el tercer número: ");
+            cuartoNumero = window.prompt("Escriba el cuarto número: ");
+            quintoNumero = window.prompt("Escriba el quinto número: ");
+
+            numero1 = parseInt(primerNumero);
+            numero2 = parseInt(segundoNumero);
+            numero3 = parseInt(tercerNumero);
+            numero4 = parseInt(cuartoNumero);
+            numero5 = parseInt(quintoNumero);
+
+            mayor = numero1;
+            menor = numero1;
+
+            if (numero2 > mayor) mayor = numero2;
+            if (numero2 < menor) menor = numero2;
+
+            if (numero3 > mayor) mayor = numero3;
+            if (numero3 < menor) menor = numero3;
+
+            if (numero4 > mayor) mayor = numero4;
+            if (numero4 < menor) menor = numero4;
+
+            if (numero5 > mayor) mayor = numero5;
+            if (numero5 < menor) menor = numero5;
+
+            document.writeln("<h3>Resultados</h3>");
+            document.writeln("<p>El número menor es: " + menor + "</p>");
+            document.writeln("<p>El número mayor es: " + mayor + "</p>");
+        </script>
+    </body>
+</html>

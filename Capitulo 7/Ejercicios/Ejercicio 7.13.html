@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--Ejercicio 7.13-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 7.13</title>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p><strong>7.13</strong> Una empresa grande paga a sus vendedores mediante comisiones[cite: 5]. Los vendedores reciben $200 por semana, m&aacute;s el 9 por ciento de sus ventas brutas durante esa semana[cite: 5]. Por ejemplo, un vendedor que vende $5000 de mercanc&iacute;a en una semana, recibe $200 m&aacute;s el 9 por ciento de 5000, o un total de $650[cite: 5]. Usted acaba de recibir una lista de los art&iacute;culos vendidos por cada vendedor[cite: 5]. Los valores de estos art&iacute;culos son los siguientes:<br>
+        Art&iacute;culo 1: 239.99<br>
+        Art&iacute;culo 2: 129.75<br>
+        Art&iacute;culo 3: 99.95<br>
+        Art&iacute;culo 4: 350.89<br>
+        Desarrolle una secuencia de comandos que reciba como entrada los art&iacute;culos vendidos por un vendedor durante la &uacute;ltima semana, que calcule los ingresos de ese vendedor y produzca texto de HTML5 para mostrar los ingresos de ese vendedor[cite: 5].</p>
+
+        <script>
+            var articuloTexto;
+            var articulo;
+            var ventasBrutas = 0;
+            var ingresosTotales;
+
+            var precio1 = 239.99;
+            var precio2 = 129.75;
+            var precio3 = 99.95;
+            var precio4 = 350.89;
+
+            articuloTexto = window.prompt("Ingrese el número de artículo vendido (1, 2, 3, 4 o -1 para terminar):");
+            articulo = parseInt(articuloTexto);
+
+            while (articulo != -1)
+            {
+                if (articulo == 1)
+                {
+                    ventasBrutas += precio1;
+                }
+                else if (articulo == 2)
+                {
+                    ventasBrutas += precio2;
+                }
+                else if (articulo == 3)
+                {
+                    ventasBrutas += precio3;
+                }
+                else if (articulo == 4)
+                {
+                    ventasBrutas += precio4;
+                }
+                else
+                {
+                    window.alert("Número de artículo no válido. Intente de nuevo.");
+                }
+
+                articuloTexto = window.prompt("Ingrese el número de artículo vendido (1, 2, 3, 4 o -1 para terminar):");
+                articulo = parseInt(articuloTexto);
+            }
+
+            ingresosTotales = 200 + (ventasBrutas * 0.09);
+
+           document.writeln("<p>Ventas brutas totales: $" + ventasBrutas + "</p>");
+           document.writeln("<p>Los ingresos totales del vendedor son: <strong>$" + ingresosTotales + "</strong></p>");    </script>
+    </body>
+</html>

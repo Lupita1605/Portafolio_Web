@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 9.18 -->
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 9.18</title>
+      <script>
+         function iniciar()
+         {
+            var boton = document.getElementById("botonCalcular");
+            boton.addEventListener("click", calcular, false);
+         }
+
+         function calcular()
+         {
+            var num1 = parseFloat(document.getElementById("campoNum1").value);
+            var num2 = parseFloat(document.getElementById("campoNum2").value);
+            var num3 = parseFloat(document.getElementById("campoNum3").value);
+            var resultado = document.getElementById("resultado");
+
+            if (!isNaN(num1) && !isNaN(num2) && !isNaN(num3))
+            {
+               resultado.innerHTML = "El menor valor es: " + minimo3(num1, num2, num3);
+            }
+            else
+            {
+               resultado.innerHTML = "Por favor, ingrese tres n&uacute;meros v&aacute;lidos.";
+            }
+         }
+
+         function minimo3(a, b, c)
+         {
+            return Math.min(a, b, c);
+         }
+
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+      <h2>Ejercicios</h2>
+
+      <p><strong>9.18</strong> Determinar el menor de tres n&uacute;meros de punto flotante.</p>
+
+      <form action="#">
+         <p>
+            <label>Primer n&uacute;mero:
+               <input id="campoNum1" type="text">
+            </label>
+         </p>
+         <p>
+            <label>Segundo n&uacute;mero:
+               <input id="campoNum2" type="text">
+            </label>
+         </p>
+         <p>
+            <label>Tercer n&uacute;mero:
+               <input id="campoNum3" type="text">
+            </label>
+         </p>
+         <p>
+            <input id="botonCalcular" type="button" value="Obtener menor">
+         </p>
+      </form>
+
+      <p id="resultado"></p>
+   </body>
+</html>

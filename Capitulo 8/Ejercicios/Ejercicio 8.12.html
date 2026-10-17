@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<!--Ejercicio 8.12-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 8.12</title>
+        <style type="text/css">
+            hr {
+                border: 0;
+                height: 1px;
+                background-color: #ccc;
+                margin: 15px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <p><a href="../Menu/menu_ejercicios.html">&larr; Regresar al men&uacute; de ejercicios</a></p>
+        <h2>Ejercicios</h2>
+
+        <p>
+            <strong>8.12</strong> Suponga que <code>i = 1</code>, <code>j = 2</code>, <code>k = 3</code> y <code>m = 2</code>. ¿Qu&eacute; es lo que imprime cada una de las siguientes instrucciones? ¿Son necesarios los par&eacute;ntesis en cada caso?
+        </p>
+
+        <script>
+            var i = 1;
+            var j = 2;
+            var k = 3;
+            var m = 2;
+
+            // a)
+            document.writeln("<p><strong>a)</strong> <code>document.writeln( i == 1 );</code></p>");
+            document.writeln("<p><strong>Resultado:</strong> " + (i == 1) + "<br>");
+            document.writeln("<strong>¿Son necesarios los paréntesis?:</strong> Sí, son los paréntesis de la función <code>writeln()</code>.</p>");
+            document.writeln("<hr>");
+
+            // b)
+            document.writeln("<p><strong>b)</strong> <code>document.writeln( j == 3 );</code></p>");
+            document.writeln("<p><strong>Resultado:</strong> " + (j == 3) + "<br>");
+            document.writeln("<strong>¿Son necesarios los paréntesis?:</strong> Sí, son los paréntesis de la función <code>writeln()</code>.</p>");
+            document.writeln("<hr>");
+
+            // c)
+            document.writeln("<p><strong>c)</strong> <code>document.writeln( i >= 1 && j < 4 );</code></p>");
+            document.writeln("<p><strong>Resultado:</strong> " + (i >= 1 && j < 4) + "<br>");
+            document.writeln("<strong>¿Son necesarios los paréntesis?:</strong> Sí, para evaluar la expresión dentro de <code>writeln()</code>.</p>");
+            document.writeln("<hr>");
+
+            // d)
+            document.writeln("<p><strong>d)</strong> <code>document.writeln( m <= 99 && k < m );</code></p>");
+            document.writeln("<p><strong>Resultado:</strong> " + (m <= 99 && k < m) + "<br>");
+            document.writeln("<strong>¿Son necesarios los paréntesis?:</strong> Sí, para evaluar la expresión dentro de <code>writeln()</code>.</p>");
+            document.writeln("<hr>");
+
+            // e)
+            document.writeln("<p><strong>e)</strong> <code>document.writeln( j >= i || k == m );</code></p>");
+            document.writeln("<p><strong>Resultado:</strong> " + (j >= i || k == m) + "<br>");
+            document.writeln("<strong>¿Son necesarios los paréntesis?:</strong> Sí, para evaluar la expresión dentro de <code>writeln()</code>.</p>");
+            document.writeln("<hr>");
+
+            // f)
+            document.writeln("<p><strong>f)</strong> <code>document.writeln( k + m < j || 3 - j >= k );</code></p>");
+            document.writeln("<p><strong>Resultado:</strong> " + (k + m < j || 3 - j >= k) + "<br>");
+            document.writeln("<strong>¿Son necesarios los paréntesis?:</strong> Sí, para evaluar la expresión dentro de <code>writeln()</code>.</p>");
+            document.writeln("<hr>");
+
+            // g)
+            document.writeln("<p><strong>g)</strong> <code>document.writeln( !( k > m ) );</code></p>");
+            document.writeln("<p><strong>Resultado:</strong> " + (!(k > m)) + "<br>");
+            document.writeln("<strong>¿Son necesarios los paréntesis?:</strong> Los externos son requeridos por <code>writeln()</code>. Los internos <code>(k > m)</code> no son estrictamente necesarios pero ayudan a la claridad.</p>");
+        </script>
+    </body>
+</html>
